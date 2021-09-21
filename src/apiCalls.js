@@ -69,11 +69,12 @@ export const addToWishlist = async(product_id ,userDispatch , setLoading, )=>{
   export const addToCart = async(product_id ,userDispatch , setLoading)=>{
      
     try{
-        console.log(product_id)
+        
         setLoading(true);
         const cartResponse = await authAxios.post(`/user_data/cart/${product_id}`)
         
         if(cartResponse.data.success){
+          console.log(cartResponse.data.data.cart)
             userDispatch({type : "ADD TO CART" , payload : cartResponse.data.data.cart})
             const {data} = await authAxios.delete(`user_data/wishlist/${product_id}`);
             setLoading(false);
@@ -92,7 +93,7 @@ export const addToWishlist = async(product_id ,userDispatch , setLoading, )=>{
 
     }catch(err){
         setLoading(false)
-        console.log(err.response.data.msg);
+        toast.error(err.response.data.msg);
     }
 
   }
@@ -114,6 +115,33 @@ export const addToWishlist = async(product_id ,userDispatch , setLoading, )=>{
 
     }
   }
+
+  export const updateQty = async(product_id,userDispatch , setLoading,action)=>{
+    const {type , qty} = action
+
+    try{
+      setLoading(true);
+      if(qty == 1  && type =="decrement"){
+        return await removeFromCart(product_id , userDispatch , setLoading)
+      }
+
+      const {data} = await authAxios.post(`/user_data/cart/${product_id}/update_qty`,{payload : type});
+      setLoading(false)
+
+      if(data.success){
+        toast(data.msg);
+        console.log(data.data)
+        userDispatch({type : "ADD TO CART" , payload : data.data})
+
+      }
+    }catch(error){
+      setLoading(false)
+      toast.error(error.response.data.msg)
+
+    }
+
+  }
+  
 
   export const moveToWishlist = async(product_id , userDispatch , setLoading)=>{
     try{

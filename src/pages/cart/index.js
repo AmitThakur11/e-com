@@ -4,6 +4,7 @@ import {CartCard} from "../../component"
 import {EmptyCart} from "../../container"
 export default function Cart() {
     const {user : {cart}} = useUser()
+    console.log(cart)
     return (
         !cart.length ? <EmptyCart/>:<div>
             {

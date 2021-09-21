@@ -4,11 +4,13 @@ import {Link} from "react-router-dom"
 import {ShoppingCartOutlined , FavoriteBorderOutlined } from '@material-ui/icons';
 import { useNavigate } from "react-router";
 import {useAuth} from "../../context/auth/index"
+import {useUser} from "../../context/user/index"
 
 import {toast} from "react-toastify"
 export default function Header() {
     const navigate = useNavigate();
     const {isLogin , setLogin , setRender , setLoading} = useAuth();
+    const {user:{wishlist ,cart}} = useUser()
   
     const login_logout= ()=>{
         if(isLogin){
@@ -49,13 +51,13 @@ export default function Header() {
                 <Link to ="/cart">
                 <div className ="headerOptions__icon">
                     <ShoppingCartOutlined style={{fontSize : "26px"}}/>
-                    <span>0</span>
+                    {cart.length ? <span>{cart.length}</span>: ""}
                 </div>
                 </Link>
                 <Link to ="/wishlist">
                 <div className ="headerOptions__icon">
                     <FavoriteBorderOutlined style={{fontSize : "26px"}} />
-                    <span>0</span>
+                    {wishlist.length?<span>{wishlist.length}</span> : ""}
                     </div>
                 </Link>
                 {/* <div className ="headerOptions__icon"><MenuOutlined/></div> */}

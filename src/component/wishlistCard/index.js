@@ -2,9 +2,11 @@ import { useUser } from "../../context/user/index";
 import {addToCart , removeFromWishlist} from "../../apiCalls"
 import {useAuth} from "../../context/auth"
 
+
 const WishlistCard = ({ wishlist }) => {
   const {userDispatch} = useUser();
   const {setLoading} = useAuth();
+
   return (
     <section className="x-horizontal-card">
       <div className="x-horizontal-card-content">

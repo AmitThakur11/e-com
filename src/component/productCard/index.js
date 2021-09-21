@@ -1,15 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
-import {FavoriteBorderOutlined } from "@material-ui/icons";
-import {useUser} from "../../context/user/index"
-import {addToWishlist} from "../../apiCalls"
-import {useAuth} from "../../context/auth"
-
+import { FavoriteBorderOutlined, Favorite } from "@material-ui/icons";
+import { useUser } from "../../context/user/index";
+import { addToWishlist, removeFromWishlist } from "../../apiCalls";
+import { useAuth } from "../../context/auth";
 
 export default function ProductCard({ product }) {
-  const {userDispatch} = useUser();
-  const {setLoading} = useAuth();
+  const {
+    user: { wishlist },
+    userDispatch,
+  } = useUser();
+  const { setLoading } = useAuth();
+  const likedOrNot = wishlist.find((item) => item._id === product._id);
   return (
     <section key={product._id} className="x-vertical-card">
       <Link to={`/store/${product._id}`}>
@@ -24,11 +27,18 @@ export default function ProductCard({ product }) {
           </div>
         </div>
       </Link>
-      <div className ="x-card-icon" onClick = {()=>addToWishlist(product._id , userDispatch, setLoading)} ><FavoriteBorderOutlined style ={{fontSize : "18px"}}/></div>
+      <div
+        className="x-card-icon"
+        onClick={() =>
+          likedOrNot
+            ?removeFromWishlist(product._id, userDispatch, setLoading): addToWishlist(product._id, userDispatch, setLoading)
+            
+        }
+      >
+        {likedOrNot?<Favorite style={{ fontSize: "18px" }} />:<FavoriteBorderOutlined style={{ fontSize: "18px" }} />}
+      </div>
 
       {product.badge && <div className="x-vertical-badge">{product.badge}</div>}
     </section>
   );
 }
-
-
