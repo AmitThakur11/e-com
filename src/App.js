@@ -1,7 +1,11 @@
-
+import {Header , Content} from "./container";
+import "./index.css"
 function App() {
   return (
-    <div className="App">
+    <div className="app">
+      <Header/>
+      <Content/>
+      
 
     </div>
   );
