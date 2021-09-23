@@ -1,27 +1,37 @@
 
 import {useContext , createContext , useEffect , useState , useReducer } from "react";
 import {useAuth} from "../auth/index"
-
+import axios from "axios";
 import {initialState , filterReducer , filteredData , sortData} from "./reducers/filter"
+import { toast } from "react-toastify";
 
 
 
 export const dataContext = createContext();
 
 const DataProvider = ({children})=>{
-    const {authAxios , setLoading} = useAuth();
+    const {setLoading} = useAuth();
     const [productList , setProductList] = useState([])
     
    
     const [state, dispatch] = useReducer(filterReducer, initialState);
 
     useEffect(()=>{
-        (async ()=>{
-            setLoading(true)
-            const response = await authAxios("/product");
-            setProductList(response.data.product)
-            setLoading(false)
-        })()
+        try{
+
+            (async ()=>{
+                setLoading(true)
+                const response = await axios.get("/product");
+                setProductList(response.data.product)
+                setLoading(false)
+            })()
+            
+        }
+        catch(err){
+            setLoading(false);
+            toast.error(err.response.data.msg)
+        }
+        
     },[])
 
     const getSortedData = sortData(productList, state);

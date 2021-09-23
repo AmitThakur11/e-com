@@ -25,14 +25,14 @@ const AuthProvider = ({ children }) => {
       return { ...userInput, [name]: value };
     });
   };
-  const accessToken =  JSON.parse(localStorage.getItem('token'))
-  const apiUrl = "https://soulmadeapi.herokuapp.com";
-  const authAxios = axios.create({
-    baseURL: apiUrl,
-    headers: {
-      Authorization: accessToken,
-    },
-  });
+  // const accessToken =  JSON.parse(localStorage.getItem('token'))
+  // const apiUrl = "https://soulmadeapi.herokuapp.com";
+  // const authAxios = axios.create({
+  //   baseURL: apiUrl,
+  //   headers: {
+  //     Authorization: accessToken,
+  //   },
+  // });
 
   const getLogin = async () => {
     try{
@@ -40,9 +40,9 @@ const AuthProvider = ({ children }) => {
         if(email && password){
 
             setLoading(true)
-            const {data} = await authAxios.post("/user/login",{email : email , password : password});
+            const {data} = await axios.post("/user/login",{email : email , password : password});
             setLoading(false);
-            localStorage.setItem("token", JSON.stringify(data.token )) 
+            localStorage.setItem("token", data.token) 
             
             setLogin(true)
             setRender(render=>!render)
@@ -66,7 +66,7 @@ const AuthProvider = ({ children }) => {
         {
           setLoading(true)
 
-          const {data} = await authAxios.post("/user/signup" , {username : username , email : email , password  : password});
+          const {data} = await axios.post("/user/signup" , {username : username , email : email , password  : password});
           console.log(data.user)
           setLoading(false);
           setUserInput(initialUser)
@@ -95,7 +95,6 @@ const AuthProvider = ({ children }) => {
   return (
     <authContext.Provider
       value={{
-        authAxios,
         userInput,
         setUserInput,
         initialUser,

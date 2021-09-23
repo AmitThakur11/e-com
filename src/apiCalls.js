@@ -1,14 +1,6 @@
 import {toast} from "react-toastify";
 import axios from "axios";
 
-export const accessToken =  JSON.parse(localStorage.getItem('token'))
-export const apiUrl = "https://soulmadeapi.herokuapp.com";
-export const authAxios = axios.create({
-    baseURL: apiUrl,
-    headers: {
-      Authorization: accessToken,
-    },
-  });
 
 
   export const loadUser = ()=>{
@@ -19,7 +11,7 @@ export const addToWishlist = async(product_id ,userDispatch , setLoading, )=>{
     try{
 
     setLoading(true)
-    const {data} = await authAxios.post(`user_data/wishlist/${product_id}`);
+    const {data} = await axios.post(`user_data/wishlist/${product_id}`);
     console.log("this place")
     setLoading(false);
     if(data.success){
@@ -46,7 +38,7 @@ export const addToWishlist = async(product_id ,userDispatch , setLoading, )=>{
     try{
 
     setLoading(true)
-    const response = await authAxios.delete(`user_data/wishlist/${product_id}`);
+    const response = await axios.delete(`user_data/wishlist/${product_id}`);
     console.log(response)
     setLoading(false);
     if(response.data.success){
@@ -71,12 +63,12 @@ export const addToWishlist = async(product_id ,userDispatch , setLoading, )=>{
     try{
         
         setLoading(true);
-        const cartResponse = await authAxios.post(`/user_data/cart/${product_id}`)
+        const cartResponse = await axios.post(`/user_data/cart/${product_id}`)
         
         if(cartResponse.data.success){
           console.log(cartResponse.data.data.cart)
             userDispatch({type : "ADD TO CART" , payload : cartResponse.data.data.cart})
-            const {data} = await authAxios.delete(`user_data/wishlist/${product_id}`);
+            const {data} = await axios.delete(`user_data/wishlist/${product_id}`);
             setLoading(false);
             if(data.success){
               toast.success("wishlist updated")
@@ -102,7 +94,7 @@ export const addToWishlist = async(product_id ,userDispatch , setLoading, )=>{
   export const removeFromCart = async(product_id , userDispatch , setLoading)=> {
     try{
       setLoading(true);
-      const {data} = await authAxios.delete(`/user_data/cart/${product_id}`);
+      const {data} = await axios.delete(`/user_data/cart/${product_id}`);
       setLoading(false)
       if(data.success){
         toast.success(data.msg)
@@ -121,11 +113,11 @@ export const addToWishlist = async(product_id ,userDispatch , setLoading, )=>{
 
     try{
       setLoading(true);
-      if(qty == 1  && type =="decrement"){
+      if(qty === 1  && type === "decrement"){
         return await removeFromCart(product_id , userDispatch , setLoading)
       }
 
-      const {data} = await authAxios.post(`/user_data/cart/${product_id}/update_qty`,{payload : type});
+      const {data} = await axios.post(`/user_data/cart/${product_id}/update_qty`,{payload : type});
       setLoading(false)
 
       if(data.success){
@@ -147,10 +139,10 @@ export const addToWishlist = async(product_id ,userDispatch , setLoading, )=>{
     try{
 
       setLoading(true);
-    const wishlistResponse = await authAxios.post(`/user_data/wishlist/${product_id}`);
+    const wishlistResponse = await axios.post(`/user_data/wishlist/${product_id}`);
     if(wishlistResponse.data.success){
       userDispatch({type : "ADD TO WISHLIST" , payload : wishlistResponse.data.data.wishlist})
-      const {data} = await authAxios.delete(`/user_data/cart/${product_id}`)
+      const {data} = await axios.delete(`/user_data/cart/${product_id}`)
       setLoading(false)
       if(data.success){
         

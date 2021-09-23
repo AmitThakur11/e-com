@@ -1,9 +1,11 @@
 import { useContext, createContext, useEffect, useReducer } from "react";
 import { useAuth } from "../auth/index";
+import axios from "axios"
+import {toast} from "react-toastify"
 export const userContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const { authAxios, setLogin, setLoading, isLogin } = useAuth();
+  const {setLogin, setLoading, isLogin } = useAuth();
   const initialUser = {
     username: null,
     wishlist: [],
@@ -53,13 +55,15 @@ const UserProvider = ({ children }) => {
   const [user, userDispatch] = useReducer(userReducer, initialUser);
 
   useEffect(() => {
+   try{
+
     (async () => {
-      const token = JSON.parse(localStorage.getItem("token"));
+      const token = localStorage.getItem("token");
 
       if (token) {
         setLogin(true);
         setLoading(true);
-        const { data } = await authAxios.get("/user_data/userinfo");
+        const { data } = await axios.get("/user_data/userinfo");
         setLoading(false);
         userDispatch({ type: "LOAD USER", payload: data });
       } else {
@@ -67,6 +71,11 @@ const UserProvider = ({ children }) => {
         userDispatch({ type: "LOAD USER", payload: {data : initialUser} });
       }
     })();
+
+   }catch(error){
+     setLoading(false);
+     toast(error.response.data.msg)
+   }
   },[isLogin]);
 
   return (
