@@ -1,14 +1,16 @@
-// import { useParams } from "react-router";
+
+import { useParams } from "react-router-dom";
 import "./style.css";
 
-// import { SizeList, Features } from "../components/ProductDescriptionCard";
-
+import { SizeList, Features } from "../../component/productDecription/index";
+import { useData } from "../../context/data";
 const Product = () => {
-  // const { id } = useParams();
-  // const { product } = useData();
+  const { id } = useParams();
+  console.log(id)
+  const { productList } = useData();
   return (
     <section className="product-detail-container">
-      {/* {product.map((data) => {
+      {productList.map((data) => {
         return (
           <>
             {data._id === id && (
@@ -27,7 +29,7 @@ const Product = () => {
             )}
           </>
         );
-      })} */}
+      })}
     </section>
   );
 };

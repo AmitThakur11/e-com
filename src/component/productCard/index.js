@@ -1,17 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate  } from "react-router-dom";
+
 import "./style.css";
 import { FavoriteBorderOutlined, Favorite } from "@material-ui/icons";
-import { useUser } from "../../context/user/index";
 import { addToWishlist, removeFromWishlist } from "../../apiCalls";
 import { useAuth } from "../../context/auth";
+import {useUser} from "../../context/user/index"
+
 
 export default function ProductCard({ product }) {
   const {
     user: { wishlist },
-    userDispatch,
+    userDispatch,setModal
   } = useUser();
-  const { setLoading } = useAuth();
+  const { setLoading , isLogin } = useAuth();
   const likedOrNot = wishlist.find((item) => item._id === product._id);
   return (
     <section key={product._id} className="x-vertical-card">
@@ -30,8 +32,8 @@ export default function ProductCard({ product }) {
       <div
         className="x-card-icon"
         onClick={() =>
-          likedOrNot
-            ?removeFromWishlist(product._id, userDispatch, setLoading): addToWishlist(product._id, userDispatch, setLoading)
+          isLogin? (likedOrNot
+            ?removeFromWishlist(product._id, userDispatch, setLoading): addToWishlist(product._id, userDispatch, setLoading)):setModal(true)
             
         }
       >

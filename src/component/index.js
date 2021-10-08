@@ -2,3 +2,8 @@ export {default as Loader} from "../component/loader";
 export {default as ProductCard} from "../component/productCard";
 export {default as WishlistCard} from "../component/wishlistCard"
 export {default as CartCard} from "../component/CartCard"
+export {default as CheckOutCard} from "../component/checkOutCard"
+export {default as AddressForm} from "../component/addressForm"
+export {default as AddressCard} from "../component/addressCard"
+export {default as EditAddressForm} from "../component/editAddressForm"
+export {default as LoginModel} from "../component/loginModal"

@@ -1,11 +1,13 @@
-import { useContext, createContext, useEffect, useReducer } from "react";
+import { useContext, createContext, useEffect, useReducer , useState} from "react";
 import { useAuth } from "../auth/index";
 import axios from "axios"
 import {toast} from "react-toastify"
 export const userContext = createContext();
 
+
 const UserProvider = ({ children }) => {
   const {setLogin, setLoading, isLogin } = useAuth();
+  const [modal , setModal] = useState(false)
   const initialUser = {
     username: null,
     wishlist: [],
@@ -28,24 +30,17 @@ const UserProvider = ({ children }) => {
           order: payload.data.order,
         };
       }
-      case "ADD TO WISHLIST": {
-        
+      case "UPDATE WISHLIST": {
         return {...user , wishlist : payload};
-      }
-      case "REMOVE FROM WISHLIST":{
-        console.log("payload" + payload)
-        return {...user , wishlist : payload};
-      }
-      case "ADD TO CART": {
-        console.log(payload)
-        return {...user , cart : payload};
-      }
-      case "REMOVE FROM CART": {
-        console.log('remove from cart')
-        return {...user , cart : payload};
       }
       case "UPDATE CART": {
-        return user;
+        return {...user , cart : payload};
+      }
+      case "UPDATE ADDRESS":{
+        return {...user , address : payload}
+      }
+      case "UPDATE ORDER":{
+        return {...user , order : payload}
       }
       default: {
         return user;
@@ -79,7 +74,7 @@ const UserProvider = ({ children }) => {
   },[isLogin]);
 
   return (
-    <userContext.Provider value={{ user, userDispatch }}>
+    <userContext.Provider value={{ user, userDispatch ,modal , setModal}}>
       {children}
     </userContext.Provider>
   );

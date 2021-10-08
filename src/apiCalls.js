@@ -17,7 +17,7 @@ export const addToWishlist = async(product_id ,userDispatch , setLoading, )=>{
     if(data.success){
         toast.success(data.msg)
         console.log(data)
-        return userDispatch({type : "ADD TO WISHLIST" , payload : data.data.wishlist})
+        return userDispatch({type : "UPDATE WISHLIST" , payload : data.data.wishlist})
     }
 
     
@@ -44,7 +44,7 @@ export const addToWishlist = async(product_id ,userDispatch , setLoading, )=>{
     if(response.data.success){
 
         toast.success(response.data.msg)
-        userDispatch({type : "REMOVE FROM WISHLIST" , payload : response.data.data})
+        userDispatch({type : "UPDATE WISHLIST" , payload : response.data.data})
     }
     }catch(err){
         setLoading(false);
@@ -67,12 +67,12 @@ export const addToWishlist = async(product_id ,userDispatch , setLoading, )=>{
         
         if(cartResponse.data.success){
           console.log(cartResponse.data.data.cart)
-            userDispatch({type : "ADD TO CART" , payload : cartResponse.data.data.cart})
+            userDispatch({type : "UPDATE CART" , payload : cartResponse.data.data.cart})
             const {data} = await axios.delete(`user_data/wishlist/${product_id}`);
             setLoading(false);
             if(data.success){
               toast.success("wishlist updated")
-              return userDispatch({type : "REMOVE FROM WISHLIST" , payload : data.data})
+              return userDispatch({type : "UPDATE WISHLIST" , payload : data.data})
             }else{
               toast(data.msg)
             }
@@ -98,7 +98,7 @@ export const addToWishlist = async(product_id ,userDispatch , setLoading, )=>{
       setLoading(false)
       if(data.success){
         toast.success(data.msg)
-        userDispatch({type : "REMOVE FROM CART" , payload : data.data.cart})
+        userDispatch({type : "UPDATE CART" , payload : data.data.cart})
       }
 
     }catch(err){
@@ -123,7 +123,7 @@ export const addToWishlist = async(product_id ,userDispatch , setLoading, )=>{
       if(data.success){
         toast(data.msg);
         console.log(data.data)
-        userDispatch({type : "ADD TO CART" , payload : data.data})
+        userDispatch({type : "UPDATE CART" , payload : data.data})
 
       }
     }catch(error){
@@ -141,13 +141,13 @@ export const addToWishlist = async(product_id ,userDispatch , setLoading, )=>{
       setLoading(true);
     const wishlistResponse = await axios.post(`/user_data/wishlist/${product_id}`);
     if(wishlistResponse.data.success){
-      userDispatch({type : "ADD TO WISHLIST" , payload : wishlistResponse.data.data.wishlist})
+      userDispatch({type : "UPDATE WISHLIST" , payload : wishlistResponse.data.data.wishlist})
       const {data} = await axios.delete(`/user_data/cart/${product_id}`)
       setLoading(false)
       if(data.success){
         
         toast.success("Cart updated")
-        userDispatch({type : "REMOVE FROM CART" , payload : data.data.cart})
+        userDispatch({type : "UPDATE CART" , payload : data.data.cart})
 
       }
     }
@@ -160,4 +160,74 @@ export const addToWishlist = async(product_id ,userDispatch , setLoading, )=>{
 
     }
 
+  }
+
+
+  export const addAddress = async(address_data,userDispatch,setLoading)=>{
+    try{
+      setLoading(true)
+      const {data} = await axios.post("/user_data/address" , {address : address_data});
+      setLoading(false)
+      if(data.success){
+        userDispatch({type : "UPDATE ADDRESS" , payload : data.data})
+        return toast.success(data.msg)
+        
+      }
+      toast(data.msg)
+      
+    }catch(error){
+      setLoading(false)
+      toast(error.response.data.msg)
+    }
+
+  }
+
+
+  export const removeAddress = async(address_id,userDispatch,setLoading)=>{
+    try{
+      setLoading(true)
+      const {data} = await axios.delete(`/user_data/address/${address_id}`);
+      setLoading(false)
+      if(data.success){
+        userDispatch({type : "UPDATE ADDRESS" , payload : data.data})
+        return toast.success(data.msg)
+      }
+      toast(data.msg)
+      
+    }catch(error){
+      setLoading(false)
+      toast(error.response.data.msg)
+    }
+
+  }
+
+  export const updateAddress = async(address_id,userDispatch,setLoading, address)=>{
+    try{
+      setLoading(true);
+      const {data}= await axios.post(`user_data/address/${address_id}`,{newAddress : address});
+      console.log(data)
+      setLoading(false);
+      if(data.success){
+        userDispatch({type : "UPDATE ADDRESS" , payload : data.data.address})
+        console.log(data)
+        return toast.success(data.msg)
+      }
+      toast.error(data.msg)
+
+    }catch(error){
+      setLoading(false)
+      toast(error.response.data.msg)
+
+    }
+
+  }
+
+
+  export const addOrder = ()=>{
+    try{
+
+    }
+    catch(error){
+      
+    }
   }

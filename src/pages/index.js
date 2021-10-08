@@ -5,6 +5,8 @@ export {default as Wishlist} from "./wishlist"
 export {default as Product} from "./product"
 export {default as Login} from "./login"
 export {default as Signup} from "./signup"
+export {default as Order} from "./order"
+export {default as Address} from "./address"
 
 
 

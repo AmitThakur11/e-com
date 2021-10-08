@@ -1,0 +1,44 @@
+
+  .addressCard{
+    background-color:white;
+    position:relative;
+    margin:5px;
+    padding:20px;
+    width:200px;
+    line-height: 1.6em;
+    min-height : 200px;
+    border-radius:5px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  }
+  .addressCard input{
+    position: absolute;
+    
+    font-size : 40px;
+    top:5px;
+    left:5px;
+  }
+  .addressDelete{
+    position :absolute;
+    display: grid;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    place-content: center;
+    width:25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: rgb(235, 230, 230);
+    bottom:4px;
+    right:4px;
+  }
+
+  .addressEdit{
+    position :absolute;
+    display: grid;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    place-content: center;
+    width:25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: rgb(235, 230, 230);
+    top:4px;
+    right:4px;
+  }

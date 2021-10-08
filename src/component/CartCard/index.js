@@ -1,7 +1,7 @@
 import {useUser} from "../../context/user";
 import {useAuth} from "../../context/auth"
 import {removeFromCart , moveToWishlist , updateQty} from "../../apiCalls"
-
+import "./style.css"
 const CartCard = ({cart})=>{
     const {productId , qty} = cart ;
     const {userDispatch} = useUser();
