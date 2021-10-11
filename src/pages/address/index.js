@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom"
 import {AddressForm} from "../../component"
 import { AddressCard } from "../../component";
 import { EditAddressForm } from "../../component";
+import {addOrder} from "../../apiCalls"
 export default function Address() {
   const {user , userDispatch } = useUser();
   const navigate = useNavigate()
@@ -29,6 +30,7 @@ export default function Address() {
       
       {user.address.length ? <div className ="placeOrder_btn">
         <button onClick = {()=>{
+          addOrder(user.cart,user.defaultAddress)
           userDispatch({type : "UPDATE ORDER", payload : {cart : user.cart ,address : user.defaultAddress}})
           navigate("/order")
         }

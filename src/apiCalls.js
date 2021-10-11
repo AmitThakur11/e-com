@@ -223,9 +223,10 @@ export const addToWishlist = async(product_id ,userDispatch , setLoading, )=>{
   }
 
 
-  export const addOrder = ()=>{
+  export const addOrder = async(orderedPlaced,address)=>{
     try{
-
+      const {data}= await axios.post("user_data/order/add",{orderedPlaced,address})
+      console.log(data)
     }
     catch(error){
       
