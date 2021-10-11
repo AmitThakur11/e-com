@@ -1,19 +1,21 @@
 import React ,{useState} from "react";
 import "./style.css";
 import { useData } from "../../context/data/index";
+import { Filter } from "@material-ui/icons";
 export default function SideBar() {
-  const { filterDispatch, filterState } = useData();
-  const [range, setRange] = useState(2000);
+  const { filterDispatch, filterState , setSidebar } = useData();
+  const [range, setRange] = useState(1000);
   return (
     <div className ="sortFilter">
       <div className ="sortFilter__sort">
-        <div>Sort</div>
+        <div className = "sortFilter_title">Sort</div>
         <label>
           <input
             name="sort"
             type="radio"
+            value = {filterState.sortBy && "High to Low" }
             onClick={() =>
-              filterDispatch({ type: "SORT", payload: "HIGH TO LOW" })
+              filterDispatch({ type: "SORT", payload: "High to Low" })
             }
           />
           High to Low
@@ -22,6 +24,7 @@ export default function SideBar() {
           <input
             name="sort"
             type="radio"
+            value = {filterState.sortBy && "Low to High" }
             onClick={() =>
               filterDispatch({ type: "SORT", payload: "LOW TO HIGH" })
             }
@@ -31,7 +34,7 @@ export default function SideBar() {
       </div>
 
       <div className = "sortFilter__filter">
-        <div>Filter</div>
+        <div className = "sortFilter_title">Filter</div>
         <label>
           <input
             checked={filterState.fastDelivery}
@@ -63,7 +66,7 @@ export default function SideBar() {
               filterDispatch({ type: "PRICE RANGE", payload: range });
             }}
           />
-          {range}
+          {range} Rs
         </label>
         <div>
           brand <br />
@@ -82,6 +85,7 @@ export default function SideBar() {
             <input
               name="brand"
               type="radio"
+              value ={filterState.brand}
               onChange={() =>
                 filterDispatch({ type: "BRAND", payload: "urban monkey" })
               }
@@ -89,7 +93,10 @@ export default function SideBar() {
             urban monkey
           </label>
         </div>
-        <button className ="sortFilter__clearBtn" onClick={() => filterDispatch({ type: "CLEAR" })}>Clear</button>
+        <button className ="sortFilter__clearBtn" onClick={() => {
+          filterDispatch({ type: "CLEAR" })
+          
+        }}>Clear</button>
       </div>
     </div>
   );

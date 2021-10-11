@@ -8,16 +8,16 @@ import {RiFilter2Line , RiFilter2Fill} from "react-icons/ri"
 
 
 export default function Store() {
-    const {productList } = useData();
+    const {productList , sidebar , setSidebar } = useData();
     const {loading} = useAuth();
-    const [filter, setFilter] = useState(false)
+    
   return (
     <div className="storeLayout">
-      <div className="sideBar">
-        <SideBar />
+      <div className={sidebar ? "sideBar" : "sidebar active"} >
+        <SideBar  />
       </div>
-      <div onClick = {()=>setFilter(!filter)}>
-        {filter?<RiFilter2Fill/>:<RiFilter2Line/>}
+      <div className ="filterIcon" onClick = {()=>setSidebar(!sidebar)}>
+        {sidebar?<RiFilter2Fill className ="filterIcon-item" />:<RiFilter2Line className ="filterIcon-item" />}
       </div>
       <div className="productsWrapper">
         <div className="productsWrapper__box">

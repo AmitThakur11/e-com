@@ -1,7 +1,7 @@
 import "./style.css"
 import Logo from "../../image/logo.png";
 import {Link} from "react-router-dom"
-import {ShoppingCartOutlined , FavoriteBorderOutlined } from '@material-ui/icons';
+import {ShoppingCartOutlined , FavoriteBorderOutlined , MenuOutlined } from '@material-ui/icons';
 import { useNavigate } from "react-router";
 import {useAuth} from "../../context/auth/index"
 import {useUser} from "../../context/user/index"
@@ -21,14 +21,9 @@ export default function Header() {
             navigate("/store");
             setRender(render=>!render)
             toast.success("user logged out ")
-
-            
-        }else{
-            
+        }else{ 
             navigate("/login")
-            
         }
-        
     }
     return (
         <div className ="header">
@@ -60,7 +55,7 @@ export default function Header() {
                     {wishlist.length?<span>{wishlist.length}</span> : ""}
                     </div>
                 </Link>
-                {/* <div className ="headerOptions__icon"><MenuOutlined/></div> */}
+                <div className ="headerOptions__icon"><MenuOutlined/></div> 
             </div>
             
         </div>

@@ -41,6 +41,12 @@
     border : 0;
     border-bottom: 1px solid black;
 }
+.btn-flex{
+    display: flex;
+    flex-wrap: wrap;
+    width:70%;
+    justify-content: space-between;
+}
 .loginBox_btn{
     width: max-content;
     padding:3px 10px;

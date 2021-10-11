@@ -13,7 +13,7 @@ export default function AddressCard({ address  , setEdit}) {
   }
   return (
     <div className="addressCard">
-      <input name="address" type="radio" value = {address} onChange = {(e)=>selectAddress(e)} />
+      <input onClick = {()=> userDispatch({type : "SELECT ADDRESS" , payload :address})} name="address" type="radio"  onChange = {(e)=>selectAddress(e)} />
       <div className="addressCard_data">
         <div className="addressCard_item">{address.name} </div>
 

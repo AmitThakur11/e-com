@@ -13,7 +13,12 @@ const UserProvider = ({ children }) => {
     wishlist: [],
     cart: [],
     address: [],
-    order: [],
+    order: [{
+      cart : [],
+      address : {}
+    }
+    ],
+    defaultAddress : {}
   };
 
   const userReducer = (user, action) => {
@@ -40,7 +45,11 @@ const UserProvider = ({ children }) => {
         return {...user , address : payload}
       }
       case "UPDATE ORDER":{
-        return {...user , order : payload}
+        console.log(payload.cart)
+        return {...user , order : [...user.order , {cart :payload.cart, address : payload.address}]}
+      }
+      case "SELECT ADDRESS":{
+        return {...user, defaultAddress : payload}
       }
       default: {
         return user;

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap');
 .header{
     display: flex;
     justify-content: space-between;
@@ -16,12 +17,22 @@
     height:70px;
 
 }
-.logo > p {
-    background-color: black;
-    color: white;
-    padding:6px 12px;
+.logo  p {
+    
+    font-family: 'Aclonica', sans-serif;
+    
+    padding:0px 12px;
+    font-size: 24px;
     margin-left:5px;
     
+}
+.logo p span{
+    color: rgb(244, 78, 78);
+    font-family: 'Aclonica', sans-serif;
+    padding:0px 12px;
+    font-size: 24px;
+    margin-left:5px;
+
 }
 .headerOptions{
     display: flex;
@@ -80,5 +91,17 @@
 @media(max-width : 650px){
     .headerOptions_menu{
         display: none;
+    }
+    .header{
+        height: 10vh;
+    }
+    .logo img{
+        height: 50px;
+    }
+    .logo > p {
+        
+        padding:3px 9px;
+        
+        
     }
 }

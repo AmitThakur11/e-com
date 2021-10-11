@@ -6,7 +6,7 @@ import {AddressForm} from "../../component"
 import { AddressCard } from "../../component";
 import { EditAddressForm } from "../../component";
 export default function Address() {
-  const {user } = useUser();
+  const {user , userDispatch } = useUser();
   const navigate = useNavigate()
   const initialEdit = {
     isEdit : false,
@@ -28,7 +28,11 @@ export default function Address() {
       
       
       {user.address.length ? <div className ="placeOrder_btn">
-        <button onClick = {()=>navigate("/order")}>Place Order</button>
+        <button onClick = {()=>{
+          userDispatch({type : "UPDATE ORDER", payload : {cart : user.cart ,address : user.defaultAddress}})
+          navigate("/order")
+        }
+        }>Place Order</button>
       </div>:""}
     </div>
   );

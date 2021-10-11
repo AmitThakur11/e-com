@@ -13,8 +13,8 @@
 }
 
 .login-modal{
-    box-shadow: rgba(0, 0, 0, 0.6) 0px 30px 90px;
-    background: rgb(74, 169, 247);
+    box-shadow: rgba(87, 85, 85, 0.841) 0px 30px 90px;
+    background: rgb(255, 255, 255);
     flex-direction: column;
     justify-content: space-between;
     align-self: center;
@@ -29,7 +29,7 @@
 .login-modal > .modal-text{
     font-size: 32px;
     width :100%;
-    color:#fff;
+    color:rgb(233, 61, 99);
 }
 .login-modal >.modal-btn{
     display: flex;
@@ -44,7 +44,20 @@
     background: white;
     border:0;
     margin-right: 5px;
+    font-weight: 600;
+    border-radius: 4px;
 
+}
+.modal-btn .btn-1{
+    background: rgb(233, 61, 99);
+    color:white;
+    
+
+}
+.modal-btn .btn-2{
+    border: 2px solid rgb(233, 61, 99);
+    color:rgb(233, 61, 99);
+    
 }
 
 

@@ -12,6 +12,7 @@ export const dataContext = createContext();
 const DataProvider = ({children})=>{
     const {setLoading} = useAuth();
     const [productList , setProductList] = useState([])
+    const [sidebar, setSidebar] = useState(false)
     
    
     const [state, dispatch] = useReducer(filterReducer, initialState);
@@ -39,7 +40,7 @@ const DataProvider = ({children})=>{
 
 
 
-    return <dataContext.Provider value ={{productList : getFilterData , filterDispatch : dispatch , filterState : state  }}>
+    return <dataContext.Provider value ={{productList : getFilterData , filterDispatch : dispatch , filterState : state , sidebar , setSidebar }}>
         {children}
     </dataContext.Provider>
 }

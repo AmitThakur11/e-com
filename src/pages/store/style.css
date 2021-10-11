@@ -53,19 +53,32 @@
     flex-wrap: wrap;
 }
 
+.filterIcon{
+    display: none;
+}
+
 @media(max-width : 640px){
     .storeLayout{
         flex-direction:column-reverse;
         height: fit-content;
     }
     .sideBar{
-
+        bottom:0px;
         position: fixed;
         width:100%;
-        bottom:50px;
-        background:sandybrown;
+        display: block;
+        height:70%;
+        background:rgb(255, 255, 255);
         border-radius: 4px;
-        z-index:9999;
+        transition: 500ms ease-in-out;
+        z-index:998;
+        border-top:  2px solid #f74b4b;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .active{
+        bottom : -100%;
+        display: none;
     }
     .productsWrapper__box{
         padding:10px 16px;
@@ -74,10 +87,39 @@
         display: flex;
         flex-wrap:wrap;
         width:100%;
-        height:98%;
+        height:100%;
         background: white;
         overflow-y: unset;
     
+    }
+    .wrappedProducts{
+        justify-content: center;
+    }
+    .filterIcon{
+        display: block;
+        position: fixed;
+        bottom:15px;
+        right:15px;
+        font-size: 46px;
+        color : white;
+        background: white;
+        border-radius: 50%;
+        z-index: 999;
+        display: flex;
+        justify-content: center;
+        place-items: center;
+
+        
+        
+    }
+    .filterIcon-item{
+        background: white;
+        border-radius: 50%;
+        padding: 8px;
+        border:2px solid #f74b4b;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        
+
     }
     
 }
