@@ -39,53 +39,53 @@ export default function EditAddressForm({edit , setEdit}) {
   
     
     return (
-      <div className="addressForm">
-        <div className="addressForm_box">
+      <div className="editAddressForm">
+        <div className="editAddressForm_box">
           <input
             onChange={(e) => getAddress(e)}
             name="name"
-            className="addressInput"
+            className="editAddressInput"
             placeholder="Name"
             value  = {address.name}
           />
           <input
             onChange={(e) => getAddress(e)}
             name="phoneNo"
-            className="addressInput"
+            className="editAddressInput"
             placeholder="Phone no."
             value  = {address.phoneNo}
           />
           <input
             onChange={(e) => getAddress(e)}
             name="appartment"
-            className="addressInput"
+            className="editAddressInput"
             placeholder="Appartment"
             value  = {address.appartment}
           />
           <input
             onChange={(e) => getAddress(e)}
             name="city"
-            className="addressInput"
+            className="editAddressInput"
             placeholder="City"
             value ={address.city}
           />
           <input
             onChange={(e) => getAddress(e)}
             name="state"
-            className="addressInput"
+            className="editAddressInput"
             placeholder="State"
             value ={address.state}
           />
           <input
             onChange={(e) => getAddress(e)}
             name="postalCode"
-            className="addressInput"
+            className="editAddressInput"
             placeholder="Postal code"
             value = {address.postalCode}
           />
          
         </div>
-        <div className ="addressForm_btn">
+        <div className ="editAddressForm_btn">
         <button onClick = {()=>updateHandler()}>Update</button>
         <button onClick = {()=>setEdit((edit=>{
           return {...edit , isEdit : false}

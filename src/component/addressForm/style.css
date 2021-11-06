@@ -6,6 +6,8 @@
     padding: 20px;
     display: flex;
     transform: translateX(-50%);
+    position: absolute;
+    margin-top:4px;
     place-items: center;
     border-radius: 4px;
     align-self: center;

@@ -2,6 +2,9 @@
     background: white;
     
 }
+.x-cart-btn button{
+    padding: 3px 6px;
+}
 
 @media(max-width : 780px){
     .x-cart-card{

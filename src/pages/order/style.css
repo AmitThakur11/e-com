@@ -7,12 +7,15 @@
 
 .orderCard {
     background: white;
+    display: flex;
+    flex-direction: column;
+    place-content: space-between;
     border-radius: 5px;
     position: relative;
     max-width: 400px;
     min-width: 300px;
     padding: 4px 8px;
-    margin: 3px 7px;
+    margin: 5px 9px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
@@ -92,5 +95,9 @@
 
         flex-direction: column;
         place-items: center;
+    }
+
+    .orderAddress{
+        margin-bottom: 10px;
     }
 }
