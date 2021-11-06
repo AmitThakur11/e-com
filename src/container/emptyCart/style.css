@@ -29,3 +29,17 @@ align-self: center;
     width:20%;
     place-items: center;
 }
+
+@media(max-width : 780px){
+    .emptyCart{
+        flex-direction: column-reverse;
+    }
+    .emptyCart_heading{
+        display: none;
+       
+    }
+    .emptyCart>img{
+        width:100%
+    }
+    
+}

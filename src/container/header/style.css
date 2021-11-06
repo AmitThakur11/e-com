@@ -6,8 +6,8 @@
     align-items: center;
     padding:6px 16px;
     background-color: white;
-    position: sticky;
-    top:0;
+    position: fixed;
+    top:0px;
     z-index: 9999;
     position: relative;
 }
@@ -100,27 +100,47 @@
         padding:30px 40px;
         top:0px;
         left:0px;
-        padding:-100%;
         height : 100vh;
         background-color:white;
         margin: 0px;
         display: flex;
         flex-direction: column;
         width:200px;
-        transform : translateX(-200px);
-        transition: transform 560ms;
+        transform : translateX(-100%);
+        transition: ease-in-out 560ms;
 
     }
-    .active{
-        transform: translateX(0%);
+    .headerOptions_menuActive{
+        position:absolute;
+        padding:30px 40px;
+        top:0px;
+        left:0px;
+        height : 100vh;
+        background-color:white;
+        margin: 0px;
+        display: flex;
+        flex-direction: column;
+        width:200px;
+        transform : translateX(0%);
+        transition: ease-in-out 560ms;
+
     }
-    .headerOptions_menu button{
+    .loginBtn{
         margin-top:20px;
         width: 120px;
         place-content: center;
         display: flex;
         place-self: center;
+        background: black;
+        color: white;
+        
     }
+
+    .headerOptions_menu button:hover{
+        background: rgb(157, 156, 156);
+        color: rgb(20, 20, 20);
+    }
+
     .header{
         height: 10vh;
         width:100vw;

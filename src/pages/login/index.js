@@ -24,7 +24,7 @@ const Login = () => {
         <input name ="password" value = {password}  onChange = {(e)=>getInput(e)} type ="password" placeholder="-password"/>
         <div className ="btn-flex">
         <button  className="loginBox_btn" onClick = {()=>getLogin(userInput,setLoading,setLogin,navigate,userDispatch)}>Log in</button>
-        <button  className="loginBox_btn">Demo</button>
+        <button  className="loginBox_btn" onClick={()=>getLogin({email : "test1@gmail.com" ,  password : "test12345" },setLoading,setLogin,navigate,userDispatch)}>Demo</button>
         </div>
         <div className="loginBox_account">New to site?<Link to ="/signup">Create a account</Link></div>
         </div>

@@ -27,6 +27,7 @@ export default function Header() {
         }else{ 
             navigate("/login")
         }
+        setMenuToggle(false)
     }
     return (
         <div className ="header">
@@ -38,9 +39,9 @@ export default function Header() {
             </Link>
             
             <div className ="headerOptions">
-            <div className = {!menuToggle ? "headerOptions_menu" :"headerOptions_menu active"} >
-                <Link to ="/store">Product</Link>
-                <Link to ="/about">About</Link>
+            <div className = {!menuToggle ? "headerOptions_menu" :"headerOptions_menuActive"}>
+                <Link to ="/store" onClick = {()=>setMenuToggle(false)}>Product</Link>
+                <Link to ="/about" onClick = {()=>setMenuToggle(false)}>About</Link>
                 <button className ="loginBtn" onClick = {()=>login_logout()}>
                     {isLogin?"Log out" : "Log in"}
                     </button>

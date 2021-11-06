@@ -28,3 +28,19 @@ align-self: center;
     width:20%;
     place-items: center;
 }
+
+
+
+@media(max-width : 780px){
+    .emptyWishlist{
+        flex-direction: column-reverse;
+    }
+    .emptyWishlist_heading{
+        display: none;
+       
+    }
+    .emptyWishlist>img{
+        width:100%
+    }
+    
+}
