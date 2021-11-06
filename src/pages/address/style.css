@@ -3,7 +3,7 @@
     min-height: 100vh;
     display :flex;
     flex-direction: column;
-    align-self: center;
+    place-items: center;
     
     background-color: rgb(228, 222, 222);
   }
@@ -76,6 +76,7 @@
   }
 
   .addressSection{
+    width:95%;
     display :flex;
     flex-wrap: wrap;
 
@@ -111,4 +112,16 @@
   .placeOrder_btn button:hover,
   .addressBtn:hover{
     background-color: black;
+  }
+
+  @media(max-width : 780px){
+    .addressPage{
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    }
+    .placeOrder_btn{
+      bottom: 20px;
+    position: absolute;
+    }
   }

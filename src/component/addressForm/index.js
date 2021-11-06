@@ -92,12 +92,15 @@ export default function AddressForm(props) {
             placeholder="Postal code"
           />
           <div style ={{display:"flex" , justifyContent : "center"}}>
+
+            <div className ="AddressBtn_flex">
           <button className="addressBtn" onClick={() => addressHandler()}>
             Add Address
           </button>
           <button className="addressBtn" onClick={()=>setAddressToggle(false)}>
             Cancel
           </button>
+          </div>
           </div>
         </div>
       </div>

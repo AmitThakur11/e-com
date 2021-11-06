@@ -4,10 +4,15 @@ import "./style.css";
 
 import { SizeList, Features } from "../../component/productDecription/index";
 import { useData } from "../../context/data";
+import {useUser} from "../../context/user/index"
+import { addToWishlist, removeFromCart, removeFromWishlist } from "../../apiCalls"; 
+import { useAuth } from "../../context/auth";
 const Product = () => {
   const { id } = useParams();
-  console.log(id)
+  const {userDispatch , user : {wishlist}} =useUser();
   const { productList } = useData();
+  const {setLoading} = useAuth()
+  const likedOrNot = wishlist.find((item) => item._id === id);
   return (
     <section className="product-detail-container">
       {productList.map((data) => {
@@ -21,7 +26,7 @@ const Product = () => {
                   <div className="product-name">{data.name}</div>
                   <div className="product-price">{data.price}₹</div>
                   <SizeList size={data.size} />
-                  <button className="wish-btn">Move to wishlist</button>
+                  <button className="wish-btn" onClick ={()=> !likedOrNot? addToWishlist(data._id, userDispatch, setLoading) : removeFromWishlist(data._id, userDispatch, setLoading)}>{!likedOrNot ? "Move to wishlist": "Remove from wishlist"}</button>
                   <div className="product-description">{data.description}</div>
                   <Features features={data.features} />
                 </div>

@@ -1,9 +1,9 @@
 
   .addressForm {
     background-color: white;
+    margin-top: 4px;
     position:absolute;
     height: 500px;
-    width: 400px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -50,4 +50,24 @@
   }
   
   
-  
+  .addressForm_btn{
+    display: flex;
+
+  }
+  .addressForm_btn > button {
+    margin: 4px;
+    font-weight: 600;
+    color: white;
+    padding: 3px 7px;
+    border: 0px;
+    background: rgb(235, 81, 81);
+    font-size: 18px;
+    border-radius: 4px;
+  }
+
+
+  @media(max-width :480px){
+    .addressForm{
+      width :320px
+    }
+  }

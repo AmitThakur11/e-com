@@ -85,10 +85,12 @@ export default function EditAddressForm({edit , setEdit}) {
           />
          
         </div>
+        <div className ="addressForm_btn">
         <button onClick = {()=>updateHandler()}>Update</button>
         <button onClick = {()=>setEdit((edit=>{
           return {...edit , isEdit : false}
         }))}>Cancel</button>
+        </div>
       </div>
     )
 }

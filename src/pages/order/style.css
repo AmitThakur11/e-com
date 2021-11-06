@@ -1,78 +1,96 @@
-.orderContainer{
-    display:flex;
-    width:100vw;
+.orderContainer {
+    display: flex;
+    width: 100%;
     flex-wrap: wrap;
 }
 
 
-.orderCard{
+.orderCard {
     background: white;
-    border-radius:5px;
+    border-radius: 5px;
     position: relative;
-    max-width:400px;
+    max-width: 400px;
     min-width: 300px;
-    padding:4px 8px;
-    margin :3px 7px;
+    padding: 4px 8px;
+    margin: 3px 7px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-.orderCard__remove{
+.orderCard__remove {
     position: absolute;
-    top:4px;
+    top: 4px;
     right: 4px;
     font-size: 16px;
-    background :rgb(240, 238, 238);
+    background: rgb(240, 238, 238);
     box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-    padding:6px;
+    padding: 6px;
     display: flex;
     place-items: center;
-    border-radius:50%;
+    border-radius: 50%;
 
 }
-.orderCard__remove:hover{
-    cursor :pointer;
-    transform : scale(1.099)
+
+.orderCard__remove:hover {
+    cursor: pointer;
+    transform: scale(1.099)
 }
-.cartBox__item{
+
+.cartBox__item {
     display: flex;
     place-items: center;
-    margin : 4px 0px;
+    margin: 4px 0px;
     background: rgba(255, 255, 255, 0.994);
 
 }
-.cartBox__item img{
-    width:70px;
-    margin-right:10px;
+
+.cartBox__item img {
+    width: 70px;
+    margin-right: 10px;
 
 }
-.cartBox__itemName{
-    color:red;
+
+.cartBox__itemName {
+    color: red;
 
 }
-.cartBox__itemQty span{
+
+.cartBox__itemQty span {
     color: grey;
 }
-.cartBox__itemQty{
-    font-size : 10px
-}
-.cartBox__itemPrice span{
-    color: grey;
-}
-.cartBox__itemPrice{
-    font-size : 12px
+
+.cartBox__itemQty {
+    font-size: 10px
 }
 
-.orderAddress{
+.cartBox__itemPrice span {
+    color: grey;
+}
+
+.cartBox__itemPrice {
+    font-size: 12px
+}
+
+.orderAddress {
     background: rgb(232, 230, 230);
-    color:rgb(0, 0, 0);
-    padding:5px;
+    color: rgb(0, 0, 0);
+    padding: 5px;
     text-align: justify;
     min-height: 70px;
-    
+
 }
-.orderAddress span{
+
+.orderAddress span {
     color: rgb(237, 68, 68);
     font-weight: 600;
-    font-size:14px;
+    font-size: 14px;
 
+}
+
+@media(max-width :780px) {
+    .orderContainer {
+        display: flex;
+
+        flex-direction: column;
+        place-items: center;
+    }
 }

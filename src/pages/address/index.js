@@ -23,7 +23,7 @@ export default function Address() {
   
   return (
     <div className="addressPage">
-      <AddressForm/>
+      <AddressForm width ="100%"/>
       <section className= "addressSection">
         {user?.address.map((address) => {
           return (

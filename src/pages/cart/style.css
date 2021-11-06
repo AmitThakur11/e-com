@@ -3,7 +3,8 @@
     justify-content: center;
 }
 .cartPage_product{
-    flex:3;
+    
+    flex:2;
     margin:2px 10px;
 
 }
@@ -21,9 +22,12 @@
 }
 
 
-@media(max-width:650px){
+@media(max-width:780px){
     .cartPage_product{
         padding:0px 20px;
+        display: flex;
+    flex-direction: column;
+    place-items: center;
     }
     .cartPage{
         display: flex;
@@ -32,10 +36,9 @@
     .cartPage_checkout{
         bottom:10px;
         height:200px;
+        width:100%;
         flex:1;
         justify-content:center;
-        width:80%;
-        min-width: 300px;
         display: flex;
     
     
