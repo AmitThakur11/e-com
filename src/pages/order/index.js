@@ -3,11 +3,14 @@ import "./style.css";
 import React from "react";
 import { useUser } from "../../context/user/index";
 import { RiDeleteBin6Line} from "react-icons/ri";
-import { getDefaultNormalizer } from "@testing-library/react";
+import {useAuth} from "../../context/auth/index"
+import {cancelOrder} from "../../apiCalls"
 export default function Order() {
   const {
-    user: { order },
+    user: { order },userDispatch
   } = useUser();
+
+  const {setLoading} = useAuth()
   const week = ["Sunday","Monday","Tuesday","Thursday","Friday","Saturday"]
   let day =  week[new Date().getDay()+3]
   let date = new Date().getDate() + 3
@@ -16,17 +19,17 @@ export default function Order() {
       <h1>ORDERS</h1>
       
       <div className ="orderContainer">
-        {order.map(({cart, address}) => {
+        {order.map(({orderedProduct, address}) => {
           return (
             <div className = "orderCard">
               <div className ="cartBox">
-                {cart.map(({productId,qty}) => {
+                {orderedProduct.map(({img,name,price}) => {
                   return <div className ="cartBox__item">
-                      <img src = {productId.img} alt =""/>
+                      <img src = {img} alt =""/>
                       <div className = "cartBox__itemSection">
-                          <div className = "cartBox__itemName">{productId.name}</div>
-                          <div className = "cartBox__itemQty"><span>Qty: </span>{qty}</div>
-                          <div className = "cartBox__itemPrice"><span>Price : </span>{productId.price * qty}Rs</div>
+                          <div className = "cartBox__itemName">{name}</div>
+                          {/* <div className = "cartBox__itemQty"><span>Qty: </span>{qty}</div> */}
+                          <div className = "cartBox__itemPrice"><span>Price : </span>{price}Rs</div>
                       </div>
                       </div>;
 
@@ -34,7 +37,7 @@ export default function Order() {
               </div>
               <div className="orderAddress">
                     Order will soon deleivered to  : <span>House no. {address.appartment},{address.city},{address.state} on {day},{date}</span>
-              <div className="orderCard__remove"><RiDeleteBin6Line/></div>
+              <div className="orderCard__remove" onClick = {()=>cancelOrder(order._id,userDispatch,setLoading)}><RiDeleteBin6Line/></div>
             </div>
           </div>
           )

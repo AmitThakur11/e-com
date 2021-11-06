@@ -1,7 +1,6 @@
 import { useData } from "../../context/data/index";
 import { SideBar } from "../../container";
 import "./style.css";
-import {useState} from "react"
 import { ProductCard } from "../../component";
 import {useAuth} from "../../context/auth/index"
 import {RiFilter2Line , RiFilter2Fill} from "react-icons/ri"

@@ -1,9 +1,9 @@
 import React ,{useState} from "react";
 import "./style.css";
 import { useData } from "../../context/data/index";
-import { Filter } from "@material-ui/icons";
+// import { Filter } from "@material-ui/icons";
 export default function SideBar() {
-  const { filterDispatch, filterState , setSidebar } = useData();
+  const { filterDispatch, filterState } = useData();
   const [range, setRange] = useState(1000);
   return (
     <div className ="sortFilter">

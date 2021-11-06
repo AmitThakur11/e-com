@@ -5,21 +5,22 @@ import {ShoppingCartOutlined , FavoriteBorderOutlined , MenuOutlined } from '@ma
 import { useNavigate } from "react-router";
 import {useAuth} from "../../context/auth/index"
 import {useUser} from "../../context/user/index"
-
+import axios from "axios"
 import {toast} from "react-toastify"
 export default function Header() {
     const navigate = useNavigate();
-    const {isLogin , setLogin , setRender , setLoading} = useAuth();
-    const {user:{wishlist ,cart}} = useUser()
+    const {isLogin , setLogin ,  setLoading} = useAuth();
+    const {user:{wishlist ,cart},initialUser , userDispatch} = useUser()
   
     const login_logout= ()=>{
         if(isLogin){
             setLoading(true)
             localStorage.removeItem("token")
+            delete axios.defaults.headers.common["Authorization"];
             setLogin(false)
             setLoading(false)
+            userDispatch({type :"LOAD USER" , payload : {data : initialUser}})
             navigate("/store");
-            setRender(render=>!render)
             toast.success("user logged out ")
         }else{ 
             navigate("/login")

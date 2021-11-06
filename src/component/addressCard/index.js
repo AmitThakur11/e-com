@@ -6,7 +6,7 @@ import { useUser } from "../../context/user";
 import { useAuth } from "../../context/auth";
 import { removeAddress } from "../../apiCalls";
 export default function AddressCard({ address  , setEdit}) {
-  const { user, userDispatch } = useUser();
+  const {userDispatch } = useUser();
   const { setLoading } = useAuth();
   const selectAddress = (e)=>{
     return {}

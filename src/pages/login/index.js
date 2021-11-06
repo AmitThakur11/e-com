@@ -1,16 +1,17 @@
 import {Link} from "react-router-dom";
-import { useEffect } from "react";
 import "./style.css";
 import LoginImg from "../../image/login.svg"
 import {useAuth } from "../../context/auth/index"
+import {getLogin} from "../../apiCalls"
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../../context/user";
 
 const Login = () => {
   
-  const {getInput , getLogin , userInput , setUserInput , initialUser} = useAuth();
+  const {getInput, userInput,setLoading , setLogin} = useAuth();
+  const {userDispatch} = useUser()
   const {email , password} = userInput ;
-  useEffect(()=>{
-    setUserInput(initialUser)
-  },[])
+  const navigate = useNavigate()
   return(
     <div className = "loginContainer">
       <div className ="loginBox">
@@ -22,7 +23,7 @@ const Login = () => {
         <input name = "email" value ={email} onChange = {(e)=>getInput(e)} placeholder="-Email"  />
         <input name ="password" value = {password}  onChange = {(e)=>getInput(e)} type ="password" placeholder="-password"/>
         <div className ="btn-flex">
-        <button  className="loginBox_btn" onClick = {getLogin}>Log in</button>
+        <button  className="loginBox_btn" onClick = {()=>getLogin(userInput,setLoading,setLogin,navigate,userDispatch)}>Log in</button>
         <button  className="loginBox_btn">Demo</button>
         </div>
         <div className="loginBox_account">New to site?<Link to ="/signup">Create a account</Link></div>

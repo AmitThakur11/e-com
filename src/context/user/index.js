@@ -6,15 +6,15 @@ export const userContext = createContext();
 
 
 const UserProvider = ({ children }) => {
-  const {setLogin, setLoading, isLogin } = useAuth();
+  const {setLogin, setLoading } = useAuth();
   const [modal , setModal] = useState(false)
   const initialUser = {
-    username: null,
+    username: "",
     wishlist: [],
     cart: [],
     address: [],
     order: [{
-      cart : [],
+      orderedProduct: [],
       address : {}
     }
     ],
@@ -25,14 +25,15 @@ const UserProvider = ({ children }) => {
     const { type, payload } = action;
     switch (type) {
       case "LOAD USER": {
-        console.log("load user")
+        const {data : {username , wishlist , cart , address , order}} = payload
+        console.log(username)
         return {
           ...user,
-          username: payload.data.username,
-          wishlist: payload.data.wishlist,
-          cart: payload.data.cart,
-          address: payload.data.address,
-          order: payload.data.order,
+          username: username,
+          wishlist: wishlist,
+          cart: cart,
+          address: address,
+          order: [...order]
         };
       }
       case "UPDATE WISHLIST": {
@@ -45,8 +46,8 @@ const UserProvider = ({ children }) => {
         return {...user , address : payload}
       }
       case "UPDATE ORDER":{
-        console.log(payload.cart)
-        return {...user , order : [...user.order , {cart :payload.cart, address : payload.address}]}
+        
+        return {...user , order : [...user.order , {orderedProduct :payload.orderedProduct, address : payload.address}]}
       }
       case "SELECT ADDRESS":{
         return {...user, defaultAddress : payload}
@@ -63,16 +64,16 @@ const UserProvider = ({ children }) => {
 
     (async () => {
       const token = localStorage.getItem("token");
-
+      console.log("running")
       if (token) {
         setLogin(true);
         setLoading(true);
-        const { data } = await axios.get("/user_data/userinfo");
+        const {data} = await axios.get("/user_data/userinfo");
         setLoading(false);
         userDispatch({ type: "LOAD USER", payload: data });
       } else {
         setLoading(false)
-        userDispatch({ type: "LOAD USER", payload: {data : initialUser} });
+        
       }
     })();
 
@@ -80,10 +81,10 @@ const UserProvider = ({ children }) => {
      setLoading(false);
      toast(error.response.data.msg)
    }
-  },[isLogin]);
+  },[setLogin ,userDispatch,setLoading]);
 
   return (
-    <userContext.Provider value={{ user, userDispatch ,modal , setModal}}>
+    <userContext.Provider value={{ user, userDispatch ,modal , setModal , initialUser}}>
       {children}
     </userContext.Provider>
   );

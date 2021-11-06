@@ -4,6 +4,7 @@ import {useAuth} from "../auth/index"
 import axios from "axios";
 import {initialState , filterReducer , filteredData , sortData} from "./reducers/filter"
 import { toast } from "react-toastify";
+import {useUser} from "../user/index"
 
 
 
@@ -13,6 +14,7 @@ const DataProvider = ({children})=>{
     const {setLoading} = useAuth();
     const [productList , setProductList] = useState([])
     const [sidebar, setSidebar] = useState(false)
+    const {userDispatch} = useUser()
     
    
     const [state, dispatch] = useReducer(filterReducer, initialState);
@@ -33,7 +35,7 @@ const DataProvider = ({children})=>{
             toast.error(err.response.data.msg)
         }
         
-    },[])
+    },[userDispatch, setLoading])
 
     const getSortedData = sortData(productList, state);
     const getFilterData = filteredData(getSortedData, state);
