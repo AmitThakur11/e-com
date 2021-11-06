@@ -5,7 +5,7 @@ import "./style.css";
 import { SizeList, Features } from "../../component/productDecription/index";
 import { useData } from "../../context/data";
 import {useUser} from "../../context/user/index"
-import { addToWishlist, removeFromCart, removeFromWishlist } from "../../apiCalls"; 
+import { addToWishlist,removeFromWishlist } from "../../apiCalls"; 
 import { useAuth } from "../../context/auth";
 const Product = () => {
   const { id } = useParams();
