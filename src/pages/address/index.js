@@ -27,7 +27,7 @@ export default function Address() {
       <section className= "addressSection">
         {user?.address.map((address) => {
           return (
-            user.address.length && <AddressCard address = {address} setEdit = {setEdit} />
+            user.address.length && <AddressCard key={address._id} address = {address} setEdit = {setEdit} />
           );
         })}
       </section>
