@@ -4,7 +4,7 @@ export const initialState = {
     sortBy: null,
     fastDelivery: false,
     outOfStock: false,
-    priceRange: null,
+    priceRange: 2000,
     brand: null
   };
 

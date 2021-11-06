@@ -69,6 +69,7 @@ const UserProvider = ({ children }) => {
         setLogin(true);
         setLoading(true);
         const {data} = await axios.get("/user_data/userinfo");
+        console.log(data.success)
         setLoading(false);
         userDispatch({ type: "LOAD USER", payload: data });
       } else {

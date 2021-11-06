@@ -1,5 +1,6 @@
 import "./style.css"
 import Logo from "../../image/logo.png";
+import {useState} from "react";
 import {Link} from "react-router-dom"
 import {ShoppingCartOutlined , FavoriteBorderOutlined , MenuOutlined } from '@material-ui/icons';
 import { useNavigate } from "react-router";
@@ -11,6 +12,7 @@ export default function Header() {
     const navigate = useNavigate();
     const {isLogin , setLogin ,  setLoading} = useAuth();
     const {user:{wishlist ,cart},initialUser , userDispatch} = useUser()
+    const [menuToggle,setMenuToggle] = useState(false)
   
     const login_logout= ()=>{
         if(isLogin){
@@ -36,7 +38,7 @@ export default function Header() {
             </Link>
             
             <div className ="headerOptions">
-            <div className = "headerOptions_menu">
+            <div className = {!menuToggle ? "headerOptions_menu" :"headerOptions_menu active"} >
                 <Link to ="/store">Product</Link>
                 <Link to ="/about">About</Link>
                 <button className ="loginBtn" onClick = {()=>login_logout()}>
@@ -56,7 +58,12 @@ export default function Header() {
                     {wishlist.length?<span>{wishlist.length}</span> : ""}
                     </div>
                 </Link>
-                <div className ="headerOptions__icon"><MenuOutlined/></div> 
+                <div className ="headerOptions__icon menuIcon" ><MenuOutlined onClick ={()=>{
+                    console.log(menuToggle)
+                    setMenuToggle((menu)=>!menu)
+                    
+                }
+                 } /></div> 
             </div>
             
         </div>

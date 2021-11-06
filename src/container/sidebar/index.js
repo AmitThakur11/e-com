@@ -4,7 +4,7 @@ import { useData } from "../../context/data/index";
 // import { Filter } from "@material-ui/icons";
 export default function SideBar() {
   const { filterDispatch, filterState } = useData();
-  const [range, setRange] = useState(1000);
+  const [range, setRange] = useState(2000);
   return (
     <div className ="sortFilter">
       <div className ="sortFilter__sort">
@@ -14,8 +14,9 @@ export default function SideBar() {
             name="sort"
             type="radio"
             value = {filterState.sortBy && "High to Low" }
+            checked = {filterState.sortBy === "HIGH TO LOW"}
             onClick={() =>
-              filterDispatch({ type: "SORT", payload: "High to Low" })
+              filterDispatch({ type: "SORT", payload: "HIGH TO LOW" })
             }
           />
           High to Low
@@ -25,6 +26,7 @@ export default function SideBar() {
             name="sort"
             type="radio"
             value = {filterState.sortBy && "Low to High" }
+            checked = {filterState.sortBy === "LOW TO HIGH"}
             onClick={() =>
               filterDispatch({ type: "SORT", payload: "LOW TO HIGH" })
             }
@@ -60,7 +62,7 @@ export default function SideBar() {
             type="range"
             min="50"
             max="2000"
-            defaultValue= "1000"
+            value= {filterState.priceRange}
             onChange={(e) => {
               setRange(e.target.value);
               filterDispatch({ type: "PRICE RANGE", payload: range });
@@ -74,6 +76,7 @@ export default function SideBar() {
             <input
               name="brand"
               type="radio"
+              checked = {filterState.brand === "supervek"}
               onChange={() =>
                 filterDispatch({ type: "BRAND", payload: "supervek" })
               }
@@ -86,6 +89,7 @@ export default function SideBar() {
               name="brand"
               type="radio"
               value ={filterState.brand}
+              checked = {filterState.brand === "urban monkey"}
               onChange={() =>
                 filterDispatch({ type: "BRAND", payload: "urban monkey" })
               }
@@ -95,6 +99,7 @@ export default function SideBar() {
         </div>
         <button className ="sortFilter__clearBtn" onClick={() => {
           filterDispatch({ type: "CLEAR" })
+          setRange(filterState.priceRange)
           
         }}>Clear</button>
       </div>

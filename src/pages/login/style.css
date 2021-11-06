@@ -68,3 +68,12 @@
 .loginBox_account > a{
     color:red;
 }
+
+@media(max-width : 480px){
+    .loginBox{
+        width :300px;
+    }
+    .loginBox img{
+        display: none;
+    }
+}
