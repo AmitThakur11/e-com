@@ -31,7 +31,7 @@ export default function Home() {
                         <div className="name">Regular fit</div>
                     </div>
                     <div className="featureBox">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6080/6080482.png" alt="/"/>
+                        <img src="https://cdn-icons-png.flaticon.com/512/1075/1075355.png" alt="/"/>
                         <div className="name">Bio washed</div>
                     </div>
                     <div className="featureBox">
