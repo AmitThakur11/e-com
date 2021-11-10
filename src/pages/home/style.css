@@ -17,10 +17,11 @@
     overflow: hidden;
 }
 .bannerSection{
-    background-color: black;
-    height: 250px;
+    /* background-image:url(http://7-themes.com/data_images/out/7/6790155-flower-pattern-wallpaper.jpg); */
+    height: 350px;
     width: 100%;
     position: relative;
+    background: black;
 }
 .bannerDetail{
     width: 100%;
@@ -39,11 +40,26 @@
 .detail{
     font-family: 'Crushed', cursive;
     color:white;
-    font-size:80px;
-    letter-spacing: 4px;
+    font-size:70px;
+
     font-weight: 900;
+
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 5.5s steps(40, end) infinite,
+    blink-caret .75s step-end infinite;
     
 
+}
+
+.detail > span{
+    color: #f74b4b;
+    font-size: 80px;
+    font-family: 'Crushed', cursive;
 }
 
 .shopBtn{
@@ -90,7 +106,7 @@
 }
 
 .featureBox >.name{
-    color: rgb(244, 50, 50);
+    color: #f74b4b;
     font-weight: 500;
     font-size: 14px;
 
@@ -104,16 +120,23 @@
         width:120px;
     }
     .bannerSection{
-        height: 250px;
+        height: 200px;
     }
     .detail{
         font-family: 'Crushed', cursive;
     
         color:white;
-        font-size:50px;
+        font-size:40px;
         font-weight: 900;
     
     }
+
+    .detail > span{
+        color: #f74b4b;
+        font-size: 45px;
+        font-family: 'Crushed', cursive;
+    }
+    
     .shopBtn{
         font-size: 18px;
         margin-top: 10px;
@@ -125,3 +148,48 @@
     
 }
 
+
+@media(max-width:480px){
+    .featureBox{
+        flex-direction: column;
+        justify-content: center;
+        width:120px;
+    }
+    .bannerSection{
+        height: 200px;
+    }
+    .detail{
+        font-family: 'Crushed', cursive;
+        color:white;
+        font-size:25px;
+        font-weight: 900;
+    
+    }
+    .detail > span{
+        color: #f74b4b;
+        font-size: 30px;
+        font-family: 'Crushed', cursive;
+    }
+    
+    .shopBtn{
+        font-size: 18px;
+        margin-top: 10px;
+        font-weight: 500;
+        
+        padding:4px 16px;
+        
+    }
+    
+}
+
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #f74b4b; }
+  }

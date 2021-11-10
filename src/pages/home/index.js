@@ -11,7 +11,7 @@ export default function Home() {
                     <div className ="bannerDetail">
                         <div className ="detail">
                             
-                            Tshirt's made for your soul .
+                            Tshirt's <span>made</span> for your <span>soul</span> .
                            
                         </div>
                         <Link to="/store">

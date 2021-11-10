@@ -41,7 +41,8 @@ export default function Header() {
             <div className ="headerOptions">
             <div className = {!menuToggle ? "headerOptions_menu" :"headerOptions_menuActive"}>
                 <Link to ="/store" onClick = {()=>setMenuToggle(false)}>Product</Link>
-                <Link to ="/about" onClick = {()=>setMenuToggle(false)}>About</Link>
+                <Link to ="/order" onClick = {()=>setMenuToggle(false)}>Order</Link>
+                
                 <button className ="loginBtn" onClick = {()=>login_logout()}>
                     {isLogin?"Log out" : "Log in"}
                     </button>
