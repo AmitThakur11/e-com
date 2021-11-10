@@ -45,9 +45,13 @@ const UserProvider = ({ children }) => {
       case "UPDATE ADDRESS":{
         return {...user , address : payload}
       }
-      case "UPDATE ORDER":{
+      case "ADD ORDER":{
         
-        return {...user , order : [...user.order , {orderedProduct :payload.orderedProduct, address : payload.address}]}
+        return {...user , order : [...user.order , payload]}
+      }
+      case "REMOVE ORDER":{
+        return {...user , order : payload}
+
       }
       case "SELECT ADDRESS":{
         return {...user, defaultAddress : payload}
@@ -60,28 +64,42 @@ const UserProvider = ({ children }) => {
   const [user, userDispatch] = useReducer(userReducer, initialUser);
 
   useEffect(() => {
-   try{
+
 
     (async () => {
       const token = localStorage.getItem("token");
       console.log("running")
-      if (token) {
-        setLogin(true);
-        setLoading(true);
-        const {data} = await axios.get("/user_data/userinfo");
-        console.log(data.success)
+
+      try{
+
+        if (token) {
+          setLogin(true);
+          setLoading(true);
+          const {data} = await axios.get("/user_data/userinfo");
+          setLoading(false);
+          if(!data.success){
+            console.log("failed")
+            localStorage.removeItem("token")
+            setLogin(false)
+            delete axios.defaults.headers.common["Authorization"];
+  
+          }
+          
+          userDispatch({ type: "LOAD USER", payload: data });
+        } else {
+          setLoading(false)
+          
+        }
+
+      }catch(err){
         setLoading(false);
-        userDispatch({ type: "LOAD USER", payload: data });
-      } else {
-        setLoading(false)
-        
+      toast(err.response.data.msg)
+
       }
+     
     })();
 
-   }catch(error){
-     setLoading(false);
-     toast(error.response.data.msg)
-   }
+  
   },[setLogin ,userDispatch,setLoading]);
 
   return (

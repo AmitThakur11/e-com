@@ -2,19 +2,22 @@ import React from "react";
 import { Link} from "react-router-dom";
 
 import "./style.css";
-import { FavoriteBorderOutlined, Favorite } from "@material-ui/icons";
-import { addToWishlist, removeFromWishlist } from "../../apiCalls";
+import { FavoriteBorderOutlined, Favorite , ShoppingCartOutlined , ShoppingCart} from "@material-ui/icons";
+import { addToCart, addToWishlist, removeFromCart, removeFromWishlist } from "../../apiCalls";
 import { useAuth } from "../../context/auth";
 import {useUser} from "../../context/user/index"
 
 
 export default function ProductCard({ product }) {
   const {
-    user: { wishlist },
+    user: { wishlist,cart },
     userDispatch,setModal
   } = useUser();
   const { setLoading , isLogin } = useAuth();
   const likedOrNot = wishlist.find((item) => item._id === product._id);
+  const inCartOrNot =  cart.find((item) => item.productId._id === product._id);
+  // console.log(likedOrNot)
+  console.log(inCartOrNot)
   return (
     <section key={product._id} className="x-vertical-card">
       <Link to={`/store/${product._id}`}>
@@ -30,7 +33,7 @@ export default function ProductCard({ product }) {
         </div>
       </Link>
       <div
-        className="x-card-icon"
+        className="x-card-icon x-icon1"
         onClick={() =>
           isLogin? (likedOrNot
             ?removeFromWishlist(product._id, userDispatch, setLoading): addToWishlist(product._id, userDispatch, setLoading)):setModal(true)
@@ -39,8 +42,20 @@ export default function ProductCard({ product }) {
       >
         {likedOrNot?<Favorite style={{ fontSize: "18px" }} />:<FavoriteBorderOutlined style={{ fontSize: "18px" }} />}
       </div>
+      <div
+        className="x-card-icon x-icon2"
+        onClick={() =>
+          isLogin? (inCartOrNot
+            ?removeFromCart(product._id, userDispatch, setLoading): addToCart(product._id, userDispatch, setLoading)):setModal(true)
+            
+        }
+      >
+        {inCartOrNot?<ShoppingCart style={{ fontSize: "18px" }} />:<ShoppingCartOutlined style={{ fontSize: "18px" }} />}
+      </div>
+
 
       {product.badge && <div className="x-vertical-badge">{product.badge}</div>}
+
     </section>
   );
 }

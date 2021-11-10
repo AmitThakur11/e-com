@@ -8,7 +8,7 @@
 }
 .checkoutBlock{
     margin-top:20px;
-    height: 200px;
+    height: fit-content;
     width:100%;
     margin: 10px;
     background: white;
@@ -26,10 +26,7 @@
 
     display: flex;
     
-    position: absolute;
-    bottom:0;
     width: 100%;
-    left:0;
     padding:10px;
     font-size: 18px;
     

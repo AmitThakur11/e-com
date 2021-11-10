@@ -19,7 +19,7 @@ export default function Order() {
       <h1>ORDERS</h1>
       
       <div className ="orderContainer">
-        {order.map(({orderedProduct, address}) => {
+        {order.map(({_id,orderedProduct, address}) => {
           return (
             <div className = "orderCard">
               <div className ="cartBox">
@@ -37,7 +37,7 @@ export default function Order() {
               </div>
               <div className="orderAddress">
                     Order will soon deleivered to  : <span>House no. {address.appartment},{address.city},{address.state} on {day},{date}</span>
-              <div className="orderCard__remove" onClick = {()=>cancelOrder(order._id,userDispatch,setLoading)}><RiDeleteBin6Line/></div>
+              <div className="orderCard__remove" onClick = {()=>cancelOrder(_id,userDispatch,setLoading)}><RiDeleteBin6Line/></div>
             </div>
           </div>
           )

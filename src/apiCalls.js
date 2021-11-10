@@ -100,27 +100,46 @@ export const addToCart = async (product_id, userDispatch, setLoading) => {
     const cartResponse = await axios.post(`/user_data/cart/${product_id}`);
 
     if (cartResponse.data.success) {
-      console.log(cartResponse.data.data.cart);
+      
       userDispatch({
         type: "UPDATE CART",
         payload: cartResponse.data.data.cart,
       });
-      const { data } = await axios.delete(`user_data/wishlist/${product_id}`);
+      // const { data } = await axios.delete(`user_data/wishlist/${product_id}`);
       setLoading(false);
-      if (data.success) {
-        toast.success("wishlist updated");
-        return userDispatch({ type: "UPDATE WISHLIST", payload: data.data });
-      } else {
-        toast(data.msg);
-      }
-    } else {
-      toast.error(cartResponse.data.msg);
+      toast.success("Cart  updated")
+    //   
     }
   } catch (err) {
     setLoading(false);
     toast.error(err.response.data.msg);
   }
 };
+
+export const moveToCart = async(product_id, userDispatch, setLoading)=>{
+  try{
+    setLoading(true);
+    const cartResponse = await axios.post(`/user_data/cart/${product_id}`);
+    if(cartResponse.data.success){
+      userDispatch({
+        type: "UPDATE CART",
+        payload: cartResponse.data.data.cart,
+      });
+      toast.success("cart updated");
+      const wishlistResponse =  await axios.delete(`user_data/wishlist/${product_id}`);
+      if(wishlistResponse.data.success){
+        setLoading(false);
+        userDispatch({ type: "UPDATE WISHLIST", payload: wishlistResponse.data.data });
+        toast.success("wishlist updated")
+      }
+
+    }
+  }catch(error){
+    setLoading(false);
+    toast.error(error.response.data.msg)
+  }
+
+}
 
 export const removeFromCart = async (product_id, userDispatch, setLoading) => {
   try {
@@ -276,17 +295,19 @@ export const addOrder = async (
 };
 
 export const cancelOrder = async (orderId, userDispatch, setLoading) => {
+  console.log(orderId)
   try {
     setLoading(true);
     const { data } = await axios.delete(`user_data/order/${orderId}/cancel`);
     console.log(data);
     setLoading(false);
     if (data.success) {
-      userDispatch({ type: "UPDATE ORDER", payload: data.data.order });
+      console.log(data.data)
+      userDispatch({ type: "REMOVE ORDER", payload: data.data });
       return toast.success(data.msg);
     }
   } catch (err) {
     setLoading(false);
-    toast.error("Try later , something went wrong");
+    toast.error(err.response);
   }
 };

@@ -1,5 +1,5 @@
 import { useUser } from "../../context/user/index";
-import {addToCart , removeFromWishlist} from "../../apiCalls"
+import {moveToCart , removeFromWishlist} from "../../apiCalls"
 import {useAuth} from "../../context/auth"
 
 
@@ -24,7 +24,7 @@ const WishlistCard = ({ wishlist }) => {
         onClick={() => removeFromWishlist(wishlist._id , userDispatch, setLoading)  }
       ></i>
       <button
-        onClick={() =>addToCart(wishlist._id , userDispatch, setLoading) }
+        onClick={() =>moveToCart(wishlist._id , userDispatch, setLoading) }
         className="x-hcard-btn"
       >
         ADD TO CART

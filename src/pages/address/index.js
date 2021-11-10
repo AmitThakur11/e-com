@@ -37,7 +37,7 @@ export default function Address() {
       
       {user.address.length ? <div className ="placeOrder_btn">
         <button onClick = {()=>{
-          userDispatch({type : "UPDATE ORDER", payload : {orderedProduct : cartProduct ,address : user.defaultAddress}})
+          userDispatch({type : "ADD ORDER", payload : {orderedProduct : cartProduct ,address : user.defaultAddress}})
           addOrder(cartId,user.defaultAddress,userDispatch,setLoading)
           
           navigate("/order")
