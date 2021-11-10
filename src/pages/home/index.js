@@ -27,11 +27,11 @@ export default function Home() {
                         <div className="name">100% Cotton</div>
                     </div>
                     <div className="featureBox">
-                        <img src="https://cdn-icons.flaticon.com/png/512/717/premium/717492.png?token=exp=1636530091~hmac=863fcea16ebadd34283a71db224fea44" alt="/"/>
+                        <img src="https://i.ibb.co/52C1Ffs/tshirt.png" alt="/"/>
                         <div className="name">Regular fit</div>
                     </div>
                     <div className="featureBox">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1075/1075355.png" alt="/"/>
+                        <img src="https://cdn-icons-png.flaticon.com/512/6080/6080482.png" alt="/"/>
                         <div className="name">Bio washed</div>
                     </div>
                     <div className="featureBox">
