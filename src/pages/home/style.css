@@ -1,33 +1,127 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Crushed&display=swap');
+
 .home{
     display: flex;
+    width: 100%;
+    height: 85vh;
+    height: fit-content;
     justify-content: center;
-
     align-items: center;
 }
-.homeBanner{
+.innerHome{
     width:100%;
-    height:400px;
-    background-image: url("../../image/home-banner.png");
-    object-fit: center;
     display: flex;
-    align-items: center;
-    justify-content: center;
-
-
+    flex-direction: column;
+    overflow: hidden;
 }
-
-.homeBanner__btn{
-    border-radius: 50%;
+.bannerSection{
+    background-color: black;
+    height: 250px;
+    width: 100%;
+    position: relative;
+}
+.bannerDetail{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    width: 100px;
     place-items: center;
-    background: black;
-    padding: 20px;
-    display: flex;
-    height: 100px;
-    color: white;
-    max-width: 100px;
-    font-weight: 600;
-    box-shadow: 0px 0px 16px 2px white;
-    font-size: 24px;
+    color:white;
+    text-align: center;
+    
 }
+
+.detail{
+    font-family: 'Crushed', cursive;
+    color:white;
+    font-size:80px;
+    letter-spacing: 4px;
+    font-weight: 900;
+    
+
+}
+
+.shopBtn{
+    font-size: 24px;
+    margin-top: 10px;
+    font-weight: 500;
+    background-color: white;
+    padding:4px 16px;
+    border:0
+}
+.features{
+    display: flex;
+    width:100%;
+ 
+}
+
+.innerFeatures{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    place-content: center;
+
+}
+
+.featureBox{
+    width:120px;
+    height:110px;
+    padding : 15px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    display: flex;
+    justify-content: space-evenly;
+    background: white;
+    flex-direction: column;
+    place-items: center;
+    border-radius: 10px;
+    margin :20px;
+
+
+}
+.featureBox >img{
+    width:40px;
+    margin-bottom: 0px;
+}
+
+.featureBox >.name{
+    color: rgb(244, 50, 50);
+    font-weight: 500;
+    font-size: 14px;
+
+
+}
+
+@media(max-width:780px){
+    .featureBox{
+        flex-direction: column;
+        justify-content: center;
+        width:120px;
+    }
+    .bannerSection{
+        height: 250px;
+    }
+    .detail{
+        font-family: 'Crushed', cursive;
+    
+        color:white;
+        font-size:50px;
+        font-weight: 900;
+    
+    }
+    .shopBtn{
+        font-size: 18px;
+        margin-top: 10px;
+        font-weight: 500;
+        
+        padding:4px 16px;
+        
+    }
+    
+}
+
