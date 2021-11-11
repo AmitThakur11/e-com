@@ -1,161 +1,173 @@
 @import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap');
-.header{
+
+.header {
     display: flex;
-    width:100%;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
-    padding:6px 16px;
+    padding: 6px 16px;
     background-color: white;
     position: fixed;
-    top:0px;
+    top: 0px;
     z-index: 9999;
     position: relative;
 }
-.logo{
+
+.logo {
     display: flex;
     align-items: center;
 }
+
 .logo img {
-    height:70px;
+    height: 70px;
 
 }
-.logo  p {
-    
+
+.logo p {
+
     font-family: 'Aclonica', sans-serif;
-    
-    padding:0px 12px;
+
+    padding: 0px 12px;
     font-size: 24px;
-    margin-left:5px;
-    
+    margin-left: 5px;
+
 }
-.logo p span{
+
+.logo p span {
     color: rgb(244, 78, 78);
     font-family: 'Aclonica', sans-serif;
-    padding:0px 12px;
+    padding: 0px 12px;
     font-size: 24px;
-    margin-left:5px;
+    margin-left: 5px;
 
 }
-.headerOptions{
+
+.headerOptions {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    
+
 }
 
-.headerOptions_menu> a{
-    margin:0px 10px;
+.headerOptions_menu>a {
+    margin: 0px 10px;
 }
 
-.headerOptions__icon{
+.headerOptions__icon {
     position: relative;
-    margin :0px 5px;
-    
-}
-
-.headerOptions_menu{
-    margin:0px 10px
+    margin: 0px 5px;
 
 }
-.headerOptions__icon > span{
+
+.headerOptions_menu {
+    margin: 0px 10px
+}
+
+.headerOptions__icon>span {
     position: absolute;
-    background :black;
+    background: black;
     border-radius: 50%;
-    color:white;
-    top:-10%;
+    color: white;
+    top: -10%;
     display: grid;
     place-content: center;
-    width:14px;
-    font-size:10px ;
+    width: 14px;
+    font-size: 10px;
     height: 14px;
-    right:-10%;
+    right: -10%;
 
 }
-.loginBtn{
-    padding:5px 10px;
-    border:0;
-    border-radius: 4px ;
+
+.loginBtn {
+    padding: 5px 10px;
+    border: 0;
+    border-radius: 4px;
     font-weight: 600;
     background: rgb(221, 219, 219);
-    color:black;
+    color: black;
 
 }
-.loginBtn:hover{
-    
+
+.loginBtn:hover {
+
     transform: scale(1.05);
-    
+
     background-color: black;
     color: white;
 
 }
 
-.menuIcon{
+.menuIcon {
     display: none;
 }
 
 
-@media(max-width : 650px){
-    .headerOptions_menu{
-        position:absolute;
-        padding:30px 40px;
-        top:0px;
-        left:0px;
-        height : 100vh;
-        background-color:white;
+@media(max-width : 650px) {
+    .headerOptions_menu {
+        position: absolute;
+        padding: 30px 40px;
+        top: 0px;
+        left: 0px;
+        height: 100vh;
+        background-color: white;
         margin: 0px;
         display: flex;
         flex-direction: column;
-        width:200px;
-        transform : translateX(-100%);
+        width: 200px;
+        transform: translateX(-100%);
         transition: ease-in-out 560ms;
 
     }
-    .headerOptions_menuActive{
-        position:absolute;
-        padding:30px 40px;
-        top:0px;
-        left:0px;
-        height : 100vh;
-        background-color:white;
+
+    .headerOptions_menuActive {
+        position: absolute;
+        padding: 30px 40px;
+        top: 0px;
+        left: 0px;
+        height: 100vh;
+        background-color: white;
         margin: 0px;
         display: flex;
         flex-direction: column;
-        width:200px;
-        transform : translateX(0%);
+        width: 200px;
+        transform: translateX(0%);
         transition: ease-in-out 560ms;
 
     }
-    .loginBtn{
-        margin-top:20px;
+
+    .loginBtn {
+        margin-top: 20px;
         width: 120px;
         place-content: center;
         display: flex;
         place-self: center;
         background: black;
         color: white;
-        
+
     }
 
-    .headerOptions_menu button:hover{
+    .headerOptions_menu button:hover {
         background: rgb(157, 156, 156);
         color: rgb(20, 20, 20);
     }
 
-    .header{
+    .header {
         height: 10vh;
-        width:100vw;
-    }
-    .logo img{
-        height: 50px;
-    }
-    .logo > p {
-        
-        padding:3px 9px;
-        
-        
+        width: 100vw;
     }
 
-    .menuIcon{
+    .logo img {
+        height: 50px;
+    }
+
+    .logo>p {
+
+        padding: 3px 9px;
+
+
+    }
+
+    .menuIcon {
         display: block;
     }
 }

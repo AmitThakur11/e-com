@@ -1,11 +1,10 @@
 import { useUser } from "../../context/user/index";
-import {moveToCart , removeFromWishlist} from "../../apiCalls"
-import {useAuth} from "../../context/auth"
-
+import { moveToCart, removeFromWishlist } from "../../apiCalls";
+import { useAuth } from "../../context/auth";
 
 const WishlistCard = ({ wishlist }) => {
-  const {userDispatch} = useUser();
-  const {setLoading} = useAuth();
+  const { userDispatch } = useUser();
+  const { setLoading } = useAuth();
 
   return (
     <section className="x-horizontal-card">
@@ -21,10 +20,12 @@ const WishlistCard = ({ wishlist }) => {
       </div>
       <i
         className="fa fa-trash-o x-hcard-icon"
-        onClick={() => removeFromWishlist(wishlist._id , userDispatch, setLoading)  }
+        onClick={() =>
+          removeFromWishlist(wishlist._id, userDispatch, setLoading)
+        }
       ></i>
       <button
-        onClick={() =>moveToCart(wishlist._id , userDispatch, setLoading) }
+        onClick={() => moveToCart(wishlist._id, userDispatch, setLoading)}
         className="x-hcard-btn"
       >
         ADD TO CART

@@ -1,20 +1,21 @@
-.x-cart-card{
+.x-cart-card {
     background: white;
-    margin :5px 0px;
-    
+    margin: 5px 0px;
+
 }
-.x-cart-btn button{
+
+.x-cart-btn button {
     padding: 3px 6px;
 }
 
-@media(max-width : 780px){
-    .x-cart-card{
-        width :520px;
+@media(max-width : 780px) {
+    .x-cart-card {
+        width: 520px;
     }
 }
 
-@media(max-width : 480px){
-    .x-cart-card{
+@media(max-width : 480px) {
+    .x-cart-card {
         width: 340px;
     }
 }

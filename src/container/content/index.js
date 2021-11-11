@@ -8,24 +8,24 @@ import {
   Product,
   Store,
   Address,
-  Order
+  Order,
 } from "../../pages";
-import { Loader ,LoginModel } from "../../component";
+import { Loader, LoginModel } from "../../component";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PrivateRoute from "../../pages/PrivateRoute";
 import { Routes, Route } from "react-router-dom";
 import { useAuth } from "../../context/auth/index";
-import { useUser} from "../../context/user/index"
+import { useUser } from "../../context/user/index";
 import "./style.css";
 export default function Content() {
-  const { loading  } = useAuth();
-  const {modal} = useUser()
+  const { loading } = useAuth();
+  const { modal } = useUser();
   return (
     <div className="content">
       <ToastContainer autoClose={2000} hideProgressBar={true} />
       {loading && <Loader />}
-      {modal && <LoginModel/>}
+      {modal && <LoginModel />}
 
       <Routes>
         <Route path="/" element={<Home />} />

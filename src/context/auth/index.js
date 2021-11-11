@@ -1,10 +1,7 @@
-import { useContext, createContext, useState  } from "react";
+import { useContext, createContext, useState } from "react";
 export const authContext = createContext();
 
 const AuthProvider = ({ children }) => {
-
-  
-
   const [loading, setLoading] = useState(false);
   const [isLogin, setLogin] = useState(localStorage.getItem("login"));
   const initialUser = {
@@ -32,7 +29,7 @@ const AuthProvider = ({ children }) => {
         isLogin,
         setLogin,
         loading,
-        setLoading
+        setLoading,
       }}
     >
       {children}

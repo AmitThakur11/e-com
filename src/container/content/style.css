@@ -1,10 +1,10 @@
-.content{
-    min-height : 87%;
-    
+.content {
+    min-height: 87%;
+
 }
 
-@media(max-width:650px){
-    .content{
-        height:fit-content
+@media(max-width:650px) {
+    .content {
+        height: fit-content
     }
 }

@@ -1,10 +1,10 @@
-.login-modal-section{
-    position:fixed;
-    top:0;
-    
-    background:rgb(250, 232, 232,0.5) ;
+.login-modal-section {
+    position: fixed;
+    top: 0;
+
+    background: rgb(250, 232, 232, 0.5);
     width: 100%;
-    height:100vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-self: center;
@@ -12,75 +12,79 @@
     z-index: 3482323453;
 }
 
-.login-modal{
+.login-modal {
     box-shadow: rgba(87, 85, 85, 0.841) 0px 30px 90px;
     background: rgb(255, 255, 255);
     flex-direction: column;
     justify-content: space-between;
     align-self: center;
     display: flex;
-    
-    
-    padding:20px;
+
+
+    padding: 20px;
     height: 200px;
-    width : 400px;
-    border-radius : 5px;
+    width: 400px;
+    border-radius: 5px;
 }
-.login-modal > .modal-text{
+
+.login-modal>.modal-text {
     font-size: 32px;
-    width :100%;
-    color:rgb(233, 61, 99);
+    width: 100%;
+    color: rgb(233, 61, 99);
 }
-.login-modal >.modal-btn{
+
+.login-modal>.modal-btn {
     display: flex;
-    width:100%;
-    
+    width: 100%;
+
     justify-content: flex-end;
 }
 
-.modal-btn> button{
-    padding:5px 10px;
+.modal-btn>button {
+    padding: 5px 10px;
     font-size: 18px;
     background: white;
-    border:0;
+    border: 0;
     margin-right: 5px;
     font-weight: 600;
     border-radius: 4px;
 
 }
-.modal-btn .btn-1{
+
+.modal-btn .btn-1 {
     background: rgb(233, 61, 99);
-    color:white;
-    
+    color: white;
+
 
 }
-.modal-btn .btn-2{
+
+.modal-btn .btn-2 {
     border: 2px solid rgb(233, 61, 99);
-    color:rgb(233, 61, 99);
-    
+    color: rgb(233, 61, 99);
+
 }
 
 
-@media(max-width:650px){
-   
+@media(max-width:650px) {
 
-    .login-modal{
-        width : 300px;
+
+    .login-modal {
+        width: 300px;
         height: 150px;
     }
 
-    .login-modal >.modal-text{
+    .login-modal>.modal-text {
         font-size: 24px;
     }
 
-    .modal-btn >button{
-        padding:3px 6px;
+    .modal-btn>button {
+        padding: 3px 6px;
         font-size: 16px;
     }
 
-    .login-container{
-        height : 40vh;
-        width : 80vw;
+    .login-container {
+        height: 40vh;
+        width: 80vw;
 
     }
 
