@@ -257,7 +257,6 @@ export const addOrder = async (
   setLoading
 ) => {
   try {
-    setLoading(true);
     const { data } = await axios.post("user_data/order/add", {
       orderedProduct,
       address,
