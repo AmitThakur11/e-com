@@ -6,8 +6,7 @@ const AuthProvider = ({ children }) => {
   
 
   const [loading, setLoading] = useState(false);
-  const [isLogin, setLogin] = useState(false);
-  const [render, setRender] = useState(false);
+  const [isLogin, setLogin] = useState(localStorage.getItem("login"));
   const initialUser = {
     username: "",
     email: "",
@@ -33,9 +32,7 @@ const AuthProvider = ({ children }) => {
         isLogin,
         setLogin,
         loading,
-        setLoading,
-        render,
-        setRender,
+        setLoading
       }}
     >
       {children}

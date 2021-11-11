@@ -20,6 +20,7 @@ export const getLogin = async (userInput, setLoading, setLogin, navigate,userDis
       navigate("/store");
       toast.success(data.msg);
       localStorage.setItem("token", data.token);
+      localStorage.setItem('login',true)
       axios.defaults.headers.common["Authorization"] = data.token
       userDispatch({type :"LOAD USER" , payload : {data : data.user[0]}})
       return;

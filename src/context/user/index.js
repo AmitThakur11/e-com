@@ -78,8 +78,9 @@ const UserProvider = ({ children }) => {
 
     }catch(err){
     setLoading(false);
-    toast.info("session expired")
+    localStorage.getItem('login') && toast.info("session expired")
     localStorage.removeItem('token')
+    localStorage.removeItem('login')
     setLogin(false)
     delete axios.defaults.headers.common["Authorization"];
     }

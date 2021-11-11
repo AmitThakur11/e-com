@@ -18,6 +18,7 @@ export default function Header() {
         if(isLogin){
             setLoading(true)
             localStorage.removeItem("token")
+            localStorage.removeItem('login')
             delete axios.defaults.headers.common["Authorization"];
             setLogin(false)
             setLoading(false)
