@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     (() => {
-      axios.defaults.baseURL = process.env.REACT_APP_API_KEY;
+      axios.defaults.baseURL = "https://soulmadeapi.herokuapp.com/"
       console.log(process.env)
       console.log("effect run");
       if (localStorage.getItem("token")) {
