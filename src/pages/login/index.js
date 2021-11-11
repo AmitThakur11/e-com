@@ -6,12 +6,13 @@ import {getLogin} from "../../apiCalls"
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../context/user";
 
+
 const Login = () => {
   
   const {getInput, userInput,setLoading , setLogin} = useAuth();
   const {userDispatch} = useUser()
   const {email , password} = userInput ;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return(
     <div className = "loginContainer">
       <div className ="loginBox">

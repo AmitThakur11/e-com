@@ -69,6 +69,14 @@
     color:red;
 }
 
+.logoutBox{
+    width:400px;
+}
+.logoutBox img{
+    width: 50%;
+
+}
+
 @media(max-width : 480px){
     .loginBox{
         width :300px;

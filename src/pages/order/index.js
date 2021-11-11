@@ -10,6 +10,7 @@ export default function Order() {
     user: { order },userDispatch
   } = useUser();
 
+  console.log(order)
   const {setLoading} = useAuth()
   const week = ["Sunday","Monday","Tuesday","Thursday","Friday","Saturday"]
   let day =  week[new Date().getDay()+3]
@@ -23,7 +24,7 @@ export default function Order() {
           return (
             <div className = "orderCard">
               <div className ="cartBox">
-                {orderedProduct.map(({img,name,price}) => {
+                {orderedProduct.map(({_id,img,name,price}) => {
                   return <div className ="cartBox__item">
                       <img src = {img} alt =""/>
                       <div className = "cartBox__itemSection">
