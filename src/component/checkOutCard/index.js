@@ -11,6 +11,7 @@ export default function CheckOutCard({cart}) {
     },0)
     return (
         <div className ="checkoutBlock">
+            <div className ="checkoutProduct">
                     {
                         cart.map((product)=>{
                             return <div className = "checkout" key = {product.productId._id}>
@@ -19,6 +20,7 @@ export default function CheckOutCard({cart}) {
 
                         })
                     }
+                    </div>
                 <div className ="checkoutBtn" >
                     <div className ="checkoutTotal">{total} Rs</div>
                    <button onClick={()=>navigate("/address")}>Checkout</button>
