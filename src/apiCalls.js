@@ -302,8 +302,8 @@ export const cancelOrder = async (orderId, userDispatch, setLoading) => {
     console.log(data);
     setLoading(false);
     if (data.success) {
-      console.log(data.data)
-      userDispatch({ type: "REMOVE ORDER", payload: data.data });
+      console.log(data.data.data)
+      // userDispatch({ type: "REMOVE ORDER", payload: data.data });
       return toast.success(data.msg);
     }
   } catch (err) {

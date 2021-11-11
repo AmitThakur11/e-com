@@ -1,4 +1,4 @@
-import { useContext, createContext, useEffect, useReducer , useState} from "react";
+import { useContext, createContext, useEffect, useReducer , useState, useCallback} from "react";
 import { useAuth } from "../auth/index";
 import axios from "axios"
 import {toast} from "react-toastify"
@@ -6,7 +6,7 @@ export const userContext = createContext();
 
 
 const UserProvider = ({ children }) => {
-  const {setLogin, setLoading } = useAuth();
+  const {setLogin, setLoading} = useAuth();
   const [modal , setModal] = useState(false)
   const initialUser = {
     username: "",
@@ -63,44 +63,32 @@ const UserProvider = ({ children }) => {
   };
   const [user, userDispatch] = useReducer(userReducer, initialUser);
 
-  useEffect(() => {
-
-
-    (async () => {
-      const token = localStorage.getItem("token");
-      console.log("running")
-
-      try{
-
-        if (token) {
-          setLogin(true);
-          setLoading(true);
-          const {data} = await axios.get("/user_data/userinfo");
-          setLoading(false);
-          if(!data.success){
-            console.log("failed")
-            localStorage.removeItem("token")
-            setLogin(false)
-            delete axios.defaults.headers.common["Authorization"];
-  
-          }
-          
-          userDispatch({ type: "LOAD USER", payload: data });
-        } else {
-          setLoading(false)
-          
-        }
-
-      }catch(err){
+  const checkAuth = useCallback(async ()=>{
+    try{
+        
+      setLoading(true);
+      const {data} = await axios.get("/user_data/userinfo");
+      if (data.success) {
+        setLogin(true);
         setLoading(false);
-      toast(err.response.data.msg)
-
+        userDispatch({ type: "LOAD USER", payload: data });
+        return
       }
-     
-    })();
+      setLoading(false)
 
-  
-  },[setLogin ,userDispatch,setLoading]);
+    }catch(err){
+    setLoading(false);
+    toast.info("session expired")
+    localStorage.removeItem('token')
+    setLogin(false)
+    delete axios.defaults.headers.common["Authorization"];
+    }
+   
+  },[setLoading,setLogin,userDispatch])
+  useEffect(() =>{
+    checkAuth()
+  }
+  ,[checkAuth]);
 
   return (
     <userContext.Provider value={{ user, userDispatch ,modal , setModal , initialUser}}>

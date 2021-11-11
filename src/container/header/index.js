@@ -44,7 +44,7 @@ export default function Header() {
                 <Link to ="/order" onClick = {()=>setMenuToggle(false)}>Order</Link>
                 
                 <button className ="loginBtn" onClick = {()=>login_logout()}>
-                    {isLogin?"Log out" : "Log in"}
+                    {localStorage.getItem('token')?"Log out" : "Log in"}
                     </button>
                 
             </div>
