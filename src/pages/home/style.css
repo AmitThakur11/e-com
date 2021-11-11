@@ -17,7 +17,6 @@
 }
 
 .bannerSection {
-    /* background-image:url(http://7-themes.com/data_images/out/7/6790155-flower-pattern-wallpaper.jpg); */
     height: 350px;
     width: 100%;
     position: relative;
@@ -41,8 +40,8 @@
 .detail {
     font-family: 'Crushed', cursive;
     color: white;
-    font-size: 40px;
-
+    font-size: 50px;
+    width:fit-content;
     font-weight: 900;
 
     overflow: hidden;
@@ -205,11 +204,11 @@
 
 @keyframes typing {
     from {
-        width: 0
+        width: 0%
     }
 
     to {
-        width: 100%
+        width: 100%;
     }
 }
 
