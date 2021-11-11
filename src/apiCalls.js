@@ -5,21 +5,32 @@ export const loadUser = () => {};
 
 export const getLogin = async (userInput, setLoading, setLogin, navigate,userDispatch) => {
   try {
+
+    
     const { email, password } = userInput;
-    if (!email && !password) {
-      toast.error("Empty field");
+    if (email==="") {
+      return toast.error("Empty email");
     }
+    if (password==="") {
+      return toast.error("Empty password");
+    }
+
     setLoading(true);
+
+
     const { data } = await axios.post("/user/login", {
       email: email,
       password: password,
     });
+
+
     if(data.success){
       setLogin(true)
       setLoading(false);
       navigate("/store");
       toast.success(data.msg);
       localStorage.setItem("token", data.token);
+      localStorage.setItem("login", true);
       axios.defaults.headers.common["Authorization"] = data.token
       userDispatch({type :"LOAD USER" , payload : {data : data.user[0]}})
       return;
@@ -81,7 +92,6 @@ export const removeFromWishlist = async (
   try {
     setLoading(true);
     const response = await axios.delete(`user_data/wishlist/${product_id}`);
-    console.log(response);
     setLoading(false);
     if (response.data.success) {
       toast.success(response.data.msg);
@@ -89,7 +99,6 @@ export const removeFromWishlist = async (
     }
   } catch (err) {
     setLoading(false);
-    console.log(err.message);
     toast.error(err?.response?.data.msg);
   }
 };

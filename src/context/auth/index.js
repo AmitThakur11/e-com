@@ -1,13 +1,13 @@
-import { useContext, createContext, useState  } from "react";
+import { useContext, createContext, useState } from "react";
 export const authContext = createContext();
 
 const AuthProvider = ({ children }) => {
 
   
-
   const [loading, setLoading] = useState(false);
-  const [isLogin, setLogin] = useState(false);
+  const [isLogin, setLogin] = useState(localStorage.getItem('login'));
   const [render, setRender] = useState(false);
+
   const initialUser = {
     username: "",
     email: "",
@@ -22,6 +22,8 @@ const AuthProvider = ({ children }) => {
       return { ...userInput, [name]: value };
     });
   };
+
+
 
   return (
     <authContext.Provider
