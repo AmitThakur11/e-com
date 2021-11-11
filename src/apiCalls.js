@@ -6,8 +6,11 @@ export const loadUser = () => {};
 export const getLogin = async (userInput, setLoading, setLogin, navigate,userDispatch) => {
   try {
     const { email, password } = userInput;
-    if (!email && !password) {
-      toast.error("Empty field");
+    if (!email) {
+      return toast.error("Empty email");
+    }
+    if (!password ) {
+      return toast.error("Empty password ");
     }
     setLoading(true);
     const { data } = await axios.post("/user/login", {
