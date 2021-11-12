@@ -132,7 +132,7 @@ export const moveToCart = async (product_id, userDispatch, setLoading) => {
           type: "UPDATE WISHLIST",
           payload: wishlistResponse.data.data,
         });
-        toast.success("wishlist updated");
+        
       }
     }
   } catch (error) {

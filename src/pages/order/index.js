@@ -12,7 +12,6 @@ export default function Order() {
     userDispatch,
   } = useUser();
 
-  console.log(order);
   const { setLoading } = useAuth();
   const week = [
     "Sunday",
@@ -31,15 +30,14 @@ export default function Order() {
       
         {order.map(({ _id, orderedProduct, address }) => {
           return (
-            <div className="orderCard">
+            <div  key = {_id} className="orderCard">
               <div className="cartBox">
                 {orderedProduct.map(({ _id, img, name, price }) => {
                   return (
-                    <div className="cartBox__item">
+                    <div  key ={_id} className="cartBox__item">
                       <img src={img} alt="" />
                       <div className="cartBox__itemSection">
                         <div className="cartBox__itemName">{name}</div>
-                        {/* <div className = "cartBox__itemQty"><span>Qty: </span>{qty}</div> */}
                         <div className="cartBox__itemPrice">
                           <span>Price : </span>
                           {price}Rs

@@ -79,7 +79,6 @@ export default function Header() {
         <div className="headerOptions__icon menuIcon">
           <MenuOutlined
             onClick={() => {
-              console.log(menuToggle);
               setMenuToggle((menu) => !menu);
             }}
           />

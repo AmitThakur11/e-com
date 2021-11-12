@@ -8,7 +8,6 @@ export default function Wishlist() {
   const {
     user: { wishlist },
   } = useUser();
-  console.log(wishlist);
   return !wishlist.length ? (
     <EmptyWishlist />
   ) : (

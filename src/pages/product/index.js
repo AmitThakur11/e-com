@@ -6,7 +6,7 @@ import { useData } from "../../context/data";
 import { useUser } from "../../context/user/index";
 import { addToWishlist, removeFromWishlist } from "../../apiCalls";
 import { useAuth } from "../../context/auth";
-// import {LoginModel} from "../../component/loginModal"
+
 const Product = () => {
   const { id } = useParams();
   const {
@@ -22,7 +22,7 @@ const Product = () => {
     <section className="product-detail-container">
       {productList.map((data) => {
         return (
-          <>
+          <div key ={data._id}>
             {data._id === id && (
               <div key={data._id} className="product-detail-card">
                 <img src={data.img} alt="/" />
@@ -54,7 +54,7 @@ const Product = () => {
                 </div>
               </div>
             )}
-          </>
+          </div>
         );
       })}
     </section>
