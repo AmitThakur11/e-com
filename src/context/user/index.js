@@ -19,12 +19,7 @@ const UserProvider = ({ children }) => {
     wishlist: [],
     cart: [],
     address: [],
-    order: [
-      {
-        orderedProduct: [],
-        address: {},
-      },
-    ],
+    order: [],
     defaultAddress: {},
   };
 
@@ -35,7 +30,6 @@ const UserProvider = ({ children }) => {
         const {
           data: { username, wishlist, cart, address, order },
         } = payload;
-        console.log(username);
         return {
           ...user,
           username: username,

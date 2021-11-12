@@ -5,6 +5,7 @@ import { useUser } from "../../context/user/index";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useAuth } from "../../context/auth/index";
 import { cancelOrder } from "../../apiCalls";
+import NoOrder from "../../image/noorder.png"
 export default function Order() {
   const {
     user: { order },
@@ -25,9 +26,9 @@ export default function Order() {
   let date = new Date().getDate() + 3;
   return (
     <div>
-      <h1>ORDERS</h1>
-
+      {order.length ?<h1>ORDERS</h1>:false}
       {order.length ? (<div className="orderContainer">
+      
         {order.map(({ _id, orderedProduct, address }) => {
           return (
             <div className="orderCard">
@@ -64,7 +65,10 @@ export default function Order() {
             </div>
           );
         })}
-      </div>):(<div>No order</div>)}
+      </div>):(<div className ="noOrder__section">
+        <div className ="orderTitle">No Orders</div>
+        <img src={NoOrder} alt="/"/>
+      </div>)}
     </div>
   );
 }

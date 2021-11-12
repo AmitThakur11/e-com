@@ -1,11 +1,46 @@
 .x-vertical-card {
     width: 220px;
-    height: 300px;
+    height: fit-content;
     margin: 15px;
+    padding-bottom:0px;
 
 }
 
 .x-card-icon {
     padding: 10px;
+
+}
+
+@media(max-width:780px){
+    .x-vertical-card {
+        width: 190px;
+        height: fit-content;
+        margin: 15px;
+    
+    }
+    
+    .x-card-icon {
+        padding: 5px;
+    
+    }
+    .x_price{
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+}
+
+@media(max-width:480px){
+    .x-vertical-card {
+        width: 220px;
+        height: fit-content;
+        margin: 15px;
+    
+    }
+    
+    .x-card-icon {
+        padding: 5px;
+    
+    }
 
 }
