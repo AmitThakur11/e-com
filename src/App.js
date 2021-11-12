@@ -9,8 +9,6 @@ function App() {
   useEffect(() => {
     (() => {
       axios.defaults.baseURL = "https://soulmadeapi.herokuapp.com/"
-      console.log(process.env)
-      console.log("effect run");
       if (localStorage.getItem("token")) {
         axios.defaults.headers.common["Authorization"] = localStorage.getItem(
           "token"

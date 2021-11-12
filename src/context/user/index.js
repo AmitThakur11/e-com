@@ -20,7 +20,7 @@ const UserProvider = ({ children }) => {
     cart: [],
     address: [],
     order: [],
-    defaultAddress: {},
+    defaultAddress: null,
   };
 
   const userReducer = (user, action) => {
@@ -49,7 +49,7 @@ const UserProvider = ({ children }) => {
         return { ...user, address: payload };
       }
       case "ADD ORDER": {
-        return { ...user, order: payload };
+        return { ...user, order: payload , cart : [] };
       }
       case "REMOVE ORDER": {
         return { ...user, order: payload };

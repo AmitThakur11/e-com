@@ -7,6 +7,7 @@ import { AddressCard } from "../../component";
 import { EditAddressForm } from "../../component";
 import { addOrder } from "../../apiCalls";
 import { useAuth } from "../../context/auth/index";
+import { toast } from "react-toastify";
 export default function Address() {
   const { user, userDispatch } = useUser();
   const { setLoading } = useAuth();
@@ -16,10 +17,8 @@ export default function Address() {
     editAddress: null,
   };
   const [edit, setEdit] = useState(initialEdit);
-  let cartId = user.cart.map(({ productId: { _id } }) => _id);
-  // let cartProduct = user.cart.map(({ productId }) => productId);
+  let cartProductId = user.cart.map(({ productId: { _id } }) => _id);
 
-  console.log(cartId);
 
   return (
     <div className="addressPage">
@@ -43,9 +42,11 @@ export default function Address() {
         <div className="placeOrder_btn">
           <button
             onClick={() => {
-              
-              addOrder(cartId, user.defaultAddress, userDispatch, setLoading);
+              if(!user.defaultAddress){
+                return toast.warn("Address required")
 
+              }
+              addOrder(cartProductId, user.defaultAddress, userDispatch, setLoading);
               navigate("/order");
             }}
           >

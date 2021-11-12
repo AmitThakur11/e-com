@@ -206,26 +206,32 @@ export const moveToWishlist = async (product_id, userDispatch, setLoading) => {
 
 export const addAddress = async (address_data, userDispatch, setLoading) => {
   try {
+    setLoading(true)
     const { data } = await axios.post("/user_data/address", {
       address: address_data,
     });
+    setLoading(false)
     if (data.success) {
       userDispatch({ type: "UPDATE ADDRESS", payload: data.data });
       return toast.success(data.msg);
     }
   } catch (error) {
+    setLoading(false)
     toast(error.response.data.msg);
   }
 };
 
 export const removeAddress = async (address_id, userDispatch, setLoading) => {
   try {
+    setLoading(true)
     const { data } = await axios.delete(`/user_data/address/${address_id}`);
+    setLoading(false)
     if (data.success) {
       userDispatch({ type: "UPDATE ADDRESS", payload: data.data });
       return toast.success(data.msg);
     }
   } catch (error) {
+    setLoading(false)
     toast(error.response.data.msg);
   }
 };
