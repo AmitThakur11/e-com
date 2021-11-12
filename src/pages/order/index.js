@@ -27,7 +27,7 @@ export default function Order() {
     <div>
       <h1>ORDERS</h1>
 
-      <div className="orderContainer">
+      {order.length ? (<div className="orderContainer">
         {order.map(({ _id, orderedProduct, address }) => {
           return (
             <div className="orderCard">
@@ -64,7 +64,7 @@ export default function Order() {
             </div>
           );
         })}
-      </div>
+      </div>):(<div>No order</div>)}
     </div>
   );
 }

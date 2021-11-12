@@ -257,15 +257,21 @@ export const addOrder = async (
   setLoading
 ) => {
   try {
+    setLoading(true)
     const { data } = await axios.post("user_data/order/add", {
       orderedProduct,
       address,
     });
+    setLoading(false)
     if (data.success) {
+      userDispatch({
+        type: "ADD ORDER",
+        payload: data.data,
+      });
       return toast.success("Order Updated");
     }
-    toast.error("Order Failed");
   } catch (error) {
+    setLoading(false)
     toast.error("Something went wrong");
   }
 };
@@ -273,13 +279,16 @@ export const addOrder = async (
 export const cancelOrder = async (orderId, userDispatch, setLoading) => {
   // console.log(orderId)
   try {
-    const { data } = await axios.delete(`user_data/order/${orderId}/cancel`);
-
+    setLoading(true)
+    const { data } = await axios.delete(`user_data/order/${orderId}/cancel`)
+    setLoading(false)
     if (data.success) {
-      console.log(data.data.data);
+      
+      userDispatch({type : "REMOVE ORDER" , payload : data.data.order})
       return toast.success(data.msg);
     }
   } catch (err) {
+    setLoading(false)
     toast.error(err.response);
   }
 };

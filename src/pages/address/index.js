@@ -17,7 +17,7 @@ export default function Address() {
   };
   const [edit, setEdit] = useState(initialEdit);
   let cartId = user.cart.map(({ productId: { _id } }) => _id);
-  let cartProduct = user.cart.map(({ productId }) => productId);
+  // let cartProduct = user.cart.map(({ productId }) => productId);
 
   console.log(cartId);
 
@@ -43,13 +43,7 @@ export default function Address() {
         <div className="placeOrder_btn">
           <button
             onClick={() => {
-              userDispatch({
-                type: "ADD ORDER",
-                payload: {
-                  orderedProduct: cartProduct,
-                  address: user.defaultAddress,
-                },
-              });
+              
               addOrder(cartId, user.defaultAddress, userDispatch, setLoading);
 
               navigate("/order");

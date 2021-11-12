@@ -55,7 +55,7 @@ const UserProvider = ({ children }) => {
         return { ...user, address: payload };
       }
       case "ADD ORDER": {
-        return { ...user, order: [...user.order, payload] };
+        return { ...user, order: payload };
       }
       case "REMOVE ORDER": {
         return { ...user, order: payload };
