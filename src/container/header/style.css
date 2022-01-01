@@ -10,7 +10,9 @@
     background-color: white;
     position: fixed;
     z-index: 9999;
-    position: relative;
+    position: sticky;
+        top: 0px;
+        left: 0px;
 }
 
 .logo {
@@ -153,9 +155,7 @@
     .header {
         height: 60px;
         width: 100vw;
-        position: sticky;
-        top: 0px;
-        left: 0px;
+        
     }
 
     .logo img {
