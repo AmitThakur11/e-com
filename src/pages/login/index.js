@@ -15,9 +15,10 @@ const Login = () => {
     <div className="loginContainer">
       <div className="loginBox">
         <img src={LoginImg} alt="/" />
-        <div className="loginBox_input">
-          <div className="loginBox_inner">
+        <div className="loginBox__input">
+          <div className="loginBox__inner">
             <div style={{ fontSize: "20px", fontWeight: "600" }}>Login</div>
+        
             <input
               name="email"
               value={email}
@@ -31,9 +32,9 @@ const Login = () => {
               type="password"
               placeholder="-password"
             />
-            <div className="btn-flex">
+            <div className="btnFlex">
               <button
-                className="loginBox_btn"
+                className="loginBox__btn"
                 onClick={() =>
                   getLogin(
                     userInput,
@@ -47,7 +48,7 @@ const Login = () => {
                 Log in
               </button>
               <button
-                className="loginBox_btn"
+                className="loginBox__btn"
                 onClick={() =>
                   getLogin(
                     { email: "test1@gmail.com", password: "test12345" },
@@ -61,7 +62,7 @@ const Login = () => {
                 Demo
               </button>
             </div>
-            <div className="loginBox_account">
+            <div className="loginBox__account">
               New to site?<Link to="/signup">Create a account</Link>
             </div>
           </div>
