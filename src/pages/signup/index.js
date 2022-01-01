@@ -3,6 +3,7 @@ import SignupImg from "../../image/signup.svg";
 import { register } from "../../apiCalls";
 import { useAuth } from "../../context/auth/index";
 import { useNavigate } from "react-router-dom";
+import { signUpInputs } from "./utils";
 const Signup = () => {
   const { getInput, userInput, setLoading } = useAuth();
   const navigate = useNavigate();
@@ -14,32 +15,16 @@ const Signup = () => {
         <div className="signUp__boxInput">
           <div className="signUp__boxInner">
             <div style={{ fontSize: "20px", fontWeight: "600" }}>Register</div>
-            <input
-              name="username"
-              placeholder="Name"
-              onChange={(e) => getInput(e)}
-              value={userInput.username}
-            />
-            <input
-              name="email"
-              placeholder="Email"
-              onChange={(e) => getInput(e)}
-              value={userInput.email}
-            />
-            <input
-              name="password"
-              type="password"
-              placeholder="Password"
-              onChange={(e) => getInput(e)}
-              value={userInput.password}
-            />
-            <input
-              name="cpassword"
-              type="password"
-              placeholder="Confirm password"
-              onChange={(e) => getInput(e)}
-              value={userInput.cpassword}
-            />
+            {
+              signUpInputs.map((data)=>{
+                return <input
+                {...data}
+                onChange={(e) => getInput(e)}
+                value={userInput[data.name]}
+              />
+              })
+              
+}
             <button
               onClick={() => register(userInput, setLoading, navigate)}
               className="signUp__boxBtn"
