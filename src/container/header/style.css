@@ -2,7 +2,7 @@
 
 .header {
     display: flex;
-    height:80px;
+    height: 80px;
     width: 100%;
     justify-content: space-between;
     align-items: center;
@@ -153,6 +153,9 @@
     .header {
         height: 60px;
         width: 100vw;
+        position: sticky;
+        top: 0px;
+        left: 0px;
     }
 
     .logo img {
@@ -171,29 +174,29 @@
     }
 }
 
-@media(max-width:480px){
-
-.logo p {
-
-
-    font-size: 24px;
-    padding: 0px 6px;
-    margin-left: 2px;
-
-
-}
-}
-
-
-@media(max-width:350px){
+@media(max-width:480px) {
 
     .logo p {
-    
-    
+
+
+        font-size: 24px;
+        padding: 0px 6px;
+        margin-left: 2px;
+
+
+    }
+}
+
+
+@media(max-width:350px) {
+
+    .logo p {
+
+
         font-size: 22px;
         padding: 0px 3px;
         margin-left: 0px;
-    
+
     }
-    
-    }
+
+}
