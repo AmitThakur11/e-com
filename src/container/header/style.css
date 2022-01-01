@@ -54,6 +54,7 @@
     margin: 0px 10px;
 }
 
+
 .headerOptions__icon {
     position: relative;
     margin: 0px 5px;
@@ -61,7 +62,9 @@
 }
 
 .headerOptions_menu {
-    margin: 0px 10px
+    margin: 0px 10px;
+    display: flex;
+    align-items: center;
 }
 
 .headerOptions__icon>span {
