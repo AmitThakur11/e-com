@@ -4,6 +4,8 @@ export const authContext = createContext();
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [isLogin, setLogin] = useState(localStorage.getItem("login"));
+  console.log(localStorage.getItem('login'))
+  console.log("isLogin",isLogin)
   const initialUser = {
     username: "",
     email: "",

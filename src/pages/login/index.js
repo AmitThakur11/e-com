@@ -9,7 +9,6 @@ import { loginInputs } from "./utils";
 const Login = () => {
   const { getInput, userInput, setLoading, setLogin } = useAuth();
   const { userDispatch } = useUser();
-  const { email, password } = userInput;
   const navigate = useNavigate();
   return (
     <div className="loginContainer">
