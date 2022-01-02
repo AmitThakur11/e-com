@@ -1,6 +1,18 @@
 import { toast } from "react-toastify";
 import axios from "axios";
 
+export const loadProducts = async(setLoading,setProductList)=>{
+  try {
+      setLoading(true);
+      const response = await axios.get("/product");
+      setProductList(response.data.product);
+      setLoading(false);
+  } catch (err) {
+    setLoading(false);
+    toast.error(err.response.data.msg);
+  }
+}
+
 export const loadUser =  async( setLoading ,setLogin,userDispatch ) => {
   try {
         setLoading(true);
@@ -48,7 +60,7 @@ export const getLogin = async (
       toast.success(data.msg);
       localStorage.setItem("token", data.token);
       localStorage.setItem("login", true);
-      // axios.defaults.headers.common["Authorization"] = data.token;
+      axios.defaults.headers.common["Authorization"] = data.token;
       userDispatch({ type: "LOAD USER", payload: { data: data.user[0] } });
       return;
     }

@@ -12,7 +12,7 @@ function App() {
       axiosInitializer()
     })()
     
-  }, [setLogin]);
+  }, [setLogin,]);
 
   return (
     <div className="app">

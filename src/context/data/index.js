@@ -6,14 +6,13 @@ import {
   useReducer,
 } from "react";
 import { useAuth } from "../auth/index";
-import axios from "axios";
+import { loadProducts } from "../../apiCalls";
 import {
   initialState,
   filterReducer,
   filteredData,
   sortData,
 } from "./reducers/filter";
-import { toast } from "react-toastify";
 import { useUser } from "../user/index";
 
 export const dataContext = createContext();
@@ -27,17 +26,7 @@ const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(filterReducer, initialState);
 
   useEffect(() => {
-    try {
-      (async () => {
-        setLoading(true);
-        const response = await axios.get("/product");
-        setProductList(response.data.product);
-        setLoading(false);
-      })();
-    } catch (err) {
-      setLoading(false);
-      toast.error(err.response.data.msg);
-    }
+    loadProducts(setLoading, setProductList);
   }, [userDispatch, setLoading]);
 
   const getSortedData = sortData(productList, state);
