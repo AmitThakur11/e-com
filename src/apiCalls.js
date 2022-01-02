@@ -1,7 +1,25 @@
 import { toast } from "react-toastify";
 import axios from "axios";
 
-export const loadUser = () => {};
+export const loadUser =  async( setLoading ,setLogin,userDispatch ) => {
+  try {
+        setLoading(true);
+        const { data } = await axios.get("/user_data/userinfo");
+        if (data.success) {
+          setLoading(false);
+          userDispatch({ type: "LOAD USER", payload: data });
+          return;
+        }
+      } catch (err) {
+        localStorage.getItem("login") && toast.info("session expired");
+        localStorage.removeItem("token");
+        localStorage.removeItem("login");
+        setLogin(false);
+        setLoading(false);
+      }
+    
+
+};
 
 export const getLogin = async (
   userInput,
@@ -24,13 +42,13 @@ export const getLogin = async (
       password: password,
     });
     if (data.success) {
-      setLogin(true);
+      setLogin(true)
       setLoading(false);
       navigate("/store");
       toast.success(data.msg);
       localStorage.setItem("token", data.token);
       localStorage.setItem("login", true);
-      axios.defaults.headers.common["Authorization"] = data.token;
+      // axios.defaults.headers.common["Authorization"] = data.token;
       userDispatch({ type: "LOAD USER", payload: { data: data.user[0] } });
       return;
     }

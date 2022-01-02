@@ -5,11 +5,10 @@ import { useAuth } from "../../context/auth/index";
 import { getLogin } from "../../apiCalls";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../context/user";
-
+import { loginInputs } from "./utils";
 const Login = () => {
   const { getInput, userInput, setLoading, setLogin } = useAuth();
   const { userDispatch } = useUser();
-  const { email, password } = userInput;
   const navigate = useNavigate();
   return (
     <div className="loginContainer">
@@ -18,20 +17,18 @@ const Login = () => {
         <div className="loginBox__input">
           <div className="loginBox__inner">
             <div style={{ fontSize: "20px", fontWeight: "600" }}>Login</div>
-        
-            <input
-              name="email"
-              value={email}
-              onChange={(e) => getInput(e)}
-              placeholder="-Email"
-            />
-            <input
-              name="password"
-              value={password}
-              onChange={(e) => getInput(e)}
-              type="password"
-              placeholder="-password"
-            />
+            {loginInputs.map((data) => {
+              return (
+                <input
+                  {...data}
+                  value= {userInput[data.name]}
+                  onChange={(e) => getInput(e)}
+                 
+                />
+              );
+            })}
+
+           
             <div className="btnFlex">
               <button
                 className="loginBox__btn"
