@@ -61,7 +61,7 @@ export default function Header() {
           </Link>
 
           <button className="loginBtn" onClick={() => login_logout()}>
-            {localStorage.getItem("token") ? "Log out" : "Log in"}
+            {isLogin ? "Log out" : "Log in"}
           </button>
         </div>
         <Link to="/cart">
