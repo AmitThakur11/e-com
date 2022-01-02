@@ -4,12 +4,12 @@ import {
   useEffect,
   useReducer,
   useState,
-  useCallback,
 } from "react";
 import { useAuth } from "../auth/index";
-import axios from "axios";
-import { toast } from "react-toastify";
+
+import {loadUser} from "../../apiCalls"
 export const userContext = createContext();
+
 
 const UserProvider = ({ children }) => {
   const { setLogin, setLoading } = useAuth();
@@ -64,29 +64,10 @@ const UserProvider = ({ children }) => {
   };
   const [user, userDispatch] = useReducer(userReducer, initialUser);
 
-  const checkAuth = useCallback(async () => {
-    try {
-      setLoading(true);
-      const { data } = await axios.get("/user_data/userinfo");
-      if (data.success) {
-        setLogin(true);
-        setLoading(false);
-        userDispatch({ type: "LOAD USER", payload: data });
-        return;
-      }
-      setLoading(false);
-    } catch (err) {
-      setLoading(false);
-      localStorage.getItem("login") && toast.info("session expired");
-      localStorage.removeItem("token");
-      localStorage.removeItem("login");
-      setLogin(false);
-      delete axios.defaults.headers.common["Authorization"];
-    }
-  }, [setLoading, setLogin, userDispatch]);
-  useEffect(() => {
-    checkAuth();
-  }, [checkAuth]);
+
+  useEffect(()=>{
+      loadUser(setLoading ,setLogin,userDispatch)
+  },[setLoading,setLogin])
 
   return (
     <userContext.Provider

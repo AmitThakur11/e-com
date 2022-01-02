@@ -22,7 +22,7 @@ export default function Home() {
           <div className="innerFeatures">
             {features.map(({ id, img, name }) => {
               return (
-                <div className="featureBox">
+                <div key ={id} className="featureBox">
                   <img
                     src={img}
                     alt="features"
