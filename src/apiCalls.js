@@ -9,7 +9,7 @@ export const loadProducts = async(setLoading,setProductList)=>{
       setLoading(false);
   } catch (err) {
     setLoading(false);
-    toast.error(err.response.data.msg);
+    toast.error(err.message);
   }
 }
 
@@ -62,7 +62,7 @@ export const getLogin = async (
       localStorage.setItem("login", true);
       axios.defaults.headers.common["Authorization"] = data.token;
       userDispatch({ type: "LOAD USER", payload: { data: data.user[0] } });
-      return;
+      return data;
     }
   } catch (err) {
     setLoading(false);
@@ -97,13 +97,13 @@ export const register = async (userInput, setLoading, navigate) => {
 
 export const addToWishlist = async (product_id, userDispatch, setLoading) => {
   try {
-    const { data } = await axios.post(`user_data/wishlist/${product_id}`);
+    const { data : {msg ,success,data} } = await axios.post(`user_data/wishlist/${product_id}`);
 
-    if (data.success) {
-      toast.success(data.msg);
+    if (success) {
+      toast.success(msg);
       return userDispatch({
         type: "UPDATE WISHLIST",
-        payload: data.data.wishlist,
+        payload: data.wishlist,
       });
     }
   } catch (err) {
@@ -117,13 +117,13 @@ export const removeFromWishlist = async (
   setLoading
 ) => {
   try {
-    const response = await axios.delete(`user_data/wishlist/${product_id}`);
-    if (response.data.success) {
-      toast.success(response.data.msg);
-      userDispatch({ type: "UPDATE WISHLIST", payload: response.data.data });
+    const {data : {msg ,success , data}} = await axios.delete(`user_data/wishlist/${product_id}`);
+    if (success) {
+      toast.success(msg);
+      userDispatch({ type: "UPDATE WISHLIST", payload: data.wishlist });
     }
   } catch (err) {
-    toast.error(err?.response?.data.msg);
+    toast.error(err.message);
   }
 };
 
@@ -137,8 +137,10 @@ export const addToCart = async (product_id, userDispatch, setLoading) => {
         payload: cartResponse.data.data.cart,
       });
 
+      console.log(cartResponse)
+
       toast.success("Cart  updated");
-      //
+      return cartResponse
     }
   } catch (err) {
     toast.error(err.response.data.msg);

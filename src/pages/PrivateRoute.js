@@ -3,7 +3,6 @@ import { useAuth } from "../context/auth";
 
 const PrivateRoute = ({ path, ...props }) => {
   const { isLogin } = useAuth();
-  console.log("private",isLogin)
   return isLogin ? (
     <Route path={path} {...props} />
   ) : 

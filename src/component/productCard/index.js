@@ -29,7 +29,7 @@ export default function ProductCard({ product }) {
   return (
     <section key={product._id} className="x-vertical-card">
       <Link to={`/store/${product._id}`}>
-        <img src={product.img} alt="female-tshirt-2" border="0" />
+        <img src={product.img} alt="female-tshirt-2" loading="lazy" border="0" />
 
         <div className="vertical-card-content">
           <div className="title">{product.name}</div>
