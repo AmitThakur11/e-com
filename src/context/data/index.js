@@ -40,6 +40,7 @@ const DataProvider = ({ children }) => {
         filterState: state,
         sidebar,
         setSidebar,
+        setProductList
       }}
     >
       {children}

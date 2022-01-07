@@ -2,17 +2,22 @@ import { Header, Content } from "./container";
 import "./index.css";
 
 import { useAuth } from "./context/auth/index";
+import {useData} from "./context/data"
 import { useEffect } from "react";
 import { axiosInitializer } from "./utils/axiosInitializer";
+import {loadProducts} from "./apiCalls"
 function App() {
-  const {setLogin } = useAuth();
+  const {setLogin , setLoading} = useAuth();
+  const {setProductList} = useData()
 
   useEffect(() => {
     (()=>{
-      axiosInitializer()
+      axiosInitializer();
+      loadProducts(setLoading, setProductList);
+
     })()
     
-  }, [setLogin,]);
+  }, [setLogin,setProductList ,setLoading]);
 
   return (
     <div className="app">
