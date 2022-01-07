@@ -1,73 +1,74 @@
+.editAddressForm {
+  background-color: white;
+  margin-top: 4px;
+  position: absolute;
+  height: 500px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 4px;
+  align-self: center;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  z-index: 9999;
+}
 
+.editAddressForm_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 80%;
+  height: 100%;
+  transition: 5000ms ease-in-out;
+}
+
+.editAddressInput {
+  width: 100%;
+  height: 40px;
+  border: 1px solid rgb(0, 0, 0);
+  font-size: 18px;
+  padding: 10px;
+}
+
+.editAddressInput::placeholder {
+  color: rgb(233, 126, 116);
+}
+
+.editAddressBtn {
+  font-size: 18px;
+  padding: 6px 8px;
+  border: 0px;
+  margin: 2px;
+  width: fit-content;
+  align-self: center;
+  background-color: rgb(253, 86, 86);
+  color: white;
+  font-weight: 600;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+
+.editAddressForm_btn {
+  display: flex;
+
+}
+
+.editAddressForm_btn>button {
+  margin: 4px;
+  font-weight: 600;
+  color: white;
+  padding: 3px 7px;
+  border: 0px;
+  background: rgb(235, 81, 81);
+  font-size: 18px;
+  border-radius: 4px;
+}
+
+
+@media(max-width :480px) {
   .editAddressForm {
-    background-color: white;
-    margin-top: 4px;
-    position:absolute;
-    height: 500px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 4px;
-    align-self: center;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-      z-index: 9999;
+    width: 320px
   }
-  .editAddressForm_box {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 80%;
-    height: 100%;
-    transition: 5000ms ease-in-out;
-  }
-  
-  .editAddressInput {
-    width: 100%;
-    height: 40px;
-    border: 1px solid rgb(0, 0, 0);
-    font-size: 18px;
-    padding: 10px;
-  }
-  
-  .editAddressInput::placeholder {
-    color: rgb(233, 126, 116);
-  }
-  
-  .editAddressBtn {
-    font-size: 18px;
-    padding: 6px 8px;
-    border: 0px;
-    margin:2px;
-    width:fit-content;
-    align-self: center;
-    background-color: rgb(253, 86, 86);
-    color: white;
-    font-weight: 600;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
-      rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-  }
-  
-  
-  .editAddressForm_btn{
-    display: flex;
-
-  }
-  .editAddressForm_btn > button {
-    margin: 4px;
-    font-weight: 600;
-    color: white;
-    padding: 3px 7px;
-    border: 0px;
-    background: rgb(235, 81, 81);
-    font-size: 18px;
-    border-radius: 4px;
-  }
-
-
-  @media(max-width :480px){
-    .editAddressForm{
-      width :320px
-    }
-  }
+}

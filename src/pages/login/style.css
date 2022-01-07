@@ -1,87 +1,113 @@
-.loginContainer{
- 
+.loginContainer {
+
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 87vh;
-    
-  
-    
+    height: calc( 100vh - 80px );
+
+
+
 }
 
-.loginBox{
-    height:300px;
+.loginBox {
+    height: 300px;
     background: rgb(255, 255, 255);
     display: flex;
     max-width: 600px;
-    border-radius:4px;
+    border-radius: 4px;
 
 }
-.loginBox>img{
-    height:100%;
-    flex:1;
+
+.loginBox>img {
+    height: 100%;
+    flex: 1;
 }
-.loginBox_input{
-    flex:1;
+
+.loginBox__input {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
 }
-.loginBox_inner{
-    width:70%;
-    height:90%;
+
+.loginBox__inner {
+    width: 70%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    
-}
-.loginBox_inner > input{
-    border : 0;
-    border-bottom: 1px solid black;
-}
-.btn-flex{
-    display: flex;
-    flex-wrap: wrap;
-    width:70%;
-    justify-content: space-between;
-}
-.loginBox_btn{
-    width: max-content;
-    padding:3px 10px;
-    color:white;
-    border:0;
-    border-radius : 2px;
-    background: crimson;
-    font-weight: 600;
 
 }
-.loginBox_btn:hover{
+
+.loginBox__inner>input {
+    border: 0;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.btnFlex {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.loginBox__btn {
+    background: var(--primary);
+    border: 0px;
+    height: 35px;
+    color: white;
+    font-weight: 700;
+    border-radius: 4px;
+    flex:1 ;
+    margin:2px;
+}
+
+.loginBox__btn:hover {
     background: black;
     transform: scale(1.09);
 }
 
-.loginBox_account{
+.loginBox__account {
     font-size: small;
 }
-.loginBox_account > a{
-    color:red;
+
+.loginBox__account>a {
+    color: red;
 }
 
-.logoutBox{
-    width:400px;
+.logoutBox {
+    width: 400px;
 }
-.logoutBox img{
+
+.logoutBox img {
     width: 50%;
 
 }
+@media(max-width : 780px) {
+    .loginBox {
+        width: 360px;
+        position: relative
+    }
 
-@media(max-width : 480px){
-    .loginBox{
-        width :300px;
+    .loginBox > img {
+        height: 100%;
+        flex: 1 1;
+        position: absolute;
+        opacity: 0.4;
     }
-    .loginBox img{
-        display: none;
+    .loginBox__inner{
+        z-index: 1;
     }
+}
+
+@media(max-width : 480px) {
+    .loginBox {
+        width: 90%;
+    }
+
+    
 }

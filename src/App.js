@@ -1,25 +1,18 @@
 import { Header, Content } from "./container";
 import "./index.css";
-import axios from "axios";
+
 import { useAuth } from "./context/auth/index";
 import { useEffect } from "react";
+import { axiosInitializer } from "./utils/axiosInitializer";
 function App() {
-  const { setLogin } = useAuth();
+  const {setLogin } = useAuth();
 
   useEffect(() => {
-    (() => {
-      axios.defaults.baseURL = "https://soulmadeapi.herokuapp.com/";
-      console.log("effect run");
-      if (localStorage.getItem("token")) {
-        axios.defaults.headers.common["Authorization"] = localStorage.getItem(
-          "token"
-        );
-        setLogin(true);
-
-        return;
-      }
-    })();
-  }, [setLogin]);
+    (()=>{
+      axiosInitializer()
+    })()
+    
+  }, [setLogin,]);
 
   return (
     <div className="app">

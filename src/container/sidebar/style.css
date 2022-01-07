@@ -1,41 +1,44 @@
-.sortFilter{
+.sortFilter {
     display: flex;
     flex-direction: column;
     justify-content: center;
     transition: ease-in-out 560ms;
 }
-.sortFilter__sort{
+
+.sortFilter__sort {
     display: flex;
     flex-direction: column;
-    padding:10px 15px;
+    padding: 10px 15px;
 }
 
-.sortFilter__filter{
+.sortFilter__filter {
     display: flex;
     flex-direction: column;
-    padding:10px 15px;
-}
-.sortFilter_title{
-    color :rgb(218, 68, 68);
-    font-size:20px;
-    margin : 4px 0;
+    padding: 10px 15px;
 }
 
-.sortFilter__filter label{
+.sortFilter_title {
+    color: rgb(218, 68, 68);
+    font-size: 20px;
+    margin: 4px 0;
+}
+
+.sortFilter__filter label {
     font-size: 14px;
 }
-.sortFilter__clearBtn{
-    max-width:100px;
-    color:white;
+
+.sortFilter__clearBtn {
+    max-width: 100px;
+    color: white;
     background-color: rgb(218, 68, 68);
-    border:0;
-    padding:3px 7px
+    border: 0;
+    padding: 3px 7px
 }
 
-@media(max-width : 640px){
-    
-    
-    .sortFilter{
-        margin:10px;
+@media(max-width : 640px) {
+
+
+    .sortFilter {
+        margin: 10px;
     }
 }

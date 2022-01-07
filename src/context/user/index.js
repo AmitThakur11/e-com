@@ -1,97 +1,28 @@
-import { useContext, createContext, useEffect, useReducer , useState, useCallback} from "react";
+import {
+  useContext,
+  createContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { useAuth } from "../auth/index";
-import axios from "axios"
-import {toast} from "react-toastify"
+import { initialUser, userReducer } from "./reducer";
+import { loadUser } from "../../apiCalls";
 export const userContext = createContext();
 
-
 const UserProvider = ({ children }) => {
-  const {setLogin, setLoading} = useAuth();
-  const [modal , setModal] = useState(false)
-  const initialUser = {
-    username: "",
-    wishlist: [],
-    cart: [],
-    address: [],
-    order: [{
-      orderedProduct: [],
-      address : {}
-    }
-    ],
-    defaultAddress : {}
-  };
-
-  const userReducer = (user, action) => {
-    const { type, payload } = action;
-    switch (type) {
-      case "LOAD USER": {
-        const {data : {username , wishlist , cart , address , order}} = payload
-        console.log(username)
-        return {
-          ...user,
-          username: username,
-          wishlist: wishlist,
-          cart: cart,
-          address: address,
-          order: [...order]
-        };
-      }
-      case "UPDATE WISHLIST": {
-        return {...user , wishlist : payload};
-      }
-      case "UPDATE CART": {
-        return {...user , cart : payload};
-      }
-      case "UPDATE ADDRESS":{
-        return {...user , address : payload}
-      }
-      case "ADD ORDER":{
-        
-        return {...user , order : [...user.order , payload]}
-      }
-      case "REMOVE ORDER":{
-        return {...user , order : payload}
-
-      }
-      case "SELECT ADDRESS":{
-        return {...user, defaultAddress : payload}
-      }
-      default: {
-        return user;
-      }
-    }
-  };
+  const { setLogin, setLoading } = useAuth();
+  const [modal, setModal] = useState(false);
   const [user, userDispatch] = useReducer(userReducer, initialUser);
 
-  const checkAuth = useCallback(async ()=>{
-    try{
-        
-      setLoading(true);
-      const {data} = await axios.get("/user_data/userinfo");
-      if (data.success) {
-        setLogin(true);
-        setLoading(false);
-        userDispatch({ type: "LOAD USER", payload: data });
-        return
-      }
-      setLoading(false)
-
-    }catch(err){
-    setLoading(false);
-    toast.info("session expired")
-    localStorage.removeItem('token')
-    setLogin(false)
-    delete axios.defaults.headers.common["Authorization"];
-    }
-   
-  },[setLoading,setLogin,userDispatch])
-  useEffect(() =>{
-    checkAuth()
-  }
-  ,[checkAuth]);
+  useEffect(() => {
+    loadUser(setLoading, setLogin, userDispatch);
+  }, [setLoading, setLogin]);
 
   return (
-    <userContext.Provider value={{ user, userDispatch ,modal , setModal , initialUser}}>
+    <userContext.Provider
+      value={{ user, userDispatch, modal, setModal, initialUser }}
+    >
       {children}
     </userContext.Provider>
   );

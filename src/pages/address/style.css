@@ -1,127 +1,133 @@
+.addressPage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
 
+  background-color: rgb(228, 222, 222);
+}
+
+.addressForm {
+  background-color: white;
+  height: 500px;
+  width: 400px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+  align-self: center;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.addressForm_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 80%;
+  height: 100%;
+  transition: 5000ms ease-in-out;
+}
+
+.addressInput {
+  width: 100%;
+  height: 40px;
+  border: 1px solid rgb(0, 0, 0);
+  font-size: 18px;
+  padding: 10px;
+}
+
+.addressInput::placeholder {
+  color: rgb(233, 126, 116);
+}
+
+.addressBtn {
+  font-size: 18px;
+  padding: 6px 8px;
+  border: 0px;
+  margin: 2px;
+  width: fit-content;
+  align-self: center;
+  background-color: rgb(253, 86, 86);
+  color: white;
+  font-weight: 600;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+
+.addressCard {
+  background-color: white;
+  position: relative;
+  margin: 5px;
+  padding: 20px;
+  width: 200px;
+  line-height: 1.6em;
+  min-height: 200px;
+  border-radius: 5px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+.addressCard input {
+  position: absolute;
+
+  font-size: 40px;
+  top: 5px;
+  left: 5px;
+}
+
+.addressSection {
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.addressDelete {
+  position: absolute;
+  display: grid;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  place-content: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: rgb(194, 81, 81);
+  bottom: 4px;
+  right: 4px;
+}
+
+.placeOrder_btn {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.placeOrder_btn button {
+  padding: 6px 12px;
+  font-size: 18px;
+  border: 0;
+  background-color: rgb(242, 93, 93);
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  font-weight: 600;
+  color: white;
+
+}
+
+.placeOrder_btn button:hover,
+.addressBtn:hover {
+  background-color: black;
+}
+
+@media(max-width : 780px) {
   .addressPage {
-    min-height: 100vh;
-    display :flex;
-    flex-direction: column;
-    place-items: center;
-    
-    background-color: rgb(228, 222, 222);
-  }
-  
-  .addressForm {
-    background-color: white;
-    height: 500px;
-    width: 400px;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    border-radius: 4px;
-    align-self: center;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  }
-  .addressForm_box {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 80%;
-    height: 100%;
-    transition: 5000ms ease-in-out;
-  }
-  
-  .addressInput {
-    width: 100%;
-    height: 40px;
-    border: 1px solid rgb(0, 0, 0);
-    font-size: 18px;
-    padding: 10px;
-  }
-  
-  .addressInput::placeholder {
-    color: rgb(233, 126, 116);
-  }
-  
-  .addressBtn {
-    font-size: 18px;
-    padding: 6px 8px;
-    border: 0px;
-    margin:2px;
-    width:fit-content;
-    align-self: center;
-    background-color: rgb(253, 86, 86);
-    color: white;
-    font-weight: 600;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
-      rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-  }
-  
-  
-  .addressCard{
-    background-color:white;
-    position:relative;
-    margin:5px;
-    padding:20px;
-    width:200px;
-    line-height: 1.6em;
-    min-height : 200px;
-    border-radius:5px;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-  }
-  .addressCard input{
-    position: absolute;
-    
-    font-size : 40px;
-    top:5px;
-    left:5px;
-  }
-
-  .addressSection{
-    width:95%;
-    display :flex;
-    flex-wrap: wrap;
-
-  }
-  .addressDelete{
-    position :absolute;
-    display: grid;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-    place-content: center;
-    width:25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: rgb(235, 230, 230);
-    bottom:4px;
-    right:4px;
-  }
-  .placeOrder_btn{
-    display: flex;
-    width:100%;
-    justify-content: center;
-  }
-  .placeOrder_btn button{
-    padding:6px 12px;
-    font-size: 18px;
-    border:0;
-    background-color: rgb(242, 93, 93);
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
-      rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-    font-weight: 600;
-    color:white;
-
-  }
-  .placeOrder_btn button:hover,
-  .addressBtn:hover{
-    background-color: black;
-  }
-
-  @media(max-width : 780px){
-    .addressPage{
     display: flex;
     flex-direction: column;
     place-items: center;
-    }
-    .placeOrder_btn{
-      bottom: 20px;
-    position: absolute;
-    }
   }
+
+  .placeOrder_btn {
+    bottom: 20px;
+    position: absolute;
+  }
+}

@@ -1,8 +1,6 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=Crushed&display=swap');
 
-.home{
+.home {
     display: flex;
     width: 100%;
     height: 85vh;
@@ -10,73 +8,88 @@
     justify-content: center;
     align-items: center;
 }
-.innerHome{
-    width:100%;
+
+.innerHome {
+    width: 100%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
-.bannerSection{
-    /* background-image:url(http://7-themes.com/data_images/out/7/6790155-flower-pattern-wallpaper.jpg); */
+
+.bannerSection {
     height: 350px;
     width: 100%;
     position: relative;
     background: black;
 }
-.bannerDetail{
+
+.bannerDetail {
     width: 100%;
     height: 100%;
     position: absolute;
-    top:0;
+    top: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     place-items: center;
-    color:white;
+    color: white;
     text-align: center;
-    
+
 }
 
-.detail{
+.detail {
     font-family: 'Crushed', cursive;
-    color:white;
-    font-size:70px;
-
+    color: white;
+    font-size: 50px;
+    width:fit-content;
     font-weight: 900;
 
-    overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid orange; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .15em; /* Adjust as needed */
-  animation: 
-    typing 5.5s steps(40, end) infinite,
-    blink-caret .75s step-end infinite;
-    
+    overflow: hidden;
+    /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange;
+    /* The typwriter cursor */
+    white-space: nowrap;
+    /* Keeps the content on a single line */
+    margin: 0 auto;
+    /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em;
+    /* Adjust as needed */
+    animation:
+        typing 5.5s steps(40, end) infinite,
+        blink-caret .75s step-end infinite;
+
 
 }
 
-.detail > span{
+.detail>span {
     color: #f74b4b;
     font-size: 80px;
     font-family: 'Crushed', cursive;
 }
 
-.shopBtn{
+.shopBtn {
     font-size: 24px;
     margin-top: 10px;
     font-weight: 500;
     background-color: white;
-    padding:4px 16px;
-    border:0
-}
-.features{
-    display: flex;
-    width:100%;
- 
+    padding: 4px 16px;
+    border: 0;
+    transition: ease-in-out 350ms;
 }
 
-.innerFeatures{
+.shopBtn:hover {
+    transform: scale(1.2);
+    background-color: #f74b4b;
+
+}
+
+.features {
+    display: flex;
+    width: 100%;
+
+}
+
+.innerFeatures {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -85,10 +98,10 @@
 
 }
 
-.featureBox{
-    width:120px;
-    height:110px;
-    padding : 15px;
+.featureBox {
+    width: 120px;
+    height: 110px;
+    padding: 15px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
     display: flex;
     justify-content: space-evenly;
@@ -96,16 +109,17 @@
     flex-direction: column;
     place-items: center;
     border-radius: 10px;
-    margin :20px;
+    margin: 20px;
 
 
 }
-.featureBox >img{
-    width:40px;
+
+.featureBox>img {
+    width: 40px;
     margin-bottom: 0px;
 }
 
-.featureBox >.name{
+.featureBox>.name {
     color: #f74b4b;
     font-weight: 500;
     font-size: 14px;
@@ -113,83 +127,100 @@
 
 }
 
-@media(max-width:780px){
-    .featureBox{
+@media(max-width:780px) {
+    .featureBox {
         flex-direction: column;
         justify-content: center;
-        width:120px;
-    }
-    .bannerSection{
-        height: 200px;
-    }
-    .detail{
-        font-family: 'Crushed', cursive;
-    
-        color:white;
-        font-size:34px;
-        font-weight: 900;
-    
+        width: 120px;
     }
 
-    .detail > span{
+    .bannerSection {
+        height: 200px;
+    }
+
+    .detail {
+        font-family: 'Crushed', cursive;
+
+        color: white;
+        font-size: 34px;
+        font-weight: 900;
+
+    }
+
+    .detail>span {
         color: #f74b4b;
-        font-size: 38px;
+        font-size: 50px;
         font-family: 'Crushed', cursive;
     }
-    
-    .shopBtn{
+
+    .shopBtn {
         font-size: 18px;
         margin-top: 10px;
         font-weight: 500;
-        
-        padding:4px 16px;
-        
+
+        padding: 4px 16px;
+
     }
-    
+
 }
 
 
-@media(max-width:480px){
-    .featureBox{
+@media(max-width:480px) {
+    .featureBox {
         flex-direction: column;
         justify-content: center;
-        width:120px;
+        width: 120px;
     }
-    .bannerSection{
+
+    .bannerSection {
         height: 200px;
     }
-    .detail{
+
+    .detail {
         font-family: 'Crushed', cursive;
-        color:white;
-        font-size:20px;
+        color: white;
+        font-size: 20px;
         font-weight: 900;
-    
+
     }
-    .detail > span{
+
+    .detail>span {
         color: #f74b4b;
-        font-size: 24px;
+        font-size: 30px;
         font-family: 'Crushed', cursive;
     }
-    
-    .shopBtn{
+
+    .shopBtn {
         font-size: 18px;
         margin-top: 10px;
         font-weight: 500;
-        
-        padding:4px 16px;
-        
+
+        padding: 4px 16px;
+
     }
-    
+
 }
 
 
 @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
-  
-  /* The typewriter cursor effect */
-  @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: #f74b4b; }
-  }
+    from {
+        width: 0%
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: #f74b4b;
+    }
+}

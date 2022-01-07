@@ -89,6 +89,29 @@
 
 }
 
+.noOrder__section{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    justify-content: center;
+    position: relative;
+    
+
+}
+
+.orderTitle{
+    position: absolute;
+    font-size: 60px;
+    font-weight: 700;
+    top:25px;
+}
+
+.noOrder__section >img{
+    width: 550px;
+    height:auto;
+}
+
 @media(max-width :780px) {
     .orderContainer {
         display: flex;
@@ -97,7 +120,45 @@
         place-items: center;
     }
 
-    .orderAddress{
+    .orderAddress {
         margin-bottom: 10px;
+    }
+
+
+    .noOrder__section{
+        width:100%;
+        
+        display: flex;
+        flex-direction: column;
+        place-items: center;
+        position: relative;
+        
+    
+    }
+    
+    .orderTitle{
+        position: absolute;
+        font-size: 60px;
+        font-weight: 700;
+    }
+    
+    .noOrder__section >img{
+        width: 480px;
+        height:auto;
+    }
+}
+
+@media(max-width:480px){
+    .noOrder__section{
+        height: 100vh;
+    }
+    
+    .orderTitle{
+        top: 100px;
+        font-size: 50px;
+    }
+    
+    .noOrder__section >img{
+        width: 97%;
     }
 }

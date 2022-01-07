@@ -7,9 +7,11 @@ import { BrowserRouter as Router } from "react-router-dom";
 import AuthProvider from "./context/auth/index";
 import DataProvider from "./context/data/index";
 import UserProvider from "./context/user/index";
+import ScrollToTop from "./utils/scrollToTop"
 ReactDOM.render(
   <React.StrictMode>
     <Router>
+    <ScrollToTop/>
       <AuthProvider>
         <UserProvider>
           <DataProvider>
@@ -17,6 +19,7 @@ ReactDOM.render(
           </DataProvider>
         </UserProvider>
       </AuthProvider>
+      
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
