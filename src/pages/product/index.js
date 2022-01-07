@@ -15,12 +15,15 @@ const Product = () => {
     setModal,
   } = useUser();
   const { productList } = useData();
-  const { setLoading, isLogin } = useAuth();
+  const { setLoading, isLogin  ,loading } = useAuth();
   const likedOrNot = wishlist.find((item) => item._id === id);
 
   return (
     <section className="product-detail-container">
-      {productList.map((data) => {
+      <>{
+        loading && <h1>loading</h1>
+      }
+      {!loading &&  productList.map((data) => {
         return (
           <div key ={data._id}>
             {data._id === id && (
@@ -57,7 +60,9 @@ const Product = () => {
           </div>
         );
       })}
+      </>
     </section>
+    
   );
 };
 
