@@ -162,7 +162,7 @@ export const moveToCart = async (product_id, userDispatch, setLoading) => {
       if (wishlistResponse.data.success) {
         userDispatch({
           type: "UPDATE WISHLIST",
-          payload: wishlistResponse.data.data,
+          payload: wishlistResponse.data.data.wishlist,
         });
         
       }
