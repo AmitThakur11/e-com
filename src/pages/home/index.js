@@ -6,21 +6,20 @@ export default function Home() {
   return (
     <div className="home">
       <div className="innerHome">
-        <div className="bannerSection">
+        <section className="bannerSection">
           <div className="imageContainer">
-            
           </div>
-          <div className="bannerDetail">
+          <section className="bannerDetail">
             <div className="detail">
               Tshirt's <span>made</span> for your <span>soul</span> .
             </div>
             <Link to="/store">
               <button className="shopBtn">Shop.</button>
             </Link>
-          </div>
-        </div>
+          </section>
+        </section>
 
-        <div className="features">
+        <section className="features">
           <div className="innerFeatures">
             {features.map(({ id, img, name }) => {
               return (
@@ -34,7 +33,7 @@ export default function Home() {
               );
             })}
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );
