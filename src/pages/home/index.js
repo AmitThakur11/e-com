@@ -7,7 +7,9 @@ export default function Home() {
     <div className="home">
       <div className="innerHome">
         <div className="bannerSection">
-          <div className="imageContainer"></div>
+          <div className="imageContainer">
+            
+          </div>
           <div className="bannerDetail">
             <div className="detail">
               Tshirt's <span>made</span> for your <span>soul</span> .
