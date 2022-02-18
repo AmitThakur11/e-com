@@ -12,17 +12,8 @@ export default function Order() {
     userDispatch,
   } = useUser();
 
+  console.log(order)
   const { setLoading } = useAuth();
-  const week = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let day = week[new Date().getDay() + 3];
-  let date = new Date().getDate() + 3;
   return (
     <div>
       {order.length ?<h1>ORDERS</h1>:false}
@@ -37,11 +28,11 @@ export default function Order() {
                     <div  key ={_id} className="cartBox__item">
                       <img src={img} alt="" />
                       <div className="cartBox__itemSection">
-                        <div className="cartBox__itemName">{name}</div>
-                        <div className="cartBox__itemPrice">
+                        <p className="cartBox__itemName">{name}</p>
+                        <p className="cartBox__itemPrice">
                           <span>Price : </span>
                           {price}Rs
-                        </div>
+                        </p>
                       </div>
                     </div>
                   );
@@ -51,7 +42,6 @@ export default function Order() {
                 Order will soon deleivered to :{" "}
                 <span>
                   House no. {address.appartment},{address.city},{address.state}{" "}
-                  on {day},{date}
                 </span>
                 <div
                   className="orderCard__remove"
