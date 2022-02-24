@@ -26,6 +26,8 @@ export default function ProductCard({ product }) {
   const { setLoading, isLogin } = useAuth();
   const likedOrNot = wishlist.find((item) => item._id === product._id);
   const inCartOrNot = cart.find((item) => item.productId._id === product._id);
+
+  
   return (
     <section key={product._id} className="x-vertical-card">
       <Link to={`/store/${product._id}`}>

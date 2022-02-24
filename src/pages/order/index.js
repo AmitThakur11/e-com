@@ -11,19 +11,18 @@ export default function Order() {
     user: { order },
     userDispatch,
   } = useUser();
-
-  console.log(order)
   const { setLoading } = useAuth();
+ 
   return (
     <div>
-      {order.length ?<h1>ORDERS</h1>:false}
+      {order.length && <h2 className ="pageTitle">ORDERS</h2>}
       {order.length ? (<div className="orderContainer">
       
-        {order.map(({ _id, orderedProduct, address }) => {
+        {order.map(({ _id, orderedProducts, address,total }) => {
           return (
             <div  key = {_id} className="orderCard">
               <div className="cartBox">
-                {orderedProduct.map(({ _id, img, name, price }) => {
+                {orderedProducts.map(({productId:{img,_id,name,price},qty}) => {
                   return (
                     <div  key ={_id} className="cartBox__item">
                       <img src={img} alt="" />
@@ -31,13 +30,14 @@ export default function Order() {
                         <p className="cartBox__itemName">{name}</p>
                         <p className="cartBox__itemPrice">
                           <span>Price : </span>
-                          {price}Rs
+                          {price}({qty})
                         </p>
                       </div>
                     </div>
                   );
                 })}
               </div>
+              <p className ="totalPrice">{total}</p>
               <div className="orderAddress">
                 Order will soon deleivered to :{" "}
                 <span>

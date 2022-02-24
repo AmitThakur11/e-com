@@ -1,5 +1,6 @@
 export const initialUser = {
     username: "",
+    email : "",
     wishlist: [],
     cart: [],
     address: [],
@@ -12,15 +13,16 @@ export const initialUser = {
     switch (type) {
       case "LOAD USER": {
         const {
-          data: { username, wishlist, cart, address, order },
+          data: { username, email , wishlist, cart, address, order },
         } = payload;
         return {
           ...user,
           username: username,
+          email  : email,
           wishlist: wishlist,
           cart: cart,
           address: address,
-          order: [...order],
+          order: order,
         };
       }
       case "UPDATE WISHLIST": {

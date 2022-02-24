@@ -19,9 +19,20 @@ const UserProvider = ({ children }) => {
     loadUser(setLoading, setLogin, userDispatch);
   }, [setLoading, setLogin]);
 
+  const orderValue = (cart) => {
+    return cart.reduce((acc, item) => {
+      const {
+        productId: { price, discount },
+        qty,
+      } = item;
+
+      return (price - discount) * qty + acc;
+    }, 0);
+  };
+
   return (
     <userContext.Provider
-      value={{ user, userDispatch, modal, setModal, initialUser }}
+      value={{ user, userDispatch, modal, setModal, initialUser, orderValue }}
     >
       {children}
     </userContext.Provider>

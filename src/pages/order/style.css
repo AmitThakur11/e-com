@@ -3,7 +3,13 @@
     width: 100%;
     flex-wrap: wrap;
 }
+.pageTitle{
+    padding: 6px 10px;
 
+}
+.pageTitle > span{
+    color:red
+}
 
 .orderCard {
     background: white;
@@ -78,8 +84,8 @@
     color: rgb(0, 0, 0);
     padding: 5px;
     text-align: justify;
-    min-height: 70px;
-
+    height: fit-content;
+    
 }
 
 .orderAddress span {
@@ -111,7 +117,25 @@
     width: 550px;
     height:auto;
 }
+.totalPrice{
+    color:red;
+    font-weight:700;
+    font-size:20px;
+    position:absolute;
+    top:55px;
+    right:-9px;
+    width:fit-content;
+    transform:rotate(80deg) translateY(-50%);
+    background:yellow; 
+     border :2px solid black;
+     border-left : 4px solid black;
+    background:white;
+    padding: 0px 8px;
+    z-index:5;
 
+
+
+}
 @media(max-width :780px) {
     .orderContainer {
         display: flex;
@@ -149,6 +173,7 @@
 }
 
 @media(max-width:480px){
+  
     .noOrder__section{
         height: 100vh;
     }
@@ -161,4 +186,5 @@
     .noOrder__section >img{
         width: 97%;
     }
+    
 }

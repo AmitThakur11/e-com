@@ -1,17 +1,12 @@
 import "./style.css";
 import { useNavigate } from "react-router-dom";
-export default function CheckOutCard({ cart }) {
+import { useUser } from "../../context/user";
+export default function CheckOutCard() {
   const navigate = useNavigate();
-  const total =
-    cart &&
-    cart.reduce((acc, item) => {
-      const {
-        productId: { price, discount },
-        qty,
-      } = item;
-
-      return (price - discount) * qty + acc;
-    }, 0);
+  const {
+    user: { cart },orderValue
+  } = useUser();
+ 
   return (
     <div className="checkoutBlock">
       <div className="checkoutProduct">
@@ -30,7 +25,7 @@ export default function CheckOutCard({ cart }) {
         })}
       </div>
       <div className="checkoutBtn">
-        <div className="checkoutTotal">{total} Rs</div>
+        <div className="checkoutTotal">{orderValue(cart)} Rs</div>
         <button onClick={() => navigate("/address")}>Checkout</button>
       </div>
     </div>

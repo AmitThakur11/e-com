@@ -7,7 +7,7 @@ const CartCard = ({ cart }) => {
   const { userDispatch } = useUser();
   const { setLoading } = useAuth();
   return (
-    <section className="x-cart-card">
+    <section className="x-cart-card" key  ={productId._id}>
       <img src={productId.img} alt="women-pink-t-shirt-back" border="0" />
       <div className="x-cart-content">
         <div className="x-cart-title">{productId.name}</div>

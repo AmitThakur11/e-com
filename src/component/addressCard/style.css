@@ -1,7 +1,11 @@
-
+/* .defaultAdddress{
+  background : var(--primar-color) !important;
+  color:white !important;
+} */
   .addressCard{
     background-color:white;
     position:relative;
+    margin-top:15px;
     margin:5px;
     padding:20px;
     width:200px;

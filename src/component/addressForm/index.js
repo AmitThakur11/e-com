@@ -38,11 +38,11 @@ export default function AddressForm(props) {
   };
 
   return (
-    <div>
+    <div className="addressBtn">
       {!addressToggle && (
         <button
           onClick={() => setAddressToggle(!addressToggle)}
-          className="addressBtn"
+          
         >
           Add Address
         </button>
@@ -88,11 +88,11 @@ export default function AddressForm(props) {
             />
             <div style={{ display: "flex", justifyContent: "center" }}>
               <div className="AddressBtn_flex">
-                <button className="addressBtn" onClick={() => addressHandler()}>
+                <button className="addressFormBtn" onClick={() => addressHandler()}>
                   Add Address
                 </button>
                 <button
-                  className="addressBtn"
+                  className="addressFormBtn"
                   onClick={() => setAddressToggle(false)}
                 >
                   Cancel

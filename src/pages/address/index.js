@@ -5,11 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { AddressForm } from "../../component";
 import { AddressCard } from "../../component";
 import { EditAddressForm } from "../../component";
-import { addOrder } from "../../apiCalls";
 import { useAuth } from "../../context/auth/index";
-import { toast } from "react-toastify";
+import {addRazorpay} from "../../utils/payment.js"
 export default function Address() {
-  const { user, userDispatch } = useUser();
+  const { user, userDispatch} = useUser();
   const { setLoading } = useAuth();
   const navigate = useNavigate();
   const initialEdit = {
@@ -17,7 +16,7 @@ export default function Address() {
     editAddress: null,
   };
   const [edit, setEdit] = useState(initialEdit);
-  let cartProductId = user.cart.map(({ productId: { _id } }) => _id);
+ 
 
 
   return (
@@ -42,15 +41,10 @@ export default function Address() {
         <div className="placeOrder_btn">
           <button
             onClick={() => {
-              if(!user.defaultAddress){
-                return toast.warn("Address required")
-
-              }
-              addOrder(cartProductId, user.defaultAddress, userDispatch, setLoading);
-              navigate("/order");
+              addRazorpay(user,navigate,userDispatch,setLoading)
             }}
           >
-            Place Order
+            Pay now
           </button>
         </div>
       ) : (

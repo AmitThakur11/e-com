@@ -17,6 +17,8 @@ export const loadUser =  async( setLoading ,setLogin,userDispatch ) => {
   try {
         setLoading(true);
         const { data } = await axios.get("/user_data/userinfo");
+        
+        
         if (data.success) {
           setLoading(false);
           userDispatch({ type: "LOAD USER", payload: data });
@@ -137,7 +139,7 @@ export const addToCart = async (product_id, userDispatch, setLoading) => {
         payload: cartResponse.data.data.cart,
       });
 
-      console.log(cartResponse)
+      
 
       toast.success("Cart  updated");
       return cartResponse
@@ -206,7 +208,7 @@ export const updateQty = async (
 
     if (data.success) {
       toast(data.msg);
-      console.log(data.data);
+      
       userDispatch({ type: "UPDATE CART", payload: data.data });
     }
   } catch (error) {
@@ -242,6 +244,21 @@ export const addAddress = async (address_data, userDispatch, setLoading) => {
     const { data } = await axios.post("/user_data/address", {
       address: address_data,
     });
+    setLoading(false)
+    if (data.success) {
+      userDispatch({ type: "UPDATE ADDRESS", payload: data.data });
+      return toast.success(data.msg);
+    }
+  } catch (error) {
+    setLoading(false)
+    toast(error.response.data.msg);
+  }
+};
+
+export const addDefaultAddress = async (address_id, userDispatch, setLoading) => {
+  try {
+    setLoading(true)
+    const { data } = await axios.post(`/user_data/address/${address_id}/default`);
     setLoading(false)
     if (data.success) {
       userDispatch({ type: "UPDATE ADDRESS", payload: data.data });
@@ -289,24 +306,24 @@ export const updateAddress = async (
 };
 
 export const addOrder = async (
-  orderedProduct,
-  address,
+  navigate,
   userDispatch,
-  setLoading
+  setLoading,
+  paymentData
 ) => {
+  
   try {
     setLoading(true)
-    const { data } = await axios.post("user_data/order/add", {
-      orderedProduct,
-      address,
-    });
+    const { data } = await axios.post("user_data/order/add",{paymentData : paymentData} );
     setLoading(false)
     if (data.success) {
+    
       userDispatch({
         type: "ADD ORDER",
         payload: data.data,
       });
-      return toast.success("Order Updated");
+      navigate("/order")
+      return toast.success("Order Placed");
     }
   } catch (error) {
     setLoading(false)
@@ -315,7 +332,7 @@ export const addOrder = async (
 };
 
 export const cancelOrder = async (orderId, userDispatch, setLoading) => {
-  // console.log(orderId)
+ 
   try {
     setLoading(true)
     const { data } = await axios.delete(`user_data/order/${orderId}/cancel`)

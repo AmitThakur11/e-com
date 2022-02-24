@@ -6,6 +6,7 @@ import { CheckOutCard } from "../../component";
 
 import "./style.css";
 export default function Cart() {
+
   const {
     user: { cart },
   } = useUser();
@@ -19,7 +20,7 @@ export default function Cart() {
         })}
       </div>
       <div className="cartPage_checkout">
-        <CheckOutCard cart={cart} />
+        <CheckOutCard  />
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ const WishlistCard = ({ wishlist }) => {
   const { setLoading } = useAuth();
 
   return (
-    <section className="x-horizontal-card">
+    <section className="x-horizontal-card" key = {wishlist._id}>
       <div className="x-horizontal-card-content">
         <img src={wishlist.img} alt="female-tshirt-2" border="0" />
         <div className="x-hcontent">
