@@ -186,5 +186,8 @@
     .noOrder__section >img{
         width: 97%;
     }
+    .orderCard{
+        width:85%;
+    }
     
 }
