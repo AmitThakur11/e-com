@@ -1,4 +1,5 @@
 export const initialUser = {
+    _id : "",
     username: "",
     email : "",
     wishlist: [],
@@ -12,11 +13,13 @@ export const initialUser = {
     const { type, payload } = action;
     switch (type) {
       case "LOAD USER": {
+
         const {
-          data: { username, email , wishlist, cart, address, order },
+          data: { _id , username, email , wishlist, cart, address, order },
         } = payload;
         return {
           ...user,
+          _id : _id,
           username: username,
           email  : email,
           wishlist: wishlist,

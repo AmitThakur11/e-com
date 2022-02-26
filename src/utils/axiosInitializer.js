@@ -4,3 +4,6 @@ export const axiosInitializer = ()=>{
     axios.defaults.headers.common["Authorization"] = localStorage.getItem("token");
 }
 
+
+
+// http://localhost:3002/

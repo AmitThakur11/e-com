@@ -9,6 +9,7 @@ import {
   Store,
   Address,
   Order,
+  Profile
 } from "../../pages";
 import { Loader, LoginModel } from "../../component";
 import { ToastContainer } from "react-toastify";
@@ -17,6 +18,7 @@ import PrivateRoute from "../../pages/PrivateRoute";
 import { Routes, Route } from "react-router-dom";
 import { useAuth } from "../../context/auth/index";
 import { useUser } from "../../context/user/index";
+
 import "./style.css";
 export default function Content() {
   const { loading } = useAuth();
@@ -35,6 +37,7 @@ export default function Content() {
         <PrivateRoute path="/cart" element={<Cart />} />
         <PrivateRoute path="/address" element={<Address />} />
         <PrivateRoute path="/order" element={<Order />} />
+        <PrivateRoute path="/profile/:id" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>

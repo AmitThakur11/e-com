@@ -7,3 +7,4 @@ export { default as Login } from "./login";
 export { default as Signup } from "./signup";
 export { default as Order } from "./order";
 export { default as Address } from "./address";
+export {default as Profile} from "./profile"

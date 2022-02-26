@@ -14,7 +14,6 @@ function App() {
     (()=>{
       axiosInitializer();
       loadProducts(setLoading, setProductList);
-
     })()
     
   }, [setLogin,setProductList ,setLoading]);

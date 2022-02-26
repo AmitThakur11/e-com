@@ -12,11 +12,13 @@ import { useAuth } from "../../context/auth/index";
 import { useUser } from "../../context/user/index";
 import axios from "axios";
 import { toast } from "react-toastify";
+
+
 export default function Header() {
   const navigate = useNavigate();
   const { isLogin, setLogin, setLoading } = useAuth();
   const {
-    user: { wishlist, cart },
+    user: {_id, wishlist, cart },
     initialUser,
     userDispatch,
   } = useUser();
@@ -58,6 +60,9 @@ export default function Header() {
           </Link>
           <Link to="/order" onClick={() => setMenuToggle(false)}>
             Order
+          </Link>
+          <Link to={`/profile/${_id}`} onClick={() => setMenuToggle(false)}>
+            Profile
           </Link>
 
           <button className="loginBtn" onClick={() => login_logout()}>

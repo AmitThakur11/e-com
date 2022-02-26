@@ -3,7 +3,16 @@
   flex-direction: row;
 
 }
+.sellerBtn{
+  border: 0;
+    background: black;
+    color: white;
+    padding: 2px 12px;
+    font-weight: 600;
+    font-size: 18px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
+}
 .product-detail-card>img {
   position: fixed;
   height: auto;

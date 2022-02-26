@@ -6,9 +6,11 @@ import { useData } from "../../context/data";
 import { useUser } from "../../context/user/index";
 import { addToWishlist, removeFromWishlist } from "../../apiCalls";
 import { useAuth } from "../../context/auth";
+import {useNavigate} from "react-router-dom"
 
 const Product = () => {
   const { id } = useParams();
+  const navigate = useNavigate()
   const {
     userDispatch,
     user: { wishlist },
@@ -53,6 +55,9 @@ const Product = () => {
                     {!likedOrNot ? "Move to wishlist" : "Remove from wishlist"}
                   </button>
                   <div className="product-description">{data.description}</div>
+                  <button className="sellerBtn" onClick = {()=>navigate(`/profile/${data.seller}`)}>
+                    Seller
+                  </button>
                   <Features features={data.features} />
                 </div>
               </div>
