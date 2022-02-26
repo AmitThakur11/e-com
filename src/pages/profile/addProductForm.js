@@ -46,7 +46,7 @@ function AddProductForm({ setShow }) {
   const [productInput, setProductInput] = useState(initialProductInput);
   const [feature, setFeature] = useState("");
   const [showFeature, setShowFeature] = useState(false);
-  const [preview,setPreview] = useState("")
+
   
   const {
     name,
