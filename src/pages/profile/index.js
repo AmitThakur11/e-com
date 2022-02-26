@@ -30,7 +30,7 @@ function Profile() {
     const [profile,setProfile] = useState({})
     const {user :{_id}} = useUser()
     const isAdmin = id === _id;
-    console.log(id,_id)
+
 
     useEffect(() => {
       (async()=>{
