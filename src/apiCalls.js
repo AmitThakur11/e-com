@@ -1,38 +1,35 @@
 import { toast } from "react-toastify";
 import axios from "axios";
 
-export const loadProducts = async(setLoading,setProductList)=>{
+export const loadProducts = async (setLoading, setProductList) => {
   try {
-      setLoading(true);
-      const response = await axios.get("/product");
-      setProductList(response.data.product);
-      setLoading(false);
+    setLoading(true);
+    const response = await axios.get("/product");
+    setProductList(response.data.product);
+    setLoading(false);
   } catch (err) {
     setLoading(false);
     toast.error(err.message);
   }
-}
+};
 
-export const loadUser =  async( setLoading ,setLogin,userDispatch ) => {
+export const loadUser = async (setLoading, setLogin, userDispatch) => {
   try {
-        setLoading(true);
-        const { data } = await axios.get("/user_data/userinfo");
-        
-        
-        if (data.success) {
-          setLoading(false);
-          userDispatch({ type: "LOAD USER", payload: data });
-          return;
-        }
-      } catch (err) {
-        localStorage.getItem("login") && toast.info("session expired");
-        localStorage.removeItem("token");
-        localStorage.removeItem("login");
-        setLogin(false);
-        setLoading(false);
-      }
-    
+    setLoading(true);
+    const { data } = await axios.get("/user_data/userinfo");
 
+    if (data.success) {
+      setLoading(false);
+      userDispatch({ type: "LOAD USER", payload: data });
+      return;
+    }
+  } catch (err) {
+    localStorage.getItem("login") && toast.info("session expired");
+    localStorage.removeItem("token");
+    localStorage.removeItem("login");
+    setLogin(false);
+    setLoading(false);
+  }
 };
 
 export const getLogin = async (
@@ -56,7 +53,7 @@ export const getLogin = async (
       password: password,
     });
     if (data.success) {
-      setLogin(true)
+      setLogin(true);
       setLoading(false);
       navigate("/store");
       toast.success(data.msg);
@@ -99,7 +96,9 @@ export const register = async (userInput, setLoading, navigate) => {
 
 export const addToWishlist = async (product_id, userDispatch, setLoading) => {
   try {
-    const { data : {msg ,success,data} } = await axios.post(`user_data/wishlist/${product_id}`);
+    const {
+      data: { msg, success, data },
+    } = await axios.post(`user_data/wishlist/${product_id}`);
 
     if (success) {
       toast.success(msg);
@@ -119,7 +118,9 @@ export const removeFromWishlist = async (
   setLoading
 ) => {
   try {
-    const {data : {msg ,success , data}} = await axios.delete(`user_data/wishlist/${product_id}`);
+    const {
+      data: { msg, success, data },
+    } = await axios.delete(`user_data/wishlist/${product_id}`);
     if (success) {
       toast.success(msg);
       userDispatch({ type: "UPDATE WISHLIST", payload: data.wishlist });
@@ -139,10 +140,8 @@ export const addToCart = async (product_id, userDispatch, setLoading) => {
         payload: cartResponse.data.data.cart,
       });
 
-      
-
       toast.success("Cart  updated");
-      return cartResponse
+      return cartResponse;
     }
   } catch (err) {
     toast.error(err.response.data.msg);
@@ -166,7 +165,6 @@ export const moveToCart = async (product_id, userDispatch, setLoading) => {
           type: "UPDATE WISHLIST",
           payload: wishlistResponse.data.data.wishlist,
         });
-        
       }
     }
   } catch (error) {
@@ -208,7 +206,7 @@ export const updateQty = async (
 
     if (data.success) {
       toast(data.msg);
-      
+
       userDispatch({ type: "UPDATE CART", payload: data.data });
     }
   } catch (error) {
@@ -240,47 +238,53 @@ export const moveToWishlist = async (product_id, userDispatch, setLoading) => {
 
 export const addAddress = async (address_data, userDispatch, setLoading) => {
   try {
-    setLoading(true)
+    setLoading(true);
     const { data } = await axios.post("/user_data/address", {
       address: address_data,
     });
-    setLoading(false)
+    setLoading(false);
     if (data.success) {
       userDispatch({ type: "UPDATE ADDRESS", payload: data.data });
       return toast.success(data.msg);
     }
   } catch (error) {
-    setLoading(false)
+    setLoading(false);
     toast(error.response.data.msg);
   }
 };
 
-export const addDefaultAddress = async (address_id, userDispatch, setLoading) => {
+export const addDefaultAddress = async (
+  address_id,
+  userDispatch,
+  setLoading
+) => {
   try {
-    setLoading(true)
-    const { data } = await axios.post(`/user_data/address/${address_id}/default`);
-    setLoading(false)
+    setLoading(true);
+    const { data } = await axios.post(
+      `/user_data/address/${address_id}/default`
+    );
+    setLoading(false);
     if (data.success) {
       userDispatch({ type: "UPDATE ADDRESS", payload: data.data });
       return toast.success(data.msg);
     }
   } catch (error) {
-    setLoading(false)
+    setLoading(false);
     toast(error.response.data.msg);
   }
 };
 
 export const removeAddress = async (address_id, userDispatch, setLoading) => {
   try {
-    setLoading(true)
+    setLoading(true);
     const { data } = await axios.delete(`/user_data/address/${address_id}`);
-    setLoading(false)
+    setLoading(false);
     if (data.success) {
       userDispatch({ type: "UPDATE ADDRESS", payload: data.data });
       return toast.success(data.msg);
     }
   } catch (error) {
-    setLoading(false)
+    setLoading(false);
     toast(error.response.data.msg);
   }
 };
@@ -311,39 +315,51 @@ export const addOrder = async (
   setLoading,
   paymentData
 ) => {
-  
   try {
-    setLoading(true)
-    const { data } = await axios.post("user_data/order/add",{paymentData : paymentData} );
-    setLoading(false)
+    setLoading(true);
+    const { data } = await axios.post("user_data/order/add", {
+      paymentData: paymentData,
+    });
+    setLoading(false);
     if (data.success) {
-    
       userDispatch({
         type: "ADD ORDER",
         payload: data.data,
       });
-      navigate("/order")
+      navigate("/order");
       return toast.success("Order Placed");
     }
   } catch (error) {
-    setLoading(false)
+    setLoading(false);
     toast.error("Something went wrong");
   }
 };
 
 export const cancelOrder = async (orderId, userDispatch, setLoading) => {
- 
   try {
-    setLoading(true)
-    const { data } = await axios.delete(`user_data/order/${orderId}/cancel`)
-    setLoading(false)
+    setLoading(true);
+    const { data } = await axios.delete(`user_data/order/${orderId}/cancel`);
+    setLoading(false);
     if (data.success) {
-      
-      userDispatch({type : "REMOVE ORDER" , payload : data.data.order})
+      userDispatch({ type: "REMOVE ORDER", payload: data.data.order });
       return toast.success(data.msg);
     }
   } catch (err) {
-    setLoading(false)
+    setLoading(false);
+    toast.error(err.response);
+  }
+};
+
+export const addProduct = async (setLoading, payload) => {
+  try {
+    setLoading(true);
+    const { data } = await axios.post("/product/add", payload);
+    setLoading(false);
+    console.log(data)
+    if (data.success) {
+      toast.success("product added to store");
+    }
+  } catch (err) {
     toast.error(err.response);
   }
 };

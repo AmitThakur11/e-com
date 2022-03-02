@@ -1,5 +1,6 @@
 import React ,{useState , useEffect} from "react";
 import { ProductCard } from "../../component";
+import {addProduct} from "../../apiCalls"
 import axios from 'axios'
 import AddProductForm from "./addProductForm";
 import "./style.css";
@@ -68,7 +69,7 @@ function Profile() {
           return <ProductCard product ={product}/>
         })
       }</section>
-      {showForm && <AddProductForm setShow = {setShowForm}/>}
+      {showForm && <AddProductForm setShow = {setShowForm} formAction = {addProduct}/>}
       
     </div>}
     </>

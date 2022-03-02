@@ -1,17 +1,19 @@
 import "./style.css";
 import { FaRegImage, FaTrash } from "react-icons/fa";
 import { useState } from "react";
+import {useData}  from "../../context/data"
 import {
   initialInputs,
   previewImg,
   uploadImg,
   takeSimpleInputs
 } from "./function";
-export default function AddProductForm({setShow}) {
+export default function AddProductForm({setShow ,formAction}) {
   const [img, setImg] = useState("");
   const [preview, setPreview] = useState("");
   const [userInputs, setUserInputs] = useState(initialInputs);
   const [feature, setFeature] = useState("");
+  const {setLoading} = useData()
 
   const takeFeature = (e) => {
     setFeature(e.target.value);
@@ -63,7 +65,7 @@ export default function AddProductForm({setShow}) {
     });
   };
 
-  const uploadProduct = async (initialInputs, userInputs, img) => {
+  const uploadProduct = async (initialInputs, userInputs, img,formAction) => {
     const {
       name,
       price,
@@ -95,7 +97,9 @@ export default function AddProductForm({setShow}) {
       console.log("image uploaded")
     }
     
-    console.log({...userInputs,img : response.data.url , price  : Number(price),discount : Number(discount), stock : Number(stock) })
+    const payload = {...userInputs,img : response.data.url , price  : Number(price),discount : Number(discount), stock : Number(stock) }
+    await formAction(setLoading,payload)
+  
   };
   return (
     <div className="addProductPage">
@@ -313,8 +317,8 @@ export default function AddProductForm({setShow}) {
         <section className="formAction">
           <button
             onClick={() => {
-              //  console.log(userInputs)
-              uploadProduct(initialInputs, userInputs, img);
+              
+              uploadProduct(initialInputs, userInputs, img ,formAction);
             }}
           >
             Upload

@@ -33,6 +33,7 @@ export const uploadImg = async (img,setUserInputs) => {
     "https://api.cloudinary.com/v1_1/dfxhtdmfq/image/upload",
     formData
   );
+  console.log(response)
   setUserInputs((userInputs)=>{
     return {...userInputs , img : response.url}
   })
