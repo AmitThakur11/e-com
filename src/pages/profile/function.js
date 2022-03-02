@@ -1,68 +1,49 @@
+import axios from "axios"
+export const initialInputs = {
+  img : "",
+  name : "",
+  price:"",
+  discount :"",
+  badge : "",
+  stock : "",
+  brand : "",
+  description : "",
+  size : [],
+  category : "T-shirts",
+  fastDeleivery : false,
+  features : []
+}
 
-    export const previewImg = (file , setProductInput) => {
-       
-      console.log(file)
-          const reader = new FileReader();
-          reader.readAsDataURL(file[0]);
-          reader.onloadend = () => {
-            setProductInput((productInput)=>{
-              console.log(reader.result)
-              return {...productInput,img  : reader.result}
-          });
-        
-      };
-    }
-    
 
+export const previewImg = (img,setImg,setPreview)=>{
+  setImg(img)
+  const reader = new FileReader();
+  reader.readAsDataURL(img);
+  reader.onloadend =()=>{
+    setPreview(reader.result)
+  }
 
+}
+export const uploadImg = async (img,setUserInputs) => {
+  const formData = new FormData();
+  formData.append("file", img);
+  formData.append("upload_preset", "j70dvps3");
 
-    export const getSimpleInput = (e,setProductInput) => {
-        const { name, value } = e.target;
-        console.log(name.value)
-        setProductInput((productInput) => {
-          return { ...productInput, [name]: value };
-        });
-      };
-    
-      export const getSize = (e,productInput,setProductInput) => {
-        const { value } = e.target;
-        const sizeList = productInput.size;
-        const isExist = sizeList.includes(value);
-        if (isExist) {
-          const filterSize = sizeList.filter((size) => size !== value);
-          return setProductInput((productInput)=>{
-            return { ...productInput, size: filterSize }});
-        }
-        setProductInput((productInput)=>{
-          return { ...productInput, size: [...productInput.size, value] }});
-      };
-    
-      export const getDeleivery = (setProductInput,fastDeleivery,productInput) => {
-        if (!fastDeleivery) {
-          setProductInput((productInput)=> {
-            return{ ...productInput, fastDeleivery: true }
-          });
-        } else {
-          setProductInput((productInput)=> {
-            return{ ...productInput, fastDeleivery: false }});
-        }
-      };
-    
-      export const getFeature = (e,setFeature) => {
-        const { value } = e.target;
-        setFeature(value);
-      };
-    
-      export const addFeature = (setProductInput,setFeature,feature) => {
-        setProductInput((productInput) => {
-          return { ...productInput, features: [...productInput.features,feature] };
-        });
-      
-        setFeature("");
-      };
-    
-      export const removeFeature = (el,features,setProductInput,productInput) => {
-        const filterFeatures = features.filter((feature, index) => index !== el);
-        setProductInput((productInput)=>{
-          return { ...productInput, features: filterFeatures }});
-      };
+  const response = await axios.post(
+    "https://api.cloudinary.com/v1_1/dfxhtdmfq/image/upload",
+    formData
+  );
+  setUserInputs((userInputs)=>{
+    return {...userInputs , img : response.url}
+  })
+  return response
+}
+
+export const takeSimpleInputs = (e,setUserInputs)=>{
+  const {name,value} = e.target;
+  console.log(name,value)
+  setUserInputs((userInputs)=>{
+    return {...userInputs , [name]: value}
+  })
+
+}
