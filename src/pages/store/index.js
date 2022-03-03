@@ -26,7 +26,7 @@ export default function Store() {
           {!loading && (
             <div className="wrappedProducts">
               {productList.map((product) => {
-                return <ProductCard product={product} key={product._id} />;
+                return <ProductCard product={product} key={product._id} isEdit = {false} />;
               })}
             </div>
           )}

@@ -70,7 +70,7 @@ function Profile() {
       </section>
       <section className="userStore">{
         profile?.products?.map((product)=>{
-          return <ProductCard product ={product}/>
+          return <ProductCard product ={product} isEdit={true}/>
         })
       }</section>
       {showForm && <AddProductForm setShow = {setShowForm} formAction = {addProduct} setProfile = {setProfile}/>}

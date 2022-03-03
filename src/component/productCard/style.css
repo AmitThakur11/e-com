@@ -7,8 +7,28 @@
 }
 
 .x-card-icon {
-    padding: 10px;
+    padding:3px !important;
+    border:2px solid rgb(255, 76, 76);
 
+}
+
+.x-icon3{
+    position: absolute;
+    display: flex;
+    border-radius: 50%;
+    padding:4px;
+    top:0;
+    right:0;
+    background-color: #fff;
+    transform: translate(-10%,20%);
+    border:2px solid rgb(255, 76, 76);
+    font-size: 12px;
+}
+.x-icon3 >svg{
+    font-size: 18px;
+}
+.x-icon3:hover{
+    background-color: rgb(255, 89, 89);
 }
 
 @media(max-width:780px){
