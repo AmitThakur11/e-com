@@ -16,7 +16,11 @@ export const loadProducts = async (setLoading, setProductList) => {
 export const loadUser = async (setLoading, setLogin, userDispatch) => {
   try {
     setLoading(true);
-    const { data } = await axios.get("/user_data/userinfo");
+    const { data } = await axios.get("/user_data/userinfo",{
+      headers:{
+        'Authorization' : localStorage.getItem("token")
+      }
+    });
 
     if (data.success) {
       setLoading(false);
@@ -98,7 +102,11 @@ export const addToWishlist = async (product_id, userDispatch, setLoading) => {
   try {
     const {
       data: { msg, success, data },
-    } = await axios.post(`user_data/wishlist/${product_id}`);
+    } = await axios.post(`user_data/wishlist/${product_id}`,{
+      headers:{
+        'Authorization' : localStorage.getItem("token")
+      }
+    });
 
     if (success) {
       toast.success(msg);
@@ -120,7 +128,11 @@ export const removeFromWishlist = async (
   try {
     const {
       data: { msg, success, data },
-    } = await axios.delete(`user_data/wishlist/${product_id}`);
+    } = await axios.delete(`user_data/wishlist/${product_id}`,{
+      headers:{
+        'Authorization' : localStorage.getItem("token")
+      }
+    });
     if (success) {
       toast.success(msg);
       userDispatch({ type: "UPDATE WISHLIST", payload: data.wishlist });
@@ -132,7 +144,11 @@ export const removeFromWishlist = async (
 
 export const addToCart = async (product_id, userDispatch, setLoading) => {
   try {
-    const cartResponse = await axios.post(`/user_data/cart/${product_id}`);
+    const cartResponse = await axios.post(`/user_data/cart/${product_id}`,{
+      headers:{
+        'Authorization' : localStorage.getItem("token")
+      }
+    });
 
     if (cartResponse.data.success) {
       userDispatch({
@@ -150,7 +166,11 @@ export const addToCart = async (product_id, userDispatch, setLoading) => {
 
 export const moveToCart = async (product_id, userDispatch, setLoading) => {
   try {
-    const cartResponse = await axios.post(`/user_data/cart/${product_id}`);
+    const cartResponse = await axios.post(`/user_data/cart/${product_id}`,{
+      headers:{
+        'Authorization' : localStorage.getItem("token")
+      }
+    });
     if (cartResponse.data.success) {
       userDispatch({
         type: "UPDATE CART",
@@ -174,7 +194,11 @@ export const moveToCart = async (product_id, userDispatch, setLoading) => {
 
 export const removeFromCart = async (product_id, userDispatch, setLoading) => {
   try {
-    const { data } = await axios.delete(`/user_data/cart/${product_id}`);
+    const { data } = await axios.delete(`/user_data/cart/${product_id}`,{
+      headers:{
+        'Authorization' : localStorage.getItem("token")
+      }
+    });
     if (data.success) {
       toast.success(data.msg);
       userDispatch({ type: "UPDATE CART", payload: data.data.cart });
@@ -201,6 +225,10 @@ export const updateQty = async (
       `/user_data/cart/${product_id}/update_qty`,
       {
         payload: type,
+      },{
+        headers:{
+          'Authorization' : localStorage.getItem("token")
+        }
       }
     );
 
@@ -218,14 +246,22 @@ export const updateQty = async (
 export const moveToWishlist = async (product_id, userDispatch, setLoading) => {
   try {
     const wishlistResponse = await axios.post(
-      `/user_data/wishlist/${product_id}`
+      `/user_data/wishlist/${product_id}`,{
+        headers:{
+          'Authorization' : localStorage.getItem("token")
+        }
+      }
     );
     if (wishlistResponse.data.success) {
       userDispatch({
         type: "UPDATE WISHLIST",
         payload: wishlistResponse.data.data.wishlist,
       });
-      const { data } = await axios.delete(`/user_data/cart/${product_id}`);
+      const { data } = await axios.delete(`/user_data/cart/${product_id}`,{
+        headers:{
+          'Authorization' : localStorage.getItem("token")
+        }
+      });
       if (data.success) {
         toast.success("Cart updated");
         userDispatch({ type: "UPDATE CART", payload: data.data.cart });
@@ -241,6 +277,10 @@ export const addAddress = async (address_data, userDispatch, setLoading) => {
     setLoading(true);
     const { data } = await axios.post("/user_data/address", {
       address: address_data,
+    },{
+      headers:{
+        'Authorization' : localStorage.getItem("token")
+      }
     });
     setLoading(false);
     if (data.success) {
@@ -261,7 +301,11 @@ export const addDefaultAddress = async (
   try {
     setLoading(true);
     const { data } = await axios.post(
-      `/user_data/address/${address_id}/default`
+      `/user_data/address/${address_id}/default`,{
+        headers:{
+          'Authorization' : localStorage.getItem("token")
+        }
+      }
     );
     setLoading(false);
     if (data.success) {
@@ -277,7 +321,11 @@ export const addDefaultAddress = async (
 export const removeAddress = async (address_id, userDispatch, setLoading) => {
   try {
     setLoading(true);
-    const { data } = await axios.delete(`/user_data/address/${address_id}`);
+    const { data } = await axios.delete(`/user_data/address/${address_id}`,{
+      headers:{
+        'Authorization' : localStorage.getItem("token")
+      }
+    });
     setLoading(false);
     if (data.success) {
       userDispatch({ type: "UPDATE ADDRESS", payload: data.data });
@@ -298,6 +346,10 @@ export const updateAddress = async (
   try {
     const { data } = await axios.post(`user_data/address/${address_id}`, {
       newAddress: address,
+    },{
+      headers:{
+        'Authorization' : localStorage.getItem("token")
+      }
     });
     if (data.success) {
       userDispatch({ type: "UPDATE ADDRESS", payload: data.data.address });
@@ -319,6 +371,10 @@ export const addOrder = async (
     setLoading(true);
     const { data } = await axios.post("user_data/order/add", {
       paymentData: paymentData,
+    },{
+      headers:{
+        'Authorization' : localStorage.getItem("token")
+      }
     });
     setLoading(false);
     if (data.success) {
@@ -338,7 +394,11 @@ export const addOrder = async (
 export const cancelOrder = async (orderId, userDispatch, setLoading) => {
   try {
     setLoading(true);
-    const { data } = await axios.delete(`user_data/order/${orderId}/cancel`);
+    const { data } = await axios.delete(`user_data/order/${orderId}/cancel`,{
+      headers:{
+        'Authorization' : localStorage.getItem("token")
+      }
+    });
     setLoading(false);
     if (data.success) {
       userDispatch({ type: "REMOVE ORDER", payload: data.data.order });
@@ -350,16 +410,27 @@ export const cancelOrder = async (orderId, userDispatch, setLoading) => {
   }
 };
 
-export const addProduct = async (setLoading, payload) => {
+export const addProduct = async (setLoading, payload,setProfile,setProductList) => {
+  console.log("add product")
   try {
     setLoading(true);
-    const { data } = await axios.post("/product/add", payload);
+    const response = await axios.post("/product/add", payload,{
+      headers:{
+        'Authorization' : localStorage.getItem("token")
+      }
+    });
     setLoading(false);
-    console.log(data)
-    if (data.success) {
+    if (response.data.success) {
+      setProfile((profile)=>{
+        return {...profile, products : [...profile.products, response.data.data]}
+      })
+      setProductList((productList)=>{
+        return [...productList ,response.data.data]
+      })
       toast.success("product added to store");
     }
   } catch (err) {
+    setLoading(false)
     toast.error(err.response);
   }
 };

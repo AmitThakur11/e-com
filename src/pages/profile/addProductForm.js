@@ -1,19 +1,22 @@
 import "./style.css";
 import { FaRegImage, FaTrash } from "react-icons/fa";
 import { useState } from "react";
-import {useData}  from "../../context/data"
+import {useAuth}  from "../../context/auth"
+import {useData}  from "../../context/data/index"
+import {addProduct} from "../../apiCalls";
 import {
   initialInputs,
   previewImg,
   uploadImg,
   takeSimpleInputs
 } from "./function";
-export default function AddProductForm({setShow ,formAction}) {
+export default function AddProductForm({setShow ,formAction,setProfile}) {
   const [img, setImg] = useState("");
   const [preview, setPreview] = useState("");
   const [userInputs, setUserInputs] = useState(initialInputs);
   const [feature, setFeature] = useState("");
-  const {setLoading} = useData()
+  const {setLoading} = useAuth();
+  const {setProductList} = useData()
 
   const takeFeature = (e) => {
     setFeature(e.target.value);
@@ -92,13 +95,13 @@ export default function AddProductForm({setShow ,formAction}) {
       return alert("Empty field");
     }
     const response = await uploadImg(img,setUserInputs);
-    // console.log("response")
     if(response.status === 200){
       console.log("image uploaded")
     }
     
     const payload = {...userInputs,img : response.data.url , price  : Number(price),discount : Number(discount), stock : Number(stock) }
-    await formAction(setLoading,payload)
+    addProduct(setLoading,payload,setProfile,setProductList)
+    console.log(payload)
   
   };
   return (

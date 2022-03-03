@@ -38,10 +38,14 @@ function Profile() {
         try{
           axiosInitializer();
           setLoading(true)
-          const response = await axios.get(`/user_data/${id}/profile`);
+          const response = await axios.get(`/user_data/${id}/profile`,{
+            headers:{
+              'Authorization' : localStorage.getItem("token")
+            }
+          });
           setProfile(response.data.data)
           setLoading(false)
-          console.log(response.data.data)
+          
           
         }catch(err){
           setLoading(false)
@@ -51,7 +55,7 @@ function Profile() {
       })()
     }, [id,setLoading]);
     
-
+    console.log("profile",profile)
   
   
   
@@ -69,7 +73,7 @@ function Profile() {
           return <ProductCard product ={product}/>
         })
       }</section>
-      {showForm && <AddProductForm setShow = {setShowForm} formAction = {addProduct}/>}
+      {showForm && <AddProductForm setShow = {setShowForm} formAction = {addProduct} setProfile = {setProfile}/>}
       
     </div>}
     </>
