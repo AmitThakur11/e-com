@@ -97,7 +97,7 @@
 
 .innerFeatures {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
     place-items: center;
     width: 100%;
   
@@ -105,14 +105,14 @@
 }
 
 .featureBox {
-    width: 120px;
+    width: 180px;
     height: 110px;
     padding: 15px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
     display: flex;
     justify-content: space-evenly;
     background: white;
-    flex-direction: column;
+    /* flex-direction: column; */
     place-items: center;
     border-radius: 10px;
     margin: 20px;
@@ -135,9 +135,9 @@
 
 @media(max-width:780px) {
     .featureBox {
-        flex-direction: column;
+        /* flex-direction: column; */
         justify-content: center;
-        width: 120px;
+        width: 180px;
     }
 
     .bannerSection {
@@ -172,6 +172,10 @@
 
 
 @media(max-width:480px) {
+    .innerFeatures{
+    grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+
+    }
     .featureBox {
         flex-direction: column;
         justify-content: center;
