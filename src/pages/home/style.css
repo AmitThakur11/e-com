@@ -96,11 +96,11 @@
 }
 
 .innerFeatures {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+    place-items: center;
     width: 100%;
-    justify-content: space-between;
-    place-content: center;
+  
 
 }
 

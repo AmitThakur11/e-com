@@ -88,7 +88,29 @@
   background-color: black;
   outline: 1px solid slategrey;
 }
-  
+  .profileProduct{
+    position:relative
+  }
+
+  .x-icon3{
+    position: absolute;
+    display: flex;
+    border-radius: 50%;
+    padding:4px;
+    top:0px;
+    right:0px;
+    background-color: #fff;
+    transform: translate(-65%,65%);
+    border:2px solid rgb(255, 76, 76);
+    font-size: 12px;
+}
+.x-icon3 >svg{
+    font-size: 18px;
+}
+.x-icon3:hover{
+    background-color: rgb(255, 89, 89);
+}
+
   .addProductContainer > .allInputs{
     display: grid;
     width: 100%;
@@ -109,6 +131,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-25px, -25px);
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    padding: 5px;
+    border-radius: 5px;
   }
   .imgIcon > svg {
     font-size: 50px;

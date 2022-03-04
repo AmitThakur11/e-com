@@ -26,7 +26,11 @@ export const addRazorpay = async (user,navigate,userDispatch,setLoading)=>{
   }
 
 
-  const data = await axios.post("/user_data/order/create")
+  const data = await axios.post("/user_data/order/create",{
+    headers:{
+        'Authorization' : localStorage.getItem("token")
+      }
+  })
   var options = {
     "key": "rzp_test_vZaorXyCcQmPq5", 
     "amount": data.data.amount * 100, 

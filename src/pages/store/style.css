@@ -50,8 +50,10 @@
 }
 
 .wrappedProducts {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    width: 100%;
+    place-items: center;
+    grid-template-columns: repeat(auto-fit,minmax(240px,1fr))
 }
 
 .filterIcon {
@@ -97,9 +99,6 @@
 
     }
 
-    .wrappedProducts {
-        justify-content: center;
-    }
 
     .filterIcon {
         display: block;

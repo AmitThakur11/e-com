@@ -410,8 +410,9 @@ export const cancelOrder = async (orderId, userDispatch, setLoading) => {
   }
 };
 
-export const addProduct = async (setLoading, payload,setProfile,setProductList) => {
-  console.log("add product")
+export const addProduct = async (data) => {
+  let {setLoading, payload,setProfile,setProductList} = data
+  delete payload._id
   try {
     setLoading(true);
     const response = await axios.post("/product/add", payload,{
@@ -434,3 +435,42 @@ export const addProduct = async (setLoading, payload,setProfile,setProductList) 
     toast.error(err.response);
   }
 };
+
+export const editProduct = async(data)=>{
+ let {setLoading, payload,profile,setProfile,productList ,setProductList} = data
+
+  try {
+    setLoading(true);
+    const response = await axios.post(`/product/edit/${payload._id}`, payload,{
+      headers:{
+        'Authorization' : localStorage.getItem("token")
+      }
+    });
+    setLoading(false);
+    if (response.data.success) {
+      // const productIndexInProductList = productList.findIndex((product)=>product._id === payload._id);
+      // const productIndexInProfile = profile.products.findIndex((product)=>product._id === payload._id)
+      const updateProductList = productList.map((product)=>{
+        return product._id === payload._id ? response.data.data : product
+      })
+      setProductList((productList)=> {
+        return [...updateProductList]
+      })
+
+      const updateProfile = profile.products.map((product)=>{
+        return product._id === payload._id ? response.data.data : product
+      })
+      setProfile((profile)=>{
+
+        return {...profile, products : [...updateProfile.products]}
+      })
+      setProductList((productList)=>{
+        return [...productList ,response.data.data]
+      })
+      toast.success("Product updated");
+    }
+  } catch (err) {
+    setLoading(false)
+    toast.error(err.response);
+  }
+}

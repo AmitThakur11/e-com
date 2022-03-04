@@ -3,20 +3,21 @@ import { FaRegImage, FaTrash } from "react-icons/fa";
 import { useState } from "react";
 import {useAuth}  from "../../context/auth"
 import {useData}  from "../../context/data/index"
-import {addProduct} from "../../apiCalls";
+import {toast} from "react-toastify"
+
 import {
-  initialInputs,
   previewImg,
   uploadImg,
   takeSimpleInputs
 } from "./function";
-export default function AddProductForm({setShow ,formAction,setProfile}) {
-  const [img, setImg] = useState("");
+export default function AddProductForm({initialInputs, setShow ,formAction,profile,setProfile}) {
+  
   const [preview, setPreview] = useState("");
   const [userInputs, setUserInputs] = useState(initialInputs);
+  const [img, setImg] = useState(userInputs.img);
   const [feature, setFeature] = useState("");
   const {setLoading} = useAuth();
-  const {setProductList} = useData()
+  const {productList ,setProductList} = useData()
 
   const takeFeature = (e) => {
     setFeature(e.target.value);
@@ -69,7 +70,9 @@ export default function AddProductForm({setShow ,formAction,setProfile}) {
   };
 
   const uploadProduct = async (initialInputs, userInputs, img,formAction) => {
-    const {
+
+    try{
+      const {
       name,
       price,
       discount,
@@ -80,6 +83,7 @@ export default function AddProductForm({setShow ,formAction,setProfile}) {
       size,
       features
     } = userInputs;
+    
     const checkEmpty =
       img !== "" &&
       name !== "" &&
@@ -94,16 +98,30 @@ export default function AddProductForm({setShow ,formAction,setProfile}) {
     if (!checkEmpty) {
       return alert("Empty field");
     }
-    const response = await uploadImg(img,setUserInputs);
-    if(response.status === 200){
-      console.log("image uploaded")
+
+let payload
+if(typeof(img) === 'string'){
+  console.log("is a url")
+  payload = {...userInputs ,  price  : Number(price),discount : Number(discount), stock : Number(stock) }
+}else{
+  const response = await uploadImg(img,setUserInputs);
+  console.log("not a url so first upload and then url") 
+  payload = {...userInputs,img : response.data.url , price  : Number(price),discount : Number(discount), stock : Number(stock) }
+  
+}
+  
+    
+    // const payload = {...userInputs,img : response.data.url , price  : Number(price),discount : Number(discount), stock : Number(stock) }
+    formAction({setLoading,payload,profile,setProfile, productList,setProductList})
+    // console.log(payload)
+  
+
+    }catch(err){
+      toast.error(err.response)
     }
     
-    const payload = {...userInputs,img : response.data.url , price  : Number(price),discount : Number(discount), stock : Number(stock) }
-    addProduct(setLoading,payload,setProfile,setProductList)
-    console.log(payload)
-  
   };
+  console.log("user inputs",userInputs)
   return (
     <div className="addProductPage">
       <div className="addProductContainer">
@@ -114,7 +132,7 @@ export default function AddProductForm({setShow ,formAction,setProfile}) {
                 id="imgInput"
                 type="file"
                 onChange={(e) =>
-                  previewImg(e.target.files[0], setImg, setPreview)
+                  previewImg(e.target.files[0], setImg, setPreview ,setUserInputs)
                 }
                 accept="image/*"
               />
@@ -122,7 +140,7 @@ export default function AddProductForm({setShow ,formAction,setProfile}) {
                 <FaRegImage />
               </label>
               <div className="preview">
-                {preview && <img src={preview} alt="t shirt" />}
+                {(preview || userInputs.img )&& <img src={userInputs.img ? userInputs.img : preview} alt="t shirt" />}
               </div>
             </div>
           </section>
@@ -283,6 +301,7 @@ export default function AddProductForm({setShow ,formAction,setProfile}) {
                   name="fastDeleivery"
                   placeholder="Fast Deleivery"
                   type="checkbox"
+                  checked = {userInputs.fastDeleivery}
                   value={userInputs.fastDeleivery ? "on" : ""}
                   onChange={(e) => takeDeleivery(e, setUserInputs)}
                 />

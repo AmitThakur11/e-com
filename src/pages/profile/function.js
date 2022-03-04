@@ -14,17 +14,21 @@ export const initialInputs = {
   features : []
 }
 
-
-export const previewImg = (img,setImg,setPreview)=>{
+export const previewImg = (img,setImg,setPreview, setUserInputs)=>{
   setImg(img)
   const reader = new FileReader();
   reader.readAsDataURL(img);
   reader.onloadend =()=>{
     setPreview(reader.result)
   }
+  setUserInputs((userInputs)=>{
+    return {...userInputs, img : ""}
+  })
 
 }
 export const uploadImg = async (img,setUserInputs) => {
+
+  
   const formData = new FormData();
   formData.append("file", img);
   formData.append("upload_preset", "j70dvps3");
@@ -33,7 +37,6 @@ export const uploadImg = async (img,setUserInputs) => {
     "https://api.cloudinary.com/v1_1/dfxhtdmfq/image/upload",
     formData
   );
-  console.log(response)
   setUserInputs((userInputs)=>{
     return {...userInputs , img : response.url}
   })

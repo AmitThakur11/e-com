@@ -6,8 +6,7 @@ import {
   FavoriteBorderOutlined,
   Favorite,
   ShoppingCartOutlined,
-  ShoppingCart,
-  EditOutlined
+  ShoppingCart
 } from "@material-ui/icons";
 import {
   addToCart,
@@ -18,7 +17,7 @@ import {
 import { useAuth } from "../../context/auth";
 import { useUser } from "../../context/user/index";
 
-export default function ProductCard({ product , isEdit }) {
+export default function ProductCard({ product , isAdmin }) {
   const {
     user: { wishlist, cart },
     userDispatch,
@@ -43,7 +42,7 @@ export default function ProductCard({ product , isEdit }) {
           </div>
         </div>
       </Link>
-      {!isEdit && <div
+      {!isAdmin && <div
         className="x-card-icon x-icon1"
         onClick={() =>
           isLogin
@@ -59,7 +58,7 @@ export default function ProductCard({ product , isEdit }) {
           <FavoriteBorderOutlined style={{ fontSize: "18px" }} />
         )}
       </div>}
-      {!isEdit && <div
+      {!isAdmin && <div
         className="x-card-icon x-icon2"
         onClick={() =>
           isLogin
@@ -75,7 +74,7 @@ export default function ProductCard({ product , isEdit }) {
           <ShoppingCartOutlined style={{ fontSize: "18px" }} />
         )}
       </div>}
-      {isEdit && <div className = "x-icon3"><EditOutlined/></div>}
+     
 
 
       {product.badge && <div className="x-vertical-badge">{product.badge}</div>}
