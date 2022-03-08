@@ -111,10 +111,8 @@ if(typeof(img) === 'string'){
 }
   
     
-    // const payload = {...userInputs,img : response.data.url , price  : Number(price),discount : Number(discount), stock : Number(stock) }
-    formAction({setLoading,payload,profile,setProfile, productList,setProductList})
-    // console.log(payload)
-  
+    formAction({setLoading,payload,profile,setProfile, productList,setProductList,setShow})
+
 
     }catch(err){
       toast.error(err.response)
