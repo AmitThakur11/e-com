@@ -16,13 +16,13 @@ export default function Order() {
   return (
     <div>
       {order.length && <h2 className ="pageTitle">ORDERS</h2>}
-      {order.length ? (<div className="orderContainer">
+      {order.length > 0   ? (<div className="orderContainer">
       
         {order.map(({ _id, orderedProducts, address,total }) => {
           return (
             <div  key = {_id} className="orderCard">
               <div className="cartBox">
-                {orderedProducts.map(({productId:{img,_id,name,price},qty}) => {
+                {orderedProducts.map(({productId:{img,_id,name,price,discount},qty}) => {
                   return (
                     <div  key ={_id} className="cartBox__item">
                       <img src={img} alt="" />
@@ -30,14 +30,14 @@ export default function Order() {
                         <p className="cartBox__itemName">{name}</p>
                         <p className="cartBox__itemPrice">
                           <span>Price : </span>
-                          {price}({qty})
+                          {price - discount }({qty})
                         </p>
                       </div>
                     </div>
                   );
                 })}
               </div>
-              <p className ="totalPrice">{total}</p>
+              <div className ="totalPrice"> <span>Total : </span> <span>{total} Rs</span></div>
               <div className="orderAddress">
                 Order will soon deleivered to :{" "}
                 <span>

@@ -30,12 +30,16 @@
     top: 4px;
     right: 4px;
     font-size: 16px;
-    background: rgb(240, 238, 238);
+    background: white;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
     padding: 6px;
     display: flex;
     place-items: center;
     border-radius: 50%;
+    cursor : pointer;
+
+    color:rgb(230, 53, 53);
+    border : 2px solid rgb(230, 53, 53);
 
 }
 
@@ -60,37 +64,48 @@
 
 .cartBox__itemName {
     color: red;
+    font-weight: 700;
 
 }
 
 .cartBox__itemQty span {
     color: grey;
+    font-weight: 700;
 }
 
 .cartBox__itemQty {
-    font-size: 10px
+    font-size: 10px;
+    font-weight: 700;
+
 }
 
 .cartBox__itemPrice span {
-    color: grey;
+    color: rgb(255, 62, 62);
+    font-weight: 700;
+
 }
 
 .cartBox__itemPrice {
-    font-size: 12px
+    font-size: 12px;
+    font-weight: 700;
+
+
 }
 
 .orderAddress {
     background: rgb(232, 230, 230);
     color: rgb(0, 0, 0);
-    padding: 5px;
+    padding: 10px;
     text-align: justify;
     height: fit-content;
+    margin-top: 5px;
     
 }
 
 .orderAddress span {
     color: rgb(237, 68, 68);
     font-weight: 600;
+    
     font-size: 14px;
 
 }
@@ -118,23 +133,23 @@
     height:auto;
 }
 .totalPrice{
-    color:red;
     font-weight:700;
-    font-size:20px;
-    position:absolute;
-    top:55px;
-    right:-9px;
-    width:fit-content;
-    transform:rotate(80deg) translateY(-50%);
+    font-size:18px;
+    display: flex;
+    justify-content: space-between;  
     background:yellow; 
-     border :2px solid black;
-     border-left : 4px solid black;
+     border :1px solid black;
+     margin-top: 5px;     
     background:white;
     padding: 0px 8px;
     z-index:5;
 
 
 
+}
+
+.totalPrice >span:nth-child(2){
+    color: rgb(230, 53, 53)
 }
 @media(max-width :780px) {
     .orderContainer {
