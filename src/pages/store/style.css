@@ -8,7 +8,7 @@
 }
 
 .sideBar {
-    flex: 0;
+
     place-content: center;
     margin-left: 10px;
 
@@ -80,6 +80,9 @@
         border-top: 2px solid #f74b4b;
         flex-direction: column;
         justify-content: space-between;
+    }
+    .productsWrapper{
+        height: calc(100vh - 80px );
     }
 
     .active {

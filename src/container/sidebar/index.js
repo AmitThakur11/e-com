@@ -1,10 +1,24 @@
 import React, { useState } from "react";
 import "./style.css";
 import { useData } from "../../context/data/index";
-// import { Filter } from "@material-ui/icons";
+
 export default function SideBar() {
-  const { filterDispatch, filterState } = useData();
+  const { filterDispatch, filterState, productList } = useData();
   const [range, setRange] = useState(2000);
+  console.log(productList)
+  const category = productList?.reduce((acc,el)=>{
+    // console.log("el",el)
+    console.log("acc",acc)
+    if(!acc?.includes(el.brand)){
+      return [...acc,el.brand]
+    
+    }
+    return acc
+
+
+
+  },[])
+  console.log(category)
   return (
     <div className="sortFilter">
       <div className="sortFilter__sort">
@@ -54,8 +68,8 @@ export default function SideBar() {
           />
           Out of stock
         </label>
-        <div>Price</div>
-        <label>
+        <p className ="sidebar__subHeader">Price</p>
+        <label className ="rangeContainer">
           <input
             className="range"
             type="range"
@@ -70,31 +84,26 @@ export default function SideBar() {
           {range} Rs
         </label>
         <div>
-          brand <br />
-          <label>
+          <p className ="sidebar__subHeader">Brand </p>
+          {
+            category.map((brand)=>{
+              return (
+                <div>
             <input
               name="brand"
               type="radio"
-              checked={filterState.brand === "Supervek"}
+
+              checked={filterState.brand === brand}
               onChange={() =>
-                filterDispatch({ type: "BRAND", payload: "Supervek" })
+                filterDispatch({ type: "BRAND", payload: brand })
               }
             />
-            Supervek
-          </label>
-          <br />
-          <label>
-            <input
-              name="brand"
-              type="radio"
-              value={filterState.brand}
-              checked={filterState.brand === "Urban monkey"}
-              onChange={(e) =>
-                filterDispatch({ type: "BRAND", payload: "Urban monkey" })
-              }
-            />
-            Urban monkey
-          </label>
+            {brand}
+          </div>
+              )
+            })
+          }
+          
         </div>
         <button
           className="sortFilter__clearBtn"
