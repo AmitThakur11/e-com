@@ -66,12 +66,13 @@ const Product = () => {
                   <SizeList size={data.size} />
                   <div className ="btn-container">
                   <button
-                    className="wish-btn"
+                    className= {likedOrNot ?  "wish-btn btn-active" : "wish-btn"}
                     onClick={() => wishlistAction(data)}
+
                   >
                     {!likedOrNot ? "Add to wishlist" : "Remove from wishlist"}
                   </button>
-                  <button className="cart-btn" onClick={() => cartAction(data)}>
+                  <button  className= {inCartOrNot ?  "cart-btn btn-active" : "cart-btn"} onClick={() => cartAction(data)}>
         {inCartOrNot ?
          "Remove from cart":"Add to cart"}
       </button>

@@ -13,8 +13,8 @@ const WishlistCard = ({ wishlist }) => {
         <div className="x-hcontent">
           <div className="x-htitle">{wishlist.name}</div>
           <div className="x-hcard-price">
-            {wishlist.price - wishlist.discount}
-            <span>({wishlist.price})`</span>
+            {wishlist.price - wishlist.discount} Rs
+            <span>( {wishlist.price} Rs)</span>
           </div>
         </div>
       </div>
@@ -28,7 +28,7 @@ const WishlistCard = ({ wishlist }) => {
         onClick={() => moveToCart(wishlist._id, userDispatch, setLoading)}
         className="x-hcard-btn"
       >
-        ADD TO CART
+        MOVE TO CART
       </button>
     </section>
   );
