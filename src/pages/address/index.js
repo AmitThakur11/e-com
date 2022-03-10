@@ -41,6 +41,7 @@ export default function Address() {
         <div className="placeOrder_btn">
           <button
             onClick={() => {
+              setLoading(true)
               addRazorpay(user,navigate,userDispatch,setLoading)
             }}
           >

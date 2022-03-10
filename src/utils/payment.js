@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {addOrder} from "../apiCalls"
+import {toast} from 'react-toastify'
 export const loadScript =(src)=>{
   return new Promise((resolve)=>{
   const script= document.createElement('script');
@@ -21,8 +22,9 @@ export const loadScript =(src)=>{
 export const addRazorpay = async (user,navigate,userDispatch,setLoading)=>{
   const src = "https://checkout.razorpay.com/v1/checkout.js";
   const response = await loadScript(src);
+  
   if(!response){
-    alert("kuch gadbad h dayaa")
+    return toast.error("Try again later")
   }
 
 
@@ -61,6 +63,8 @@ export const addRazorpay = async (user,navigate,userDispatch,setLoading)=>{
 };
 
   const razorpayPayment = new window.Razorpay(options);
+  setLoading(false)
   razorpayPayment.open()
+  
   
 }

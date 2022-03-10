@@ -23,7 +23,7 @@ export default function SideBar() {
             type="radio"
             value={filterState.sortBy && "High to Low"}
             checked={filterState.sortBy === "HIGH TO LOW"}
-            onClick={() =>
+            onChange={() =>
               filterDispatch({ type: "SORT", payload: "HIGH TO LOW" })
             }
           />
@@ -35,7 +35,7 @@ export default function SideBar() {
             type="radio"
             value={filterState.sortBy && "Low to High"}
             checked={filterState.sortBy === "LOW TO HIGH"}
-            onClick={() =>
+            onChange={() =>
               filterDispatch({ type: "SORT", payload: "LOW TO HIGH" })
             }
           />
@@ -80,9 +80,9 @@ export default function SideBar() {
         <div>
           <p className="sidebar__subHeader">Brand </p>
           <div className ="brandFilter">
-            {brandsList.map((brand) => {
+            {brandsList.map((brand,index) => {
               return (
-                <label className="filterInput">
+                <label key ={index} className="filterInput">
                   <input
                     name="brand"
                     type="radio"
