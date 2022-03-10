@@ -33,7 +33,9 @@ a:hover {
 a:active {
   color: red;
 }
-
+i{
+  cursor: pointer;
+}
 body {
   margin: 0;
 

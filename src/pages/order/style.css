@@ -75,12 +75,13 @@
 
 .cartBox__itemQty {
     font-size: 10px;
+    color: rgb(94, 94, 94);
     font-weight: 700;
 
 }
 
 .cartBox__itemPrice span {
-    color: rgb(255, 62, 62);
+    color: rgb(94, 94, 94);
     font-weight: 700;
 
 }
@@ -103,8 +104,8 @@
 }
 
 .orderAddress span {
-    color: rgb(237, 68, 68);
-    font-weight: 600;
+    color: rgb(240, 46, 46);
+    font-weight: 700;
     
     font-size: 14px;
 

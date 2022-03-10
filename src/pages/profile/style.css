@@ -98,6 +98,7 @@
     border-radius: 50%;
     padding:4px;
     top:0px;
+    cursor:pointer;
     right:0px;
     background-color: #fff;
     transform: translate(-65%,65%);
