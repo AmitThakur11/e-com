@@ -10,6 +10,7 @@
 .sideBar {
     flex: 0;
     place-content: center;
+    margin-left: 10px;
 
 }
 
