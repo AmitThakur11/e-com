@@ -52,7 +52,6 @@
 .wrappedProducts {
     display: grid;
     width: 100%;
-    place-items: center;
     grid-template-columns: repeat(auto-fit,minmax(240px,1fr))
 }
 

@@ -1,7 +1,7 @@
 export const initialState = {
   showAll: true,
   sortBy: null,
-  fastDelivery: false,
+  fastDeleivery: false,
   outOfStock: false,
   priceRange: 2000,
   brand: null,
@@ -16,7 +16,7 @@ export const filterReducer = (state, action) => {
       return initialState;
     }
     case "FAST DELEIVERY":
-      return { ...state, fastDelivery: !state.fastDelivery };
+      return { ...state, fastDeleivery: !state.fastDeleivery };
     case "OUT OF STOCK":
       return { ...state, outOfStock: !state.outOfStock };
     case "PRICE RANGE":
@@ -39,8 +39,9 @@ export const sortData = (product, state) => {
   return product;
 };
 export const filteredData = (product, state) => {
-  const { fastDelivery, outOfStock, priceRange, brand } = state;
-  return product.filter((item) => (fastDelivery ? item.fastDelivery === true : true))
+  const { fastDeleivery, outOfStock, priceRange, brand } = state;
+  
+  return product.filter((item) => (fastDeleivery ? item.fastDeleivery === true : true))
     .filter((item) => (outOfStock ? item.stock === 0 : true))
     .filter((item) => (priceRange ? item.price < priceRange : true))
     .filter((item) => (brand ? item.brand === brand : true));
