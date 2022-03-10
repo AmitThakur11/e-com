@@ -1,8 +1,9 @@
 import React from "react";
 import "./style.css";
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 import { features } from "./utils";
 export default function Home() {
+  const navigate = useNavigate()
   return (
     <div className="home">
       <div className="innerHome">
@@ -23,7 +24,7 @@ export default function Home() {
           <div className="innerFeatures">
             {features.map(({ id, img, name }) => {
               return (
-                <div key ={id} className="featureBox">
+                <div key ={id} onClick ={()=>navigate("/store")} className="featureBox">
                   <img
                     src={img}
                     alt="features"
