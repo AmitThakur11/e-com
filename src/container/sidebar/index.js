@@ -6,21 +6,18 @@ export default function SideBar() {
   const { filterDispatch, filterState, originalList } = useData();
   const [range, setRange] = useState(2000);
 
-  const brandsList = originalList?.reduce((acc,el)=>{
-    if(!acc?.includes(el.brand)){
-      return [...acc,el.brand]
+  const brandsList = originalList?.reduce((acc, el) => {
+    if (!acc?.includes(el.brand)) {
+      return [...acc, el.brand];
     }
-    return acc
-
-
-
-  },[])
+    return acc;
+  }, []);
 
   return (
     <div className="sortFilter">
       <div className="sortFilter__sort">
         <div className="sortFilter_title">Sort</div>
-        <label>
+        <label className ="filterInput">
           <input
             name="sort"
             type="radio"
@@ -32,7 +29,7 @@ export default function SideBar() {
           />
           High to Low
         </label>
-        <label>
+        <label className ="filterInput" >
           <input
             name="sort"
             type="radio"
@@ -48,16 +45,16 @@ export default function SideBar() {
 
       <div className="sortFilter__filter">
         <div className="sortFilter_title">Filter</div>
-        <label>
+        <label className ="filterInput">
           <input
             checked={filterState.fastDelivery}
             type="checkbox"
             onChange={() => filterDispatch({ type: "FAST DELEIVERY" })}
           />
-          fast deleivery
+          Fast deleivery
         </label>
 
-        <label>
+        <label className ="filterInput">
           <input
             checked={filterState.outOfStock}
             type="checkbox"
@@ -65,12 +62,12 @@ export default function SideBar() {
           />
           Out of stock
         </label>
-        <p className ="sidebar__subHeader">Price</p>
-        <label className ="rangeContainer">
+        <p className="sidebar__subHeader">Price</p>
+        <label className="rangeContainer">
           <input
             className="range"
             type="range"
-            min="50"
+            min="400"
             max="2000"
             value={range}
             onChange={(e) => {
@@ -81,26 +78,24 @@ export default function SideBar() {
           {range} Rs
         </label>
         <div>
-          <p className ="sidebar__subHeader">Brand </p>
-          {
-            brandsList.map((brand)=>{
+          <p className="sidebar__subHeader">Brand </p>
+          <div className ="brandFilter">
+            {brandsList.map((brand) => {
               return (
-                <div>
-            <input
-              name="brand"
-              type="radio"
-
-              checked={filterState.brand === brand}
-              onChange={() =>
-                filterDispatch({ type: "BRAND", payload: brand })
-              }
-            />
-            {brand}
+                <label className="filterInput">
+                  <input
+                    name="brand"
+                    type="radio"
+                    checked={filterState.brand === brand}
+                    onChange={() =>
+                      filterDispatch({ type: "BRAND", payload: brand })
+                    }
+                  />
+                  {brand}
+                </label>
+              );
+            })}
           </div>
-              )
-            })
-          }
-          
         </div>
         <button
           className="sortFilter__clearBtn"

@@ -9,6 +9,7 @@
 .x-card-icon {
     padding:3px !important;
     border:2px solid rgb(255, 76, 76);
+    cursor:pointer;
 
 }
 

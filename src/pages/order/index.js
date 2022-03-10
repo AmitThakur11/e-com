@@ -15,8 +15,8 @@ export default function Order() {
  
   return (
     <div>
-      {order.length && <h2 className ="pageTitle">ORDERS</h2>}
-      {order.length > 0   ? (<div className="orderContainer">
+      {order.length > 0 && <h2 className ="pageTitle">ORDERS</h2>}
+      {order.length  ? (<div className="orderContainer">
       
         {order.map(({ _id, orderedProducts, address,total }) => {
           return (

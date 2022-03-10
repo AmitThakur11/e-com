@@ -151,6 +151,7 @@
 .totalPrice >span:nth-child(2){
     color: rgb(230, 53, 53)
 }
+
 @media(max-width :780px) {
     .orderContainer {
         display: flex;
