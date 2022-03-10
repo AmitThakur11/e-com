@@ -3,22 +3,19 @@ import "./style.css";
 import { useData } from "../../context/data/index";
 
 export default function SideBar() {
-  const { filterDispatch, filterState, productList } = useData();
+  const { filterDispatch, filterState, originalList } = useData();
   const [range, setRange] = useState(2000);
-  console.log(productList)
-  const category = productList?.reduce((acc,el)=>{
-    // console.log("el",el)
-    console.log("acc",acc)
+
+  const brandsList = originalList?.reduce((acc,el)=>{
     if(!acc?.includes(el.brand)){
       return [...acc,el.brand]
-    
     }
     return acc
 
 
 
   },[])
-  console.log(category)
+
   return (
     <div className="sortFilter">
       <div className="sortFilter__sort">
@@ -86,7 +83,7 @@ export default function SideBar() {
         <div>
           <p className ="sidebar__subHeader">Brand </p>
           {
-            category.map((brand)=>{
+            brandsList.map((brand)=>{
               return (
                 <div>
             <input

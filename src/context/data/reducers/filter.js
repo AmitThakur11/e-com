@@ -41,7 +41,7 @@ export const sortData = (product, state) => {
 export const filteredData = (product, state) => {
   const { fastDeleivery, outOfStock, priceRange, brand } = state;
   
-  return product.filter((item) => (fastDeleivery ? item.fastDeleivery === true : true))
+  return product.filter((item) => (fastDeleivery ? item.fastDeleivery === true :  true))
     .filter((item) => (outOfStock ? item.stock === 0 : true))
     .filter((item) => (priceRange ? item.price < priceRange : true))
     .filter((item) => (brand ? item.brand === brand : true));

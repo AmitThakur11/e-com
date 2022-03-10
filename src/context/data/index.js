@@ -36,6 +36,7 @@ const DataProvider = ({ children }) => {
     <dataContext.Provider
       value={{
         productList: getFilterData,
+        originalList : productList,
         filterDispatch: dispatch,
         filterState: state,
         sidebar,
