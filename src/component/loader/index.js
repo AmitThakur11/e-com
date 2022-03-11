@@ -4,7 +4,7 @@ import Loading from "../../image/loader1.gif";
 export default function Loader() {
   return (
     <div className="loader ">
-      <img src={Loading} alt="/" />
+      <img src={Loading} alt="Loading" />
     </div>
   );
 }

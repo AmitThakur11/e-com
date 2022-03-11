@@ -12,7 +12,7 @@ import {initialInputs} from "./function"
 import {
   EditOutlined
 } from "@material-ui/icons";
-import {Loader} from "../../component"
+
 function Profile() {
 
     const [showAddForm , setShowAddForm] = useState(false)
@@ -53,7 +53,7 @@ function Profile() {
   
     return (
     <>{
-      loading && <Loader/>
+    loading && <div className ="profileLoader">Loading...</div>
     }
     {!loading && <div className="profileContainer">
       <section className="userDescription">
