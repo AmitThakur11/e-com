@@ -4,7 +4,7 @@ import {addProduct,editProduct} from "../../apiCalls"
 import axios from 'axios'
 import AddProductForm from "./addProductForm";
 import "./style.css";
-import {useAuth} from "../../context/auth"
+
 import {useUser} from "../../context/user"
 import {useParams} from "react-router-dom"
 import { axiosInitializer } from "../../utils/axiosInitializer";
