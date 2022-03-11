@@ -12,15 +12,15 @@ import {initialInputs} from "./function"
 import {
   EditOutlined
 } from "@material-ui/icons";
-
+import {Loader} from "../../component"
 function Profile() {
 
     const [showAddForm , setShowAddForm] = useState(false)
     const [showEditForm , setShowEditForm] = useState(false);
-    const [editingProduct,setEditingProduct] = useState({})
+    const [editingProduct,setEditingProduct] = useState({});
+    const [loading,setLoading] = useState(false)
 
     const {id} = useParams();
-    const {loading, setLoading} = useAuth();
     const [profile,setProfile] = useState({})
     const {user :{_id}} = useUser()
     const isAdmin = id === _id;
@@ -52,7 +52,9 @@ function Profile() {
   
   
     return (
-    <>
+    <>{
+      loading && <Loader/>
+    }
     {!loading && <div className="profileContainer">
       <section className="userDescription">
         <p className="userName">
